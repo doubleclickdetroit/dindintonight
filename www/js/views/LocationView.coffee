@@ -4,11 +4,11 @@
 
 
 
-class LocationPageView
+class LocationView
 
   initialize: ->
 
 
 
 # exports
-window.dd.Views.LocationPageView = LocationPageView
+window.dd.Views.LocationView = LocationView

@@ -4,11 +4,11 @@
 
 
 
-class MenuPageView
+class MenuView
 
   initialize: ->
 
 
 
 # exports
-window.dd.Views.MenuPageView = MenuPageView
+window.dd.Views.MenuView = MenuView
