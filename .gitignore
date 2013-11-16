@@ -1,3 +1,4 @@
 #Github template for OS X
 #########################
-.DS_Store
+*.DS_Store
+*.gitignore
