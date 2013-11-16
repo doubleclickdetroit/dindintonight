@@ -1,5 +1,39 @@
 body {
-  background: white; }
+  background: url(../img/bg_city.jpg) no-repeat top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed; }
 
 h1 {
   font-family: 'Open Sans', sans-serif; }
+
+p, ul, h1, h2 {
+  color: #fff; }
+
+button {
+  background: #0055CC;
+  background: -moz-linear-gradient(top, #7bc5e0, #0055cc);
+  background: -webkit-linear-gradient(top, #7bc5e0, #0055cc);
+  background: linear-gradient(top, #7bc5e0, #0055cc);
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  border-radius: 0.5em;
+  border: 0;
+  width: 14em;
+  font-size: 1.1em;
+  padding: 1em 0;
+  margin: 1em 0;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none; }
+
+.content {
+  width: 960px;
+  margin: 0 auto; }
+  .content .open_title, .content .open_blurb {
+    text-align: center; }
+  .content .food_module .allery_disclaimer li {
+    font-size: 1.6em;
+    color: #fff; }

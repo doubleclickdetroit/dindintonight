@@ -1,6 +1,71 @@
-body {
-    background: white;
+//mixins
+@mixin bg($x) {
+	background: $x;
 }
+
+@mixin btns {
+	background: #0055CC;
+	background: -moz-linear-gradient(top, #7bc5e0, #0055CC);
+	background: -webkit-linear-gradient(top, #7bc5e0, #0055CC);
+	background: linear-gradient(top, #7bc5e0, #0055CC);
+	-webkit-border-radius: 0.5em;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	border: 0;
+	width: 14em;
+	font-size: 1.1em;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #fff;
+	cursor: pointer;
+	text-align: center;
+	text-decoration: none;
+}
+
+body {
+   @include bg(url(../img/bg_city.jpg) no-repeat top center);
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   background-size: cover;
+   background-attachment: fixed;
+}
+
+//typography
 h1 {
     font-family: 'Open Sans', sans-serif;
 }
+
+p, ul, h1, h2 {
+	color: #fff;
+}
+
+button {
+	@include btns
+}
+
+//containers
+.header {
+
+}
+
+.footer {
+
+}
+
+.content {
+	width: 960px;
+	margin: 0 auto;
+
+	.open_title, .open_blurb {
+		text-align: center;
+	}
+
+	.food_module {
+		.allery_disclaimer li {
+			font-size: 1.6em;
+			color: #fff;
+		}
+	}
+}
+
+
