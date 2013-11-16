@@ -6,5 +6,6 @@ $app = new \Slim\Slim( array( 'debug' => true ) );
 include 'meal.php';
 include 'coin.php';
 include 'user.php';
+include 'order.php';
 
 $app->run();
