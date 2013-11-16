@@ -3,7 +3,6 @@
 require_once 'bootstrap.php';
 
 $id = $argv[1];
-$newName = $argv[2];
 
 $meal = $entityManager->find('Meal', $id);
 
@@ -12,6 +11,6 @@ if ($meal === null) {
     exit(1);
 }
 
-$meal->setName($newName);
+$meal->setVegetarian(1);
 
 $entityManager->flush();

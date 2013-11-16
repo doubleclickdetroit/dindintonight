@@ -11,6 +11,7 @@ $app->get( '/meal', function () {
         $entry->photo       = 'http://fostercityvillage.org/wp-content/uploads/2012/10/meal-m.jpg';
         $entry->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
         $entry->coins       = '2';
+        $entry->vegetarian  = $meal->getVegetarian();
         $return[] = $entry;
     }
 
