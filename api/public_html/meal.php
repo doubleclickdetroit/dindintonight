@@ -1,6 +1,6 @@
 <?php
 $app->get( '/meal', function () {
-    require_once 'bootstrap.php';
+    require_once '../bootstrap.php';
 
     $meals = $entityManager->getRepository('Meal')->findBy(array('status' => 'ACTIVE'));
 
