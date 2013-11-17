@@ -309,6 +309,9 @@ input#physical_location {
     font-size: 4em;
     padding-top: 1em;
     padding-bottom: 1em; }
+  #payment_section p {
+    font-size: 1.4em;
+    text-align: center; }
 
 #payment_form {
   width: 500px;
@@ -350,6 +353,8 @@ button[name='submit-button'].payment_btn {
     width: 45%; }
     .food_module:first-child {
       margin-right: 4em; }
+    .food_module p, .food_module h1 {
+      font-size: 100%; }
 
   .inner_food_picker {
     max-width: 47em; }

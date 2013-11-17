@@ -163,8 +163,8 @@
                             </div>
                         </div>
 
-                         <button type="submit" name="submit-button" class="payment_btn">Submit</button>
-                       
+                         <button type="button" name="submit-button" id="btn-payment" class="payment_btn">Submit</button>
+                
                         <span class="payment-errors"></span>
                     </form>
                  </div>
@@ -229,11 +229,11 @@
                     });
                 });
 
-                $(".payment_btn").on("click", function(e){
-                    e.preventDefault();
-                    $("#payment_form, .payment_btn").fadeOut();
-                    $("#payment_section h1").text("Want DiNDiN fast next time?");
-                    $("#payment_section p").text("Save next time, and sign with Facebook!");
+                $("#view-payment").on("click", "#btn-payment", function(){
+                    $("#payment_form").slideUp();
+                    $("#payment_section h1").text("Want DiNDiN faster next time?");
+                    $("#payment_section p").text("Connect with Facebook, and we'll save your fingers from typing all those characters.");
+                    console.log("poop");
                 });
             });
         </script>
