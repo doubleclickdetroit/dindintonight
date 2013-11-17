@@ -1,5 +1,5 @@
 body {
-  background: url(../img/bg_city.jpg) no-repeat top center;
+  background: url(../img/thai.jpg) no-repeat top center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
@@ -11,29 +11,258 @@ h1 {
 p, ul, h1, h2 {
   color: #fff; }
 
-button {
-  background: #0055CC;
-  background: -moz-linear-gradient(top, #7bc5e0, #0055cc);
-  background: -webkit-linear-gradient(top, #7bc5e0, #0055cc);
-  background: linear-gradient(top, #7bc5e0, #0055cc);
+button, .btn {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  background: #5e9c00;
+  background: -moz-linear-gradient(top, #7cb600, #5e9c00);
+  background: -webkit-linear-gradient(top, #7cb600, #5e9c00);
+  background: linear-gradient(top, #7cb600, #5e9c00);
+  -moz-box-shadow: 0 5px 0px 0px #999;
+  -webkit-box-shadow: 0 5px 0px 0px #999;
+  box-shadow: 0 5px 0px 0px #999;
+  position: relative;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
   -webkit-border-radius: 0.5em;
   -moz-border-radius: 0.5em;
   border-radius: 0.5em;
   border: 0;
   width: 14em;
-  font-size: 1.1em;
+  font-size: 1.4em;
   padding: 1em 0;
   margin: 1em 0;
   color: #fff;
   cursor: pointer;
   text-align: center;
-  text-decoration: none; }
+  text-decoration: none;
+  opacity: 1 !important; }
+  button:hover, .btn:hover {
+    color: #e6e6e6 !important;
+    top: 3px;
+    /* this is from the general style position relative, now this will "press" down 3 pixels */
+    -moz-box-shadow: 0 3px 0 0 #999;
+    -webkit-box-shadow: 0 3px 0 0 #999;
+    box-shadow: 0 3px 0 0 #999; }
+  button:active, .btn:active {
+    background: #5e9c00; }
+
+button[name='submit-button'] {
+  width: 3em;
+  padding: 0.2em;
+  margin-top: 1.4em; }
+
+.header {
+  font-family: 'Open Sans', sans-serif; }
+  .header #navagation ul {
+    float: right;
+    margin-right: 3.5em;
+    padding-top: 2em; }
+    .header #navagation ul li {
+      float: left;
+      list-style: none;
+      margin-left: 1.5em; }
+      .header #navagation ul li a {
+        color: #fff; }
 
 .content {
-  width: 960px;
-  margin: 0 auto; }
-  .content .open_title, .content .open_blurb {
-    text-align: center; }
+  /*	width: 960px;
+  	margin: 0 auto;*/
+  clear: both; }
+  .content .open_title {
+    background: url(../img/thai.jpg) no-repeat top center;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+    font-weight: 800;
+    font-size: 13em;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 0.5em; }
+  .content .open_blurb {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    font-size: 1.6em; }
   .content .food_module .allery_disclaimer li {
     font-size: 1.6em;
     color: #fff; }
+
+.lets_get_started {
+  width: 960px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center; }
+
+.top_clipping {
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -webkit-box-shadow: 0 8px 6px -6px #000;
+  -moz-box-shadow: 0 8px 6px -6px #000;
+  box-shadow: 0 8px 6px -6px #000;
+  padding-bottom: 10em; }
+
+.start_food_picker {
+  background: url(../img/square_texture.png);
+  padding-top: 3em;
+  padding-bottom: 5em; }
+  .start_food_picker h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 4em;
+    padding-bottom: 1em;
+    text-align: center;
+    color: #383838; }
+
+.food_module {
+  margin-right: 2em;
+  background: #f2f2f2;
+  float: left;
+  text-align: center;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-sizing: border-box;
+  border-radius: 5px;
+  position: relative;
+  height: 430px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 0 50px rgba(0, 0, 0, 0.1) inset;
+  border-radius: 1%     1%     1%     1% /     1%     1%     1%     1%;
+  padding: 2em; }
+  .food_module:before {
+    position: absolute;
+    width: 100%;
+    height: 76%;
+    border-radius: 10px / 100px;
+    z-index: -1;
+    top: 12%;
+    bottom: 12%;
+    content: "";
+    box-shadow: 0 0 19px rgba(0, 0, 0, 0.71); }
+  .food_module h2, .food_module p, .food_module ul {
+    color: #383838; }
+  .food_module.veg {
+    margin-right: 0; }
+  .food_module img {
+    width: 100%; }
+
+.inner_food_picker {
+  clear: both;
+  content: "";
+  display: table;
+  margin: 0 auto;
+  max-width: 60em;
+  width: 100%; }
+
+.btn_go_to_map {
+  margin: 0 auto;
+  width: 275px; }
+
+.map_section_holder {
+  position: relative; }
+
+#geo_map img {
+  width: 100%; }
+
+#map_form {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  width: 22em; }
+
+#location {
+  float: left; }
+
+label[for='street_address'] {
+  display: block; }
+
+input#street_address {
+  width: 15em;
+  height: 3em; }
+
+.street_address_holder {
+  margin-right: 0.5em; }
+
+.food_of_the_day {
+  border: 0.2em solid #323232; }
+
+.payment_holder {
+  background: rgba(0, 0, 0, 0.9); }
+
+#payment_section {
+  padding-bottom: 2em; }
+  #payment_section h1 {
+    margin: 0; }
+
+#payment_form {
+  width: 500px;
+  margin: 0 auto; }
+  #payment_form h1 {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 4em;
+    padding-top: 1em;
+    padding-bottom: 1em; }
+  #payment_form label {
+    display: block;
+    color: #fff; }
+  #payment_form input {
+    border: 1px solid #fff;
+    border-radius: 5px;
+    display: block;
+    font-size: 14px;
+    line-height: 20px;
+    margin: 0;
+    outline: 0;
+    width: 100%;
+    height: 2.5em; }
+
+input[type="number"] {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  outline: 0;
+  width: 100%;
+  height: 2.5em;
+  margin: 0 auto;
+  width: 15%;
+  height: 2em;
+  background: #00aaf1;
+  color: #fff;
+  font-size: 1.4em;
+  text-align: center;
+  outline: 1; }
+
+button[name='submit-button'].payment_btn {
+  width: 30%; }
+
+#site_footer {
+  background: rgba(0, 170, 241, 0.9); }
+  #site_footer #footer_nav {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    padding: 1em; }
+    #site_footer #footer_nav ul {
+      margin-bottom: 0;
+      padding: 0; }
+      #site_footer #footer_nav ul li {
+        list-style: none; }
+
+@media only screen and (max-width: 860px) {
+  .content .open_title {
+    font-size: 9em; } }
+@media only screen and (max-width: 590px) {
+  .content .open_title {
+    font-size: 4em; } }
