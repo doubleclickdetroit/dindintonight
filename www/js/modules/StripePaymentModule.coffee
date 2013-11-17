@@ -7,13 +7,18 @@ Collecitons = window.dd.Collecitons
 
 class StripePaymentModule
 
-  constructor: ->
-    console.log 'StripePaymentModule instantiated'
+  constructor: (settings) ->
+    @events = settings.events
     @loadScript()
 
 
   loadScript: ->
+    @events.trigger 'payment-module', 'load'
     $.getScript 'https://js.stripe.com/v2', @initialize
+
+
+  initialize: =>
+    @events.trigger 'payment-module', 'init'
 
 
 

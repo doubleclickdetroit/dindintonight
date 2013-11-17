@@ -8,10 +8,11 @@ Modules     = window.dd.Modules
 
 class ApplicationController
 
-  events = _.extend {}, Backbone.Events
-
   constructor: (settings) ->
-    #
+    @events = settings.events
+
+    @events.on 'payment-module', (state) ->
+      console.log "ApplicationController 'payment-module #{state}'"
 
 
 
