@@ -16,6 +16,57 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `dropmeals`
+--
+
+DROP TABLE IF EXISTS `dropmeals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `dropmeals` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `drop_id` int(11) NOT NULL,
+  `meal_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `dropmeals`
+--
+
+LOCK TABLES `dropmeals` WRITE;
+/*!40000 ALTER TABLE `dropmeals` DISABLE KEYS */;
+INSERT INTO `dropmeals` VALUES (1,2,1,2),(2,2,2,4);
+/*!40000 ALTER TABLE `dropmeals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `drops`
+--
+
+DROP TABLE IF EXISTS `drops`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `drops` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `drops`
+--
+
+LOCK TABLES `drops` WRITE;
+/*!40000 ALTER TABLE `drops` DISABLE KEYS */;
+INSERT INTO `drops` VALUES (1,2,1),(2,2,1);
+/*!40000 ALTER TABLE `drops` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `locations`
 --
 
@@ -125,4 +176,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-16 23:31:14
+-- Dump completed on 2013-11-17  5:26:37
