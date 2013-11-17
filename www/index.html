@@ -111,18 +111,16 @@
         </script>
 
         <script id="tmpl-meal" type="text/x-handlebars-template">
-            <section class='food_module meat'>
-                <img src="{{ photo }}" class="food_of_the_day" />
-                <aside class='coin_denom two_coins'>
-                    <p>{{ quantity }}</p>
-                </aside>
-                <h2>Carnivores</h2>
-                <p>{{ description }}</p>
-                <section class="quantity_counter">
-                  <a href="#" class='counter_minus'>-</a>
-                    <input type='text' class='quantity_food_1' value="{{ quantity }}" />
-                  <a href="#" class='counter_plus'>+</a>
-                </section>
+            <img src="{{ photo }}" class="food_of_the_day" />
+            <aside class='coin_denom two_coins'>
+                <p>{{ quantity }}</p>
+            </aside>
+            <h2>Carnivores</h2>
+            <p>{{ description }}</p>
+            <section class="quantity_counter">
+              <a href="#" class='counter_minus'>-</a>
+                <input type='text' class='quantity_food_1' value="{{ quantity }}" />
+              <a href="#" class='counter_plus'>+</a>
             </section>
         </script>
 

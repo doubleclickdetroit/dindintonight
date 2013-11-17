@@ -5,6 +5,9 @@
 
 class MealView extends Backbone.View
 
+  tagName  : 'section'
+  className: 'food_module meat'
+
   events: {
     'click .counter_plus'     : 'handleIncrement'
     'click .counter_minus'    : 'handleDecrement'
