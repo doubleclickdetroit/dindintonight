@@ -4,6 +4,7 @@ Controllers = window.dd.Controllers
 
 
 
+# DOM Ready
 $ ->
   # events
   mediator = _.extend {}, Backbone.Events

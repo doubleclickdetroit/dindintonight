@@ -1,11 +1,12 @@
 # imports
-Views = window.dd.Views
+BaseView = window.dd.Views.BaseView
 
 
 
-class LocationView
+class LocationView extends BaseView
 
-  initialize: ->
+  initialize: (settings) ->
+    @events = settings.events
 
 
 
