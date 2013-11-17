@@ -242,6 +242,10 @@ button[name='submit-button'] {
 		color: #383838;
 	}
 
+	h2 {
+		font-size: 1.4em;
+	}
+
 	&.veg {
 		margin-right: 0;
 	}
@@ -461,7 +465,7 @@ button[name='submit-button'].payment_btn {
 			margin-right: 4em;
 		}
 
-		p, h1 {
+		p, h2 {
 			font-size: 100%;
 		}
 	}
@@ -505,7 +509,7 @@ button[name='submit-button'].payment_btn {
 	}
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 520px) {
 
 	.header {
 		#navagation ul {
@@ -534,7 +538,6 @@ button[name='submit-button'].payment_btn {
 	}
 
 	#map_form {
-		width: 19em;
 
 		div, input, button {
 			width: 100%;

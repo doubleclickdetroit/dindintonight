@@ -167,6 +167,8 @@ button[name='submit-button'] {
     box-shadow: 0 0 19px rgba(0, 0, 0, 0.71); }
   .food_module h2, .food_module p, .food_module ul {
     color: #383838; }
+  .food_module h2 {
+    font-size: 1.4em; }
   .food_module.veg {
     margin-right: 0; }
   .food_module .coin_denom.one_coin {
@@ -353,7 +355,7 @@ button[name='submit-button'].payment_btn {
     width: 45%; }
     .food_module:first-child {
       margin-right: 4em; }
-    .food_module p, .food_module h1 {
+    .food_module p, .food_module h2 {
       font-size: 100%; }
 
   .inner_food_picker {
@@ -378,7 +380,7 @@ button[name='submit-button'].payment_btn {
 
   label[for="physical_location"] {
     color: #1a1a1a; } }
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 520px) {
   .header #navagation ul {
     margin: 0 auto;
     margin-right: 0;
@@ -401,12 +403,10 @@ button[name='submit-button'].payment_btn {
     width: 15%;
     padding: 0; }
 
-  #map_form {
-    width: 19em; }
-    #map_form div, #map_form input, #map_form button {
-      width: 100%; }
-    #map_form button {
-      margin-top: 0.5em; }
+  #map_form div, #map_form input, #map_form button {
+    width: 100%; }
+  #map_form button {
+    margin-top: 0.5em; }
 
   .inner_food_picker {
     padding-left: 0; } }
