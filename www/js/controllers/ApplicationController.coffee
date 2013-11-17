@@ -34,9 +34,22 @@ class ApplicationController
 
 
   setupListeners: ->
+    # modesl & collections
     @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals',    'reset',  @mealsCollection
     @coinModel.on       'change', (args...) => @events.trigger 'coin',     'change', @coinModel.attributes
     @locationModel.on   'change', (args...) => console.log 'location', 'change', @locationModel.attributes
+
+    # events
+    @mealsCollection.on 'change', (type, fn) =>
+      total = 0
+
+      @mealsCollection.each (meal) ->
+        qty   = meal.get 'quantity'
+        price = parseFloat( meal.get 'coins' ) * 10
+        total += ( qty * price )
+
+      window.total_price = total
+      @events.trigger 'totalprice', total
 
 
   bootstrapData: ->

@@ -10,15 +10,24 @@ class PaymentView extends BaseView
 
     # listeners
     @events.on 'location', @handlePaymentEvent, @
+    @events.on 'totalprice', @fillinTotalPrice, @
 
     # element listeners
     @$el.on 'change', 'input', @handleFieldChange
 
 
+
   render: ->
+    # render template
+    @$el.html @tmpl { price: window.total_price } # sorry about this :'(
+
+    # scroll top
     top = @$el.offset().top
-    @$el.html @tmpl()
     setTimeout (-> $( 'body, html' ).animate scrollTop: top ), 1500
+
+
+  fillinTotalPrice: (total_price) ->
+    @$( '#totalPrice' ).text total_price
 
 
   ### Event Handlers ###
@@ -27,7 +36,8 @@ class PaymentView extends BaseView
 
 
   handleFieldChange: (evt) =>
-    console.log 'handleFieldChange', evt.currentTarget
+    val = $( evt.currentTarget ).val()
+
 
 
 

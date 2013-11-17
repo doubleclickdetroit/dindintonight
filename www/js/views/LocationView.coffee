@@ -74,7 +74,6 @@ class LocationView extends BaseView
     @geocoder.geocode {'address': address}, (results, status) =>
       if status is google.maps.GeocoderStatus.OK
         @model.set latlng: results[0].geometry.location
-
       else
         @events.trigger 'app', 'error', 'Uh Oh! We\'re armed with the power of Google Maps. Try a real address there next time, Buckaroo.'
 
