@@ -12,6 +12,7 @@ $app->get( '/meal', function () {
         $entry->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
         $entry->coins       = '2';
         $entry->vegetarian  = $meal->getVegetarian();
+        $entry->quantity    = 0;
         $return[] = $entry;
     }
 
