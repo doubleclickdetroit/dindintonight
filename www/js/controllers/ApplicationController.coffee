@@ -18,6 +18,7 @@ class ApplicationController
     # cache models & collections
     @coinModel       = new Models.CoinModel            events: @events
     @userModel       = new Models.UserModel            events: @events
+    @locationModel   = new Models.LocationModel        events: @events
     @paymentModel    = new Models.PaymentModel         events: @events
     @mealsCollection = new Collections.MealsCollection events: @events
 
@@ -33,8 +34,9 @@ class ApplicationController
 
 
   setupListeners: ->
-    @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals', 'reset', @mealsCollection
-    @coinModel.on       'change', (args...) => @events.trigger 'coin', 'change', @coinModel.attributes
+    @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals',    'reset',  @mealsCollection
+    @coinModel.on       'change', (args...) => @events.trigger 'coin',     'change', @coinModel.attributes
+    @locationModel.on   'change', (args...) => console.log 'location', 'change', @locationModel.attributes
 
 
   bootstrapData: ->
