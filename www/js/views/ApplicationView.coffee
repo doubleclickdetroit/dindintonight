@@ -1,15 +1,36 @@
 # imports
-# Models      = window.dd.Models
-# Collecitons = window.dd.Collecitons
+Views = window.dd.Views
 
 
 
-class ApplicationView
+class ApplicationView extends Views.BaseView
 
-  initialize: ->
+  initialize: (settings) ->
+    @events = settings.events
+
+    # setup subviews
+    @setupSubviews()
 
 
   render: ->
+
+
+  setupSubviews: ->
+    @mealsView = new Views.MealsView
+      events  : @events
+      el      : @$ '#view-meals'
+      template: @$ '#tmpl-meals'
+
+    @locationView = new Views.LocationView
+      events  : @events
+      el      : @$ '#view-location'
+      template: @$ '#tmpl-location'
+
+    @paymentView = new Views.PaymentView
+      events  : @events
+      el      : @$ '#view-payment'
+      template: @$ '#tmpl-payment'
+
 
 
 

@@ -1,10 +1,12 @@
 # imports
-Views = window.dd.Views
+BaseView = window.dd.Views.BaseView
 
 
-class PaymentView
 
-  initialize: ->
+class PaymentView extends BaseView
+
+  initialize: (settings) ->
+    @events = settings.events
 
 
 

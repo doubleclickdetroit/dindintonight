@@ -1,17 +1,25 @@
 # imports
 Views       = window.dd.Views
 Models      = window.dd.Models
-Collecitons = window.dd.Collecitons
-Modules     = window.dd.Modules
+Collections = window.dd.Collections
 
 
 
 class ApplicationController
 
-  events = _.extend {}, Backbone.Events
-
   constructor: (settings) ->
-    #
+    @events = settings.events
+
+    # cache models & collections
+    @coinModel       = new Models.CoinModel            events: @events
+    @userModel       = new Models.UserModel            events: @events
+    @paymentModel    = new Models.PaymentModel         events: @events
+    @mealsCollection = new Collections.MealsCollection events: @events
+
+    # cache view
+    @applicationView = new Views.ApplicationView
+      el    : $ 'body'
+      events: @events
 
 
 

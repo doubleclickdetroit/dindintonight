@@ -1,7 +1,12 @@
 # imports
+Modules     = window.dd.Modules
 Controllers = window.dd.Controllers
 
 
+# events
+mediator = _.extend {}, Backbone.Events
 
-$ ->
-  applicationController = new Controllers.ApplicationController()
+
+# instantiate modules & controllers
+applicationController = new Controllers.ApplicationController events: mediator
+stripePaymentModule   = new Modules.StripePaymentModule       events: mediator

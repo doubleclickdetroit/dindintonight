@@ -22,11 +22,21 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="wrapper">
-            <header id="site_header" class='header'></header>
+           <header id="site_header" class='header'>
+                 <h1>header</h1>
+                 <nav id="navagation">
+                    <ul>
+                        <li><a href="#">Link 1</a></li>
+                        <li><a href="#">Link 2</a></li>
+                        <li><a href="#">Link 3</a></li>
+                    </ul>
+                 </nav>
+           </header>
                 <div class='content'>
-                     <h1 class='open_title'>din din tonight</h1>
-                     <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball. Kevin meatball bresaola filet mignon, ham corned beef frankfurter prosciutto pastrami ham hock venison.</p>
-                     <div class='start_food_picker'>
+                    <h1 class='open_title'>din din tonight</h1>
+                    <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball. Kevin meatball bresaola filet mignon, ham corned beef frankfurter prosciutto pastrami ham hock venison.</p>
+
+                    <div class='start_food_picker'>
                         <section class='food_module'>
                             <img src="img/burger.jpg" />
                             <h2>Food Option 1</h2>
@@ -47,10 +57,10 @@
                             </ul>
                             <input type='number' class='quantity_food_2' />
                          </section>
-                         <button class='next'>Next</button>
+                         <button class='next' type="submit">Next</button>
                      </div>
 
-                     <div class='map'>
+                     <div class='map_section_holder'>
                         <form method="" action="" id="map_form">
                             <fieldset id='location'>
                                 <div class="street_address_holder">
@@ -63,14 +73,63 @@
                                 </div>
                                 <div class="state_div">
                                     <label for="state">State</label>
-                                    <input type='text' id="state_name" />
+                                    <select name="state_select">
+                                        <option value>Select State</option>
+                                            <optgroup label='United States'>
+                                                <option value='US_MI'>Michigan</option>
+                                            </optgroup>
+                                    </select>
                                 </div>
                             </fieldset>
+                            <button type="submit" name="submit-button">Find</button>
                         </form>
-                     </div>
 
+                        <section id="geo_map">
+                            IM THE MAP!!!!!!!!!!!!!!!!
+                        </section>
+                     </div>
+                     <div id="payment_section">
+                        <h1>Stripe Example Form</h1>
+
+                        <form action="/" method="post" id="payment_form">
+
+                            <div class="form-row">
+                                <label for="name" class="stripeLabel">Your Name</label>
+                                <input type="text" name="name" class="required" />
+                            </div>
+
+                            <div class="form-row">
+                                <label for="email">E-mail Address</label>
+                            <input type="text" name="email" class="required" />
+                            </div>
+
+            <div class="form-row">
+                <label>Card Number</label>
+                <input type="text" maxlength="20" autocomplete="off" class="card-number stripe-sensitive required" />
+            </div>
+
+            <div class="form-row">
+                <label>CVC</label>
+                <input type="text" maxlength="4" autocomplete="off" class="card-cvc stripe-sensitive required" />
+            </div>
+
+            <div class="form-row">
+                <label>Expiration</label>
+                <div class="expiry-wrapper">
+                    <select class="card-expiry-month stripe-sensitive required"></select>
+                    <span> / </span>
+                    <select class="card-expiry-year stripe-sensitive required"></select>
                 </div>
-            <footer id="site_footer" class='footer'></footer>
+            </div>
+
+            <button type="submit" name="submit-button">Submit</button>
+            <span class="payment-errors"></span>
+        </form>
+                     </div>
+                </div>
+            <footer id="site_footer" class='footer'>
+                <h1>FOOTER</h1>
+            </footer>
         </div>
 
         <!-- Add your site or application content here -->
@@ -80,9 +139,9 @@
         <script src="js/vendor/backbone-min.js"></script>
         <script src="js/vendor/handlebars-v1.1.2.js"></script>
 
-
         <script src="js/app.js"></script>
         <!-- Views -->
+        <script src="js/views/BaseView.js"></script>
         <script src="js/views/MenuView.js"></script>
         <script src="js/views/LocationView.js"></script>
         <script src="js/views/PaymentView.js"></script>
@@ -91,6 +150,7 @@
         <script src="js/models/BaseModel.js"></script>
         <script src="js/models/UserModel.js"></script>
         <script src="js/models/CoinModel.js"></script>
+        <script src="js/models/PaymentModel.js"></script>
         <!-- Collections -->
         <script src="js/collections/BaseCollection.js"></script>
         <script src="js/collections/MealsCollection.js"></script>
