@@ -8,6 +8,7 @@ $app->get( '/meal', function () {
     foreach( $meals as $meal ) {
         $entry = new stdclass();
         $entry->id          = $meal->getId();
+        $entry->title       = $meal->getName();
         $entry->photo       = 'http://fostercityvillage.org/wp-content/uploads/2012/10/meal-m.jpg';
         $entry->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
         $entry->coins       = '2';
