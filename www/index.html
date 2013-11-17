@@ -12,7 +12,9 @@
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" href="css/preview.css">
@@ -22,41 +24,44 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="wrapper">
-           <header id="site_header" class='header'>
-                 <h1>header</h1>
-                 <nav id="navagation">
-                    <ul>
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                    </ul>
-                 </nav>
-           </header>
-                <div class='content'>
-                    <h1 class='open_title'>din din tonight</h1>
-                    <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball. Kevin meatball bresaola filet mignon, ham corned beef frankfurter prosciutto pastrami ham hock venison.</p>
+            <div class='content'>
+                <header id="site_header" class='header'>
+                    <nav id="navagation">
+                        <ul>
+                            <li><a href="#">ABOUT</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">CONTACT</a></li>
+                        </ul>
+                    </nav>
+                </header>
+                    <section class="top_clipping">
+                        <div class="lets_get_started">
+                        <h1 class='open_title'>DiNDiN TONiGHT</h1>
+                        
+                            <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball.</p>
+
+                            <a href="#" class="btn">Let's Go!</a>
+                        </div>
+                    </section>
                     <div class='start_food_picker'>
-                        <section class='food_module'>
-                            <img src="img/burger.jpg" />
-                            <h2>Food Option 1</h2>
-                            <p>Bacon ipsum dolor sit amet quis short loin ham bacon. Jerky drumstick occaecat ham, pancetta fugiat ham hock capicola officia adipisicing tenderloin proident non.</p>
-                            <ul class='allergy_disclaimer'>
-                                <li>Bacon ipsum</li>
-                                <li>Jerky drumstick occaecat ham, pancetta fugiat</li>
-                            </ul>
-                            <input type='number' class='quantity_food_1' />
+                        <h1>PLACE YOUR ORDER</h1>
+                        <div class="inner_food_picker">
+                        <section class='food_module meat'>
+                            <img src="img/small_thai.jpg" class="food_of_the_day" />
+                            <h2>Carnivores</h2>
+                            <p>Bacon ipsum dolor sit amet quis short loin ham bacon.</p>
+                            <input type='number' class='quantity_food_1' value="0" />
                         </section>
-                         <section class='food_module'>
-                            <img src="img/salad.jpg" />
-                            <h2>Food Option 2</h2>
-                            <p>Bacon ipsum dolor sit amet quis short loin ham bacon. Jerky drumstick occaecat ham, pancetta fugiat ham hock capicola officia adipisicing tenderloin proident non.</p>
-                            <ul class='allergy_disclaimer'>
-                                <li>Bacon ipsum dolor sit amet quis short</li>
-                                <li>Rump flank ham hock, shankle kielbasa meatball ground</li>
-                            </ul>
-                            <input type='number' class='quantity_food_2' />
+                         <section class='food_module veg'>
+                            <img src="img/small_thai.jpg" class="food_of_the_day" />
+                            <h2>Herbivores</h2>
+                            <p>Bacon ipsum dolor sit amet quis short loin ham bacon.</p>
+                            <input type='number' class='quantity_food_2' value="0" />
                          </section>
-                         <button class='next' type="submit">Next</button>
+                        </div>
+                        <div class="btn_go_to_map">
+                            <button class='next' type="submit">Next</button>
+                        </div>
                      </div>
 
                      <div class='map_section_holder'>
@@ -66,32 +71,18 @@
                                     <label for='street_address'>Street Address</label>
                                     <input type="text" id="street_address" />
                                 </div>
-                                <div class="city_div">
-                                    <label for="city">City</label>
-                                    <input type="text" id="city_name" />
-                                </div>
-                                <div class="state_div">
-                                    <label for="state">State</label>
-                                    <select name="state_select">
-                                        <option value>Select State</option>
-                                            <optgroup label='United States'>
-                                                <option value='US_MI'>Michigan</option>
-                                            </optgroup>
-                                    </select>
-                                </div>
                             </fieldset>
                             <button type="submit" name="submit-button">Find</button>
                         </form>
 
                         <section id="geo_map">
-                            <h1>IM THE MAP!!!!!!!!!!!!!!!!</h1>
+                            <img src="img/map.png" />
                         </section>
                      </div>
+                     <div class="payment_holder">
                      <div id="payment_section">
-                        <h1>Stripe Example Form</h1>
-    
-                        <form action="/" method="post" id="payment_form">
- 
+                            <form action="/" method="post" id="payment_form">
+                             <h1>PAY ME</h1>
                             <div class="form-row">
                                 <label for="name" class="stripeLabel">Your Name</label>
                                 <input type="text" name="name" class="required" />
@@ -124,13 +115,18 @@
                 </div>
             </div>
  
-            <button type="submit" name="submit-button">Submit</button>
+            <button type="submit" name="submit-button" class="payment_btn">Submit</button>
             <span class="payment-errors"></span>
         </form>
                      </div>
                 </div>
+            </div>
             <footer id="site_footer" class='footer'>
-                <h1>FOOTER</h1>
+                <nav id="footer_nav">
+                    <ul>
+                        <li>&#169; Coney Drop</li>
+                    </ul>
+                </nav>
             </footer>
         </div>
 
@@ -140,25 +136,29 @@
         <script src="js/vendor/underscore-min.js"></script>
         <script src="js/vendor/backbone-min.js"></script>
         <script src="js/vendor/handlebars-v1.1.2.js"></script>
-        
+        <script>
+            $(function(){
+                alert("poop");
+            });
+        </script>
 
-        <script src="js/app.js"></script>
-        <!-- Views -->
-        <script src="js/views/MenuView.js"></script>
-        <script src="js/views/LocationView.js"></script>
-        <script src="js/views/PaymentView.js"></script>
-        <script src="js/views/ApplicationView.js"></script>
-        <!-- Models -->
-        <script src="js/models/BaseModel.js"></script>
-        <script src="js/models/UserModel.js"></script>
-        <script src="js/models/CoinModel.js"></script>
-        <!-- Collections -->
-        <script src="js/collections/BaseCollection.js"></script>
-        <script src="js/collections/MealsCollection.js"></script>
-        <!-- Modules -->
-        <script src="js/modules/StripePaymentModule.js"></script>
-        <!-- Controllers -->
-        <script src="js/controllers/ApplicationController.js"></script>
-        <script src="js/main.js"></script>
+         <script src="js/app.js"></script>
+         <!-- Views -->
+         <script src="js/views/MenuView.js"></script>
+         <script src="js/views/LocationView.js"></script>
+         <script src="js/views/PaymentView.js"></script>
+         <script src="js/views/ApplicationView.js"></script>
+         <!-- Models -->
+         <script src="js/models/BaseModel.js"></script>
+         <script src="js/models/UserModel.js"></script>
+         <script src="js/models/CoinModel.js"></script>
+         <!-- Collections -->
+         <script src="js/collections/BaseCollection.js"></script>
+         <script src="js/collections/MealsCollection.js"></script>
+         <!-- Modules -->
+         <script src="js/modules/StripePaymentModule.js"></script>
+         <!-- Controllers -->
+         <script src="js/controllers/ApplicationController.js"></script>
+         <script src="js/main.js"></script>
     </body>
 </html>
