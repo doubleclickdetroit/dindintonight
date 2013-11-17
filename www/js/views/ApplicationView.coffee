@@ -19,7 +19,7 @@ class ApplicationView extends Views.BaseView
     @mealsView = new Views.MealsView
       events  : @events
       el      : @$ '#view-meals'
-      template: @$ '#tmpl-meals'
+      template: @$ '#tmpl-meal'
 
     @locationView = new Views.LocationView
       events  : @events
