@@ -11,7 +11,7 @@ $app->get( '/meal', function () {
         $entry->title       = $meal->getName();
         $entry->photo       = $meal->getImage();
         $entry->description = $meal->getDescription();
-        $entry->coins       = '2';
+        $entry->coins       = '1';
         $entry->vegetarian  = $meal->getVegetarian();
         $entry->quantity    = 0;
         $return[] = $entry;
