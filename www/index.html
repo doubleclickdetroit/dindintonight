@@ -68,15 +68,15 @@
                 <!-- Location View -->
                 <div id="view-location">
                     <div class='map_section_holder'>
-                        <form method="" action="" id="map_form">
-                            <fieldset id='location'>
+                        <div id="map_form">
+                            <div id='location'>
                                 <div class="street_address_holder">
-                                    <label for='physical_location'>Street Address</label>
+                                    <label for='physical_location'>Your Location</label>
                                     <input type="text" id="physical_location" />
                                 </div>
-                            </fieldset>
-                            <button type="submit" name="submit-button">Find</button>
-                        </form>
+                            </div>
+                            <button type="button" id="btn-location">Find</button>
+                        </div>
 
                         <section id="geo_map"></section>
                         <section id="geo_map_mask"></section>

@@ -1,6 +1,5 @@
 # imports
-Views = window.dd.Views
-
+Views  = window.dd.Views
 
 
 class ApplicationView extends Views.BaseView
