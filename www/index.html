@@ -45,7 +45,7 @@
                     <div class="lets_get_started">
                         <h1 class='open_title'>DiNDiN TONiGHT</h1>
                         <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball.</p>
-                        <a href="#" class="btn">Let&#39;s Go!</a>
+                        <a href="#" class="btn go_to_food">Let&#39;s Go!</a>
                     </div>
                 </section>
 
@@ -55,7 +55,7 @@
                         <h1>ORDER UP</h1>
 
                         <!-- Meal View -->
-                        <div id="view-meal" class="inner_food_picker"></div>
+                        <div id="view-meal" class="inner_food_picker cf"></div>
 
                         <div class="btn_go_to_map">
                             <button class='next' type="submit">Next</button>
@@ -94,6 +94,9 @@
         <script id="tmpl-meal" type="text/x-handlebars-template">
             <section class='food_module meat'>
                 <img src="{{ photo }}" class="food_of_the_day" />
+                <aside class='coin_denom two_coins'>
+                    <p>x 1</p>
+                </aside>
                 <h2>Carnivores</h2>
                 <p>{{ description }}</p>
                 <input type='number' class='quantity_food_1' value="{{ quantity }}" />
@@ -199,5 +202,16 @@
         <!-- App -->
         <script src="js/main.js"></script>
 
+        <script>
+            $(function(){
+                var food_section = $('.start_food_picker').offset().top;
+                $(".go_to_food").on("click", function(e){
+                    e.preventDefault();
+                    $("body, html").animate({
+                        scrollTop: food_section
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

@@ -8,6 +8,11 @@ body {
 h1 {
   font-family: 'Open Sans', sans-serif; }
 
+.cf:after {
+  content: "";
+  display: table;
+  clear: both; }
+
 p, ul, h1, h2 {
   color: #fff; }
 
@@ -112,31 +117,31 @@ button[name='submit-button'] {
 
 .start_food_picker {
   background: url(../img/square_texture.png);
-  padding-top: 3em;
+  padding-top: 1em;
   padding-bottom: 5em; }
   .start_food_picker h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 800;
     font-size: 4em;
-    padding-bottom: 1em;
+    padding-bottom: 0.5em;
     text-align: center;
     color: #383838; }
 
 .food_module {
-  margin-right: 2em;
+  margin-right: 1em;
   background: #f2f2f2;
   float: left;
-  text-align: center;
+  text-align: left;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-sizing: border-box;
   border-radius: 5px;
   position: relative;
-  height: 430px;
   background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25), 0 0 50px rgba(0, 0, 0, 0.1) inset;
   border-radius: 1%     1%     1%     1% /     1%     1%     1%     1%;
-  padding: 2em; }
+  padding: 20px;
+  width: 445px; }
   .food_module:before {
     position: absolute;
     width: 100%;
@@ -151,20 +156,43 @@ button[name='submit-button'] {
     color: #383838; }
   .food_module.veg {
     margin-right: 0; }
+  .food_module .coin_denom.one_coin {
+    background: url("../img/coin.png") top left no-repeat;
+    float: right;
+    width: 4.7em;
+    margin-top: 1em;
+    padding-top: 0.6em; }
+  .food_module .coin_denom.two_coins {
+    background: url("../img/coins.png") top left no-repeat;
+    float: right;
+    width: 85px;
+    margin-top: 10px;
+    padding-top: 7px; }
+    .food_module .coin_denom.two_coins p {
+      padding-left: 3.5em; }
+  .food_module .coin_denom p {
+    font-size: 1.2em;
+    font-weight: 700;
+    padding-left: 2.4em; }
   .food_module img {
     width: 100%; }
+    .food_module img.coin_up {
+      float: left;
+      width: auto;
+      padding-right: 1em; }
 
 .inner_food_picker {
-  clear: both;
-  content: "";
-  display: table;
   margin: 0 auto;
-  max-width: 60em;
+  max-width: 65em;
   width: 100%; }
+
+.food_module:last-child {
+  margin-right: 0; }
 
 .btn_go_to_map {
   margin: 0 auto;
-  width: 275px; }
+  width: 275px;
+  clear: both; }
 
 .map_section_holder {
   position: relative; }
@@ -200,18 +228,17 @@ input#street_address {
 #payment_section {
   padding-bottom: 2em; }
   #payment_section h1 {
-    margin: 0; }
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    margin: 0;
+    font-size: 4em;
+    padding-top: 1em;
+    padding-bottom: 1em; }
 
 #payment_form {
   width: 500px;
   margin: 0 auto; }
-  #payment_form h1 {
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 800;
-    font-size: 4em;
-    padding-top: 1em;
-    padding-bottom: 1em; }
   #payment_form label {
     display: block;
     color: #fff; }
