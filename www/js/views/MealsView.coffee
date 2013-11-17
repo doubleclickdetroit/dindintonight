@@ -3,7 +3,7 @@ BaseView = window.dd.Views.BaseView
 
 
 
-class MenuView extends BaseView
+class MealsView extends BaseView
 
   initialize: (settings) ->
     @events = settings.events
@@ -11,4 +11,4 @@ class MenuView extends BaseView
 
 
 # exports
-window.dd.Views.MenuView = MenuView
+window.dd.Views.MealsView = MealsView

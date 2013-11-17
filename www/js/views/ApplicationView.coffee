@@ -16,9 +16,21 @@ class ApplicationView extends Views.BaseView
 
 
   setupSubviews: ->
-    @menuView     = new Views.MenuView     events: @events
-    @locationView = new Views.LocationView events: @events
-    @paymentView  = new Views.PaymentView  events: @events
+    @mealsView = new Views.MealsView
+      events  : @events
+      el      : @$ '#view-meals'
+      template: @$ '#tmpl-meals'
+
+    @locationView = new Views.LocationView
+      events  : @events
+      el      : @$ '#view-location'
+      template: @$ '#tmpl-location'
+
+    @paymentView = new Views.PaymentView
+      events  : @events
+      el      : @$ '#view-payment'
+      template: @$ '#tmpl-payment'
+
 
 
 

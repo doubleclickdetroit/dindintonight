@@ -17,7 +17,9 @@ class ApplicationController
     @mealsCollection = new Collections.MealsCollection events: @events
 
     # cache view
-    @applicationView = new Views.ApplicationView events: @events
+    @applicationView = new Views.ApplicationView
+      el    : $ 'body'
+      events: @events
 
 
 

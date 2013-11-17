@@ -3,12 +3,10 @@ Modules     = window.dd.Modules
 Controllers = window.dd.Controllers
 
 
+# events
+mediator = _.extend {}, Backbone.Events
 
-# DOM Ready
-$ ->
-  # events
-  mediator = _.extend {}, Backbone.Events
 
-  # instantiate modules & controllers
-  applicationController = new Controllers.ApplicationController events: mediator
-  stripePaymentModule   = new Modules.StripePaymentModule       events: mediator
+# instantiate modules & controllers
+applicationController = new Controllers.ApplicationController events: mediator
+stripePaymentModule   = new Modules.StripePaymentModule       events: mediator
