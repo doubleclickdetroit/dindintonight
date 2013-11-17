@@ -39,7 +39,12 @@
                     <h1>dindin<br>tonight</h1>
                 </div>
 
-                <div id="view-meals"></div>
+                <div id="view-meals">
+                    <div class='start_food_picker'>
+                        <div id="view-meals"></div>
+                        <button class='next' type="submit">Next</button>
+                    </div>
+                </div>
 
                 <div id="view-location"></div>
 
@@ -63,13 +68,6 @@
                 </ul>
                 <input type='number' class='quantity_food_1' />
             </section>
-        </script>
-
-        <script id="tmpl-meal" type="text/x-handlebars-template">
-            <div class='start_food_picker'>
-                <div id="view-meal"></div>
-                <button class='next' type="submit">Next</button>
-            </div>
         </script>
 
         <script id="tmpl-location" type="text/x-handlebars-template">
@@ -151,6 +149,7 @@
         <script src="js/models/UserModel.js"></script>
         <script src="js/models/CoinModel.js"></script>
         <script src="js/models/PaymentModel.js"></script>
+        <script src="js/models/OrderModel.js"></script>
 
         <!-- Collections -->
         <script src="js/collections/BaseCollection.js"></script>
