@@ -13,6 +13,9 @@ class Meal
     /** @Column(type="string") **/
     protected $status;
 
+    /** @Column(type="string") **/
+    protected $description;
+
     /** @Column(type="boolean") **/
     protected $vegetarian;
 
@@ -29,6 +32,16 @@ class Meal
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    public function setDescription($description)
+    {
+        $this->description = $description;
     }
 
     public function setStatus($status)
