@@ -66,7 +66,22 @@
 
 
                 <!-- Location View -->
-                <div id="view-location"></div>
+                <div id="view-location">
+                    <div class='map_section_holder'>
+                        <form method="" action="" id="map_form">
+                            <fieldset id='location'>
+                                <div class="street_address_holder">
+                                    <label for='physical_location'>Street Address</label>
+                                    <input type="text" id="physical_location" />
+                                </div>
+                            </fieldset>
+                            <button type="submit" name="submit-button">Find</button>
+                        </form>
+
+                        <section id="geo_map"></section>
+                        <section id="geo_map_mask"></section>
+                    </div>
+                </div>
                 <!-- Location View -->
 
 
@@ -98,24 +113,6 @@
                 <p>{{ description }}</p>
                 <input type='number' class='quantity_food_1' value="{{ quantity }}" />
             </section>
-        </script>
-
-        <script id="tmpl-location" type="text/x-handlebars-template">
-            <div class='map_section_holder'>
-                <form method="" action="" id="map_form">
-                    <fieldset id='location'>
-                        <div class="street_address_holder">
-                            <label for='physical_location'>Street Address</label>
-                            <input type="text" id="physical_location" />
-                        </div>
-                    </fieldset>
-                    <button type="submit" name="submit-button">Find</button>
-                </form>
-
-                <section id="geo_map">
-                    <img src="img/map.png" />
-                </section>
-            </div>
         </script>
 
         <script id="tmpl-payment" type="text/x-handlebars-template">
@@ -184,6 +181,7 @@
         <script src="js/models/BaseModel.js"></script>
         <script src="js/models/UserModel.js"></script>
         <script src="js/models/CoinModel.js"></script>
+        <script src="js/models/LocationModel.js"></script>
         <script src="js/models/PaymentModel.js"></script>
         <script src="js/models/OrderModel.js"></script>
 
