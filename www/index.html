@@ -93,10 +93,10 @@
         <!-- Templates -->
         <script id="tmpl-meal" type="text/x-handlebars-template">
             <section class='food_module meat'>
-                <img src="img/small_thai.jpg" class="food_of_the_day" />
+                <img src="{{ photo }}" class="food_of_the_day" />
                 <h2>Carnivores</h2>
-                <p>Bacon ipsum dolor sit amet quis short loin ham bacon.</p>
-                <input type='number' class='quantity_food_1' value="0" />
+                <p>{{ description }}</p>
+                <input type='number' class='quantity_food_1' value="{{ quantity }}" />
             </section>
         </script>
 

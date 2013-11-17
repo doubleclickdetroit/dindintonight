@@ -5,8 +5,15 @@ BaseView = window.dd.Views.BaseView
 
 class PaymentView extends BaseView
 
-  initialize: (settings) ->
-    @events = settings.events
+  initialize: ->
+    super
+
+    # temp hard-code rendering & parsing of tmpl
+    @render()
+
+
+  render: ->
+    @$el.html @tmpl()
 
 
 
