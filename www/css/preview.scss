@@ -308,6 +308,7 @@ button[name='submit-button'] {
 		text-align: center;
 		display: inline-block;
 		padding: 0.4em;
+		cursor: pointer;
 	  }
 
 	  .counter_minus {
@@ -355,7 +356,11 @@ button[name='submit-button'] {
     z-index: 10;
 
     button {
-    	margin-top: 1.2em;
+    	background: #e53702;
+		background: -moz-linear-gradient(top, #ff460d, #e53702);
+		background: -webkit-linear-gradient(top, #ff460d, #e53702);
+		background: linear-gradient(top, #ff460d, #e53702);
+    	margin-top: 0;
     	padding: 0.2em 1em;
     	width: auto;
     }
@@ -366,7 +371,7 @@ button[name='submit-button'] {
 }
 
 label[for='physical_location'] {
-	display: block;
+	display: none;
 }
 
 input#physical_location {
@@ -475,11 +480,34 @@ button[name='submit-button'].payment_btn {
 	.content {
 		.open_title {
 			font-size: 4em;
+			padding-top: 2em;
 		}
+	}
+
+	.food_module:first-child {
+		margin-right: 1em;
+	}
+
+	.inner_food_picker {
+		padding-left: 4em;
+	}
+
+	label[for="physical_location"] {
+		color: #1a1a1a;
 	}
 }
 
 @media only screen and (max-width: 320px) {
+
+	.header {
+		#navagation ul {
+			margin: 0 auto;
+			margin-right: 0;
+			padding: 0;
+			padding-top: 2em;
+			width: 77%;
+		}
+	}
 	.food_module {
 		width: 100%;
 		margin-right: 0;
@@ -496,6 +524,23 @@ button[name='submit-button'].payment_btn {
 		width: 15%;
 		padding:0;
 	}
+
+	#map_form {
+		width: 19em;
+
+		div, input, button {
+			width: 100%;
+		}
+
+		button {
+			margin-top: 0.5em;
+		}
+	}
+
+	.inner_food_picker {
+		padding-left: 0;
+	}
+
 }
 
 
