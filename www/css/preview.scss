@@ -290,6 +290,7 @@ button[name='submit-button'] {
 	}
 }
 
+
 .quantity_counter {
 	width: 300px;
 	margin: 0 auto;
@@ -407,11 +408,12 @@ input#physical_location {
 		margin: 0;
 		font-size: 4em;
 		padding-top: 1em;
-		padding-bottom: 1em;
+		padding-bottom: 0.5em;
 	}
 	p {
 		font-size: 1.4em;
 		text-align: center;
+		padding-bottom: 4em;
 	}
 }
 

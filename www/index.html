@@ -44,7 +44,7 @@
                 <section class="top_clipping">
                     <div class="lets_get_started">
                         <h1 class='open_title'>DiNDiN TONiGHT</h1>
-                        <p class='open_blurb'>Pork belly tri-tip swine spare ribs ribeye tenderloin meatball.</p>
+                        <p class='open_blurb'>Fresh hot dinner, delivered to your door</p>
                         <a href="#" class="btn go_to_food">Let&#39;s Go!</a>
                     </div>
                 </section>
@@ -129,6 +129,7 @@
                 <div id="payment_section">
                     <h1>PAY US $<span id="totalPrice">{{ price }}</span></h1>
                     <p></p>
+                    
                     <form action="/" method="post" id="payment_form">
                         <div class="form-row">
                             <label for="name" class="stripeLabel">Your Name</label>
@@ -232,8 +233,8 @@
                 $("#view-payment").on("click", "#btn-payment", function(){
                     $("#payment_form").slideUp();
                     $("#payment_section h1").text("Want DiNDiN faster next time?");
-                    $("#payment_section p").text("Connect with Facebook, and we'll save your fingers from typing all those characters.");
-                    console.log("poop");
+                    $("#payment_section p").html("Connect with Facebook, and we'll save your fingers from typing all those characters.<br /><br /><a href='http://facebook.com' target='_blank' class='fb_button'><img src='img/btn_fbconnect.png' /></a>");
+               
                 });
             });
         </script>
