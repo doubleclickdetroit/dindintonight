@@ -97,6 +97,10 @@ p, ul, h1, h2 {
 	color: #fff;
 }
 
+button, a {
+	outline: 0;
+}
+
 button, .btn {
 	@include btns;
 
@@ -306,23 +310,31 @@ button[name='submit-button'] {
 
 #map_form {
 	position: absolute;
-	top: 1em;
-	left: 1em;
-	width: 22em;
+	top: 0.5em;
+	left: 6em;
+	width: 24em;
     z-index: 10;
+
+    button {
+    	margin-top: 1.2em;
+    }
 }
 
 #location {
 	float: left;
 }
 
-label[for='street_address'] {
+label[for='physical_location'] {
 	display: block;
 }
 
-input#street_address {
+input#physical_location {
+	@include inputs;
+	-webkit-box-shadow: 1px 1px 1px #676767;
+	-moz-box-shadow: 1px 1px 1px #676767;
+	box-shadow: 1px 1px 1px #676767;
 	width: 15em;
-	height: 3em;
+	height: 2.5em;
 }
 
 .street_address_holder {
@@ -358,7 +370,7 @@ input#street_address {
 		color: #fff;
 	}
 	input {
-	@include inputs
+	@include inputs;
 	}
 }
 
