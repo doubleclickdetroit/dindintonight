@@ -11,6 +11,9 @@ class PaymentView extends BaseView
     # listeners
     @events.on 'location', @handlePaymentEvent, @
 
+    # element listeners
+    @$el.on 'change', 'input', @handleFieldChange
+
 
   render: ->
     @$el.html @tmpl()
@@ -19,6 +22,10 @@ class PaymentView extends BaseView
   ### Event Handlers ###
   handlePaymentEvent: (type, attrs) ->
     @render() if type is 'change'
+
+
+  handleFieldChange: (evt) =>
+    console.log 'handleFieldChange', evt.currentTarget
 
 
 
