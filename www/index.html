@@ -213,7 +213,7 @@
         <script>
             $(function(){
                 var food_section = $('.start_food_picker').offset().top;
-                var map_me = $("#geo_map_mask").offset().top;
+                var map_me = $("#view-location").offset().top;
                 $(".go_to_food").on("click", function(e){
                     e.preventDefault();
                     $("body, html").animate({
@@ -224,6 +224,7 @@
                     $("body, html").animate({
                         scrollTop: map_me
                     });
+                    console.log(map_me);
                 });
             });
         </script>
