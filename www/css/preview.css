@@ -197,7 +197,7 @@ button[name='submit-button'] {
       padding-right: 1em; }
 
 .quantity_counter {
-  width: 130px;
+  width: 300px;
   margin: 0 auto; }
   .quantity_counter .quantity_food_1 {
     text-align: center;
@@ -216,7 +216,7 @@ button[name='submit-button'] {
     outline: 0;
     width: 100%;
     height: 2.5em;
-    width: auto;
+    width: 38%;
     height: auto;
     background: #00aaf1;
     color: #fff;
@@ -403,10 +403,14 @@ button[name='submit-button'].payment_btn {
     width: 15%;
     padding: 0; }
 
-  #map_form div, #map_form input, #map_form button {
-    width: 100%; }
-  #map_form button {
-    margin-top: 0.5em; }
+  #map_form {
+    width: 100%;
+    padding: 1em;
+    left: 0; }
+    #map_form div, #map_form input, #map_form button {
+      width: 100%; }
+    #map_form button {
+      margin-top: 0.5em; }
 
   .inner_food_picker {
     padding-left: 0; } }

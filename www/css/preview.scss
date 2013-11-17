@@ -291,7 +291,7 @@ button[name='submit-button'] {
 }
 
 .quantity_counter {
-	width: 130px;
+	width: 300px;
 	margin: 0 auto;
 	  .quantity_food_1 {
 	    text-align: center;
@@ -304,7 +304,7 @@ button[name='submit-button'] {
 
 	  .counter_minus, .counter_plus {
 	  	@include inputs;
-	  	width: auto;
+	  	width: 38%;
 	  	height: auto;
 		background: #00aaf1;
 		color: #fff;
@@ -538,6 +538,9 @@ button[name='submit-button'].payment_btn {
 	}
 
 	#map_form {
+		width: 100%;
+		padding: 1em;
+		left: 0;
 
 		div, input, button {
 			width: 100%;
