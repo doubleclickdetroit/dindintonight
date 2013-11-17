@@ -3,7 +3,7 @@ BaseView = window.dd.Views.BaseView
 
 
 
-class LocationView extends BaseView
+class MealsView extends BaseView
 
   initialize: (settings) ->
     @events = settings.events
@@ -11,4 +11,4 @@ class LocationView extends BaseView
 
 
 # exports
-window.dd.Views.LocationView = LocationView
+window.dd.Views.MealsView = MealsView

@@ -1,7 +1,7 @@
 # imports
 Views       = window.dd.Views
 Models      = window.dd.Models
-Collecitons = window.dd.Collecitons
+Collections = window.dd.Collections
 
 
 
@@ -10,8 +10,16 @@ class ApplicationController
   constructor: (settings) ->
     @events = settings.events
 
-    @events.on 'payment-module', (state) ->
-      console.log "ApplicationController 'payment-module #{state}'"
+    # cache models & collections
+    @coinModel       = new Models.CoinModel            events: @events
+    @userModel       = new Models.UserModel            events: @events
+    @paymentModel    = new Models.PaymentModel         events: @events
+    @mealsCollection = new Collections.MealsCollection events: @events
+
+    # cache view
+    @applicationView = new Views.ApplicationView
+      el    : $ 'body'
+      events: @events
 
 
 
