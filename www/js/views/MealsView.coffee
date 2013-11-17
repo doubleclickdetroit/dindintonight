@@ -11,14 +11,12 @@ class MealsView extends BaseView
     # cache template
     @tmpl = settings.template
 
-    console.log 'MealsView templates', @tmpl
-
     # listeners
     @on 'meals', 'reset', @render, @
 
 
-  reset: ->
-    console.log 'MealsView reset'
+  render: ->
+    console.log 'MealsView render', arguments
 
 
 

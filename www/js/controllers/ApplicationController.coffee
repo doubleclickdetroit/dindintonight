@@ -21,6 +21,29 @@ class ApplicationController
     @paymentModel    = new Models.PaymentModel         events: @events
     @mealsCollection = new Collections.MealsCollection events: @events
 
+    # start application
+    @startApplication()
+
+
+  startApplication: ->
+    @events.trigger 'app-ready'
+
+    # @events.on 'coin',  (coin)  => console.log 'coin event',  coin
+    # @events.on 'meals', (meals) => console.log 'meals event', meals
+
+    @setupListeners()
+    @bootstrapData()
+
+
+  setupListeners: ->
+    @coinModel.on       'change', (args...) => @events.trigger 'coin', 'change', @coinModel.attributes
+    @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals', 'reset', @mealsCollection.toJSON()
+
+
+  bootstrapData: ->
+    @coinModel.fetch()
+    @mealsCollection.fetch()
+
 
 
 # exports
