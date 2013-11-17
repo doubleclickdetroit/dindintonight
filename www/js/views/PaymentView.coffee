@@ -2,6 +2,7 @@
 Views = window.dd.Views
 
 
+
 class PaymentView
 
   initialize: ->
