@@ -1,7 +1,4 @@
 # imports
-Views       = window.dd.Views
-Models      = window.dd.Models
-Collecitons = window.dd.Collecitons
 
 
 
