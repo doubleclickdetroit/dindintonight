@@ -28,16 +28,13 @@ class ApplicationController
   startApplication: ->
     @events.trigger 'app-ready'
 
-    # @events.on 'coin',  (coin)  => console.log 'coin event',  coin
-    # @events.on 'meals', (meals) => console.log 'meals event', meals
-
     @setupListeners()
     @bootstrapData()
 
 
   setupListeners: ->
+    @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals', 'reset', @mealsCollection
     @coinModel.on       'change', (args...) => @events.trigger 'coin', 'change', @coinModel.attributes
-    @mealsCollection.on 'sync',   (args...) => @events.trigger 'meals', 'reset', @mealsCollection.toJSON()
 
 
   bootstrapData: ->

@@ -6,17 +6,22 @@ BaseView = window.dd.Views.BaseView
 class MealsView extends BaseView
 
   initialize: (settings) ->
-    @events = settings.events
-
-    # cache template
-    @tmpl = settings.template
+    super
 
     # listeners
-    @on 'meals', 'reset', @render, @
+    @events.on 'meals', @handleMealsUpdate, @
+
+    # cache elements
+    @$container = @$ '#view-meal'
 
 
-  render: ->
-    console.log 'MealsView render', arguments
+  render: (meals) ->
+    meals.each (meal) => @$container.append @tmpl( meal.attributes )
+
+
+  ### Event Handlers ###
+  handleMealsUpdate: (evt, meals) ->
+    @render( meals ) if evt is 'reset'
 
 
 
