@@ -11,9 +11,6 @@ class MealsView extends Views.BaseView
     # listeners
     @events.on 'meals', @handleMealsUpdate, @
 
-    # element listeners
-    # @$el.on ''
-
     # cache elements
     @$container = @$ '#view-meal'
 

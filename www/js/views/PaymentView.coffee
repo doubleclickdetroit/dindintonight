@@ -16,7 +16,9 @@ class PaymentView extends BaseView
 
 
   render: ->
+    top = @$el.offset().top
     @$el.html @tmpl()
+    setTimeout (-> $( 'body, html' ).animate scrollTop: top ), 1500
 
 
   ### Event Handlers ###
