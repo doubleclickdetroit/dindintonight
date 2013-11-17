@@ -25,7 +25,9 @@ class MealView extends Backbone.View
 
 
   render: ->
-    @$el.html @tmpl @model.attributes
+    attrs = @model.attributes
+    _.extend attrs, { classname: if attrs.coins is '1' then 'one_coin' else 'two_coins' }
+    @$el.html @tmpl attrs
     @
 
 
@@ -48,7 +50,6 @@ class MealView extends Backbone.View
 
   handleManualQuantity: (evt) ->
     qty = $( evt.currentTarget ).val()
-    # console.log qty, @model.get( 'quantity' ), $.isNumeric qty
     if $.isNumeric qty
       @model.set { quantity: qty }, { silent: true }
     else
