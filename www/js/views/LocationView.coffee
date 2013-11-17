@@ -26,6 +26,11 @@ class LocationView extends BaseView
     # dom listeners
     $( '#btn-location' ).click @handleLocationLookup
 
+    # bind/unbind enter key
+    $( '#physical_location').focus => $( document ).bind   'keypress', @handleEnterKeyEvent
+    $( '#physical_location').blur  => $( document ).unbind 'keypress', @handleEnterKeyEvent
+
+
     # listeners
     @model.on 'change:latlng', @render, @
 
@@ -72,6 +77,10 @@ class LocationView extends BaseView
 
       else
         @events.trigger 'app', 'error', 'Uh Oh! We\'re armed with the power of Google Maps. Try a real address there next time, Buckaroo.'
+
+
+  handleEnterKeyEvent: (evt) =>
+    @handleLocationLookup() if evt.which is 13
 
 
 

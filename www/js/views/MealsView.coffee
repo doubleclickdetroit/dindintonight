@@ -1,9 +1,9 @@
 # imports
-BaseView = window.dd.Views.BaseView
+Views = window.dd.Views
 
 
 
-class MealsView extends BaseView
+class MealsView extends Views.BaseView
 
   initialize: (settings) ->
     super
@@ -16,7 +16,9 @@ class MealsView extends BaseView
 
 
   render: (meals) ->
-    meals.each (meal) => @$container.append @tmpl( meal.attributes )
+    meals.each (meal) =>
+      mealView = new Views.MealView model: meal, tmpl: @tmpl
+      @$container.append mealView.render().el
 
 
   ### Event Handlers ###

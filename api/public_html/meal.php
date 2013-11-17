@@ -10,7 +10,7 @@ $app->get( '/meal', function () {
         $entry->id          = $meal->getId();
         $entry->title       = $meal->getName();
         $entry->photo       = 'http://fostercityvillage.org/wp-content/uploads/2012/10/meal-m.jpg';
-        $entry->description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+        $entry->description = $meal->getDescription();
         $entry->coins       = '2';
         $entry->vegetarian  = $meal->getVegetarian();
         $entry->quantity    = 0;
