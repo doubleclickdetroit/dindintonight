@@ -9,7 +9,7 @@ class PaymentView extends BaseView
     super
 
     # temp hard-code rendering & parsing of tmpl
-    @render()
+    # @render()
 
 
   render: ->

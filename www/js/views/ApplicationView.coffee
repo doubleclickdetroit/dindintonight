@@ -24,7 +24,6 @@ class ApplicationView extends Views.BaseView
     @locationView = new Views.LocationView
       events  : @events
       el      : @$ '#view-location'
-      template: @$ '#tmpl-location'
 
     @paymentView = new Views.PaymentView
       events  : @events

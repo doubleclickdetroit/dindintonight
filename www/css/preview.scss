@@ -45,7 +45,7 @@
 	-moz-box-shadow: 0 5px 0px 0px #999;
     -webkit-box-shadow: 0 5px 0px 0px #999;
     box-shadow: 0 5px 0px 0px #999;
-	position: relative; 
+	position: relative;
    -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
@@ -67,7 +67,7 @@
 
 @mixin hover_btn {
 	color: #e6e6e6 !important;
-    top: 3px; /* this is from the general style position relative, now this will "press" down 3 pixels */ 
+    top: 3px; /* this is from the general style position relative, now this will "press" down 3 pixels */
      -moz-box-shadow: 0 3px 0 0 #999;
     -webkit-box-shadow: 0 3px 0 0 #999;
     box-shadow: 0 3px 0 0 #999;
@@ -105,7 +105,7 @@ button, .btn {
 	}
 
 	&:active {
-		background: #5e9c00; 
+		background: #5e9c00;
 	};
 }
 
@@ -211,7 +211,7 @@ button[name='submit-button'] {
   	border-radius: 1%     1%     1%     1% /     1%     1%     1%     1%;
 	padding: 20px;
 	width: 445px;
-	
+
 		&:before {
    			position: absolute;
     		width: 100%;
@@ -292,8 +292,16 @@ button[name='submit-button'] {
 	position: relative;
 }
 
-#geo_map img {
-	width: 100%;
+#geo_map,
+#geo_map_mask {
+    width: 100%;
+    height: 500px;
+}
+#geo_map_mask {
+    position: absolute;
+    top : 0;
+    left: 0;
+    z-index: 1;
 }
 
 #map_form {
@@ -301,6 +309,7 @@ button[name='submit-button'] {
 	top: 1em;
 	left: 1em;
 	width: 22em;
+    z-index: 10;
 }
 
 #location {

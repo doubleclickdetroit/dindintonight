@@ -8,12 +8,28 @@ class LocationView extends BaseView
   initialize: ->
     super
 
-    # temp hard-code rendering & parsing of tmpl
-    @render()
+    # cache elements
+    @$canvas_map = @$ '#geo_map'
+    console.log '@$canvas_map', @$canvas_map
+
+    # initially setup map
+    @setupMap()
 
 
-  render: ->
-    @$el.html @tmpl()
+  setupMap: (attrs) ->
+    myLatlng = new google.maps.LatLng -25.363882, 131.044922
+
+    mapOptions = {
+      zoom     : 10
+      center   : myLatlng
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+
+    map = new google.maps.Map @$canvas_map.get(0), mapOptions
+
+    marker = new google.maps.Marker
+      map     : map,
+      position: myLatlng
 
 
 
