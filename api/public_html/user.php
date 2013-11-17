@@ -1,11 +1,10 @@
 <?php
-$app->get( '/user/:id', function ( $id ) {
+$app->get( '/user/:id', function ( $id ) use ( $app ) {
     require_once '../bootstrap.php';
 
     $user = $entityManager->find( 'User', $id );
 
     if ($user === null) {
-        // 404
         $app->notFound();
         return;
     }
