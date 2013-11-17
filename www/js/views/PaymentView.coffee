@@ -8,12 +8,17 @@ class PaymentView extends BaseView
   initialize: ->
     super
 
-    # temp hard-code rendering & parsing of tmpl
-    # @render()
+    # listeners
+    @events.on 'location', @handlePaymentEvent, @
 
 
   render: ->
     @$el.html @tmpl()
+
+
+  ### Event Handlers ###
+  handlePaymentEvent: (type, attrs) ->
+    @render() if type is 'change'
 
 
 

@@ -106,6 +106,10 @@
 
 
         <!-- Templates -->
+        <script id="tmpl-alert" type="text/x-handlebars-template">
+            <div class="alert alert-{{ type }}">{{ text }} {{#if link}}<a href="#" class="alert-link">{{ link }}</a>{{/if}}</div>
+        </script>
+
         <script id="tmpl-meal" type="text/x-handlebars-template">
             <section class='food_module meat'>
                 <img src="{{ photo }}" class="food_of_the_day" />

@@ -52,9 +52,13 @@ class LocationView extends BaseView
     # clear the marker if it exists
     @marker.setMap( null ) if @marker
 
+    @events.trigger 'app', 'success', 'We found ya! Let\'s eat some DinDin.', 'Checkout now.'
+
     # center the map and place the marker
     @map.setCenter location
     @marker = new google.maps.Marker map:@map, position:location
+
+    @events.trigger 'location', 'change'
 
 
   ### Event Handerls ###
@@ -67,7 +71,7 @@ class LocationView extends BaseView
         @model.set latlng: results[0].geometry.location
 
       else
-        console.log 'you suck'
+        @events.trigger 'app', 'error', 'Uh Oh! We\'re armed with the power of Google Maps. Try a real address there next time, Buckaroo.'
 
 
 
