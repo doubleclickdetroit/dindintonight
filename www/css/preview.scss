@@ -214,7 +214,7 @@ button[name='submit-button'] {
   	box-shadow: 0 1px 5px rgba(0,0,0,0.25), 0 0 50px rgba(0,0,0,0.1) inset;
   	border-radius: 1%     1%     1%     1% /     1%     1%     1%     1%;
 	padding: 20px;
-	width: 445px;
+	width: 49%;
 
 		&:before {
    			position: absolute;
@@ -276,9 +276,38 @@ button[name='submit-button'] {
 	}
 }
 
+.quantity_counter {
+	width: 130px;
+	margin: 0 auto;
+	  .quantity_food_1 {
+	    text-align: center;
+		width: 2em;
+		font-size: 2em;
+		font-weight: bold;
+		background: none;
+		border: none;
+	  }
+
+	  .counter_minus, .counter_plus {
+	  	@include inputs;
+	  	width: auto;
+	  	height: auto;
+		background: #00aaf1;
+		color: #fff;
+		font-size: 1.4em;
+		text-align: center;
+		display: inline-block;
+		padding: 0.4em;
+	  }
+
+	  .counter_minus {
+	  	padding: 0.4em 0.5em;
+	  }
+}
+
 .inner_food_picker {
 	margin: 0 auto;
-	max-width: 65em;
+	max-width: 56em;
 	width: 100%;
 }
 
@@ -311,12 +340,14 @@ button[name='submit-button'] {
 #map_form {
 	position: absolute;
 	top: 0.5em;
-	left: 6em;
+	left: 2em;
 	width: 24em;
     z-index: 10;
 
     button {
     	margin-top: 1.2em;
+    	padding: 0.2em 1em;
+    	width: auto;
     }
 }
 
@@ -374,18 +405,6 @@ input#physical_location {
 	}
 }
 
-input[type="number"] {
-	@include inputs;
-	margin: 0 auto;
-	width: 15%;
-	height: 2em;
-	background: #00aaf1;
-	color: #fff;
-	font-size: 1.4em;
-	text-align: center;
-	outline: 1;
-}
-
 button[name='submit-button'].payment_btn {
 	width: 30%;
 }
@@ -415,11 +434,57 @@ button[name='submit-button'].payment_btn {
 	}
 }
 
+@media only screen and (max-width: 767px) {
+	.food_module {
+		width: 45%;
+
+		&:first-child {
+			margin-right: 4em;
+		}
+	}
+
+	.inner_food_picker {
+		max-width: 47em;
+
+	}
+
+	.quantity_counter {
+		width: 100%;
+
+		.counter_minus, .counter_plus {
+			width: 40%;
+		}
+
+		.quantity_food_1 {
+			width: 15%;
+		}
+	}
+}
+
 @media only screen and (max-width: 590px) {
 	.content {
 		.open_title {
 			font-size: 4em;
 		}
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	.food_module {
+		width: 100%;
+		margin-right: 0;
+		margin-bottom: 1em;
+	}
+
+	.food_module:first-child {
+		margin-right: 0;
+	}
+	.food_module:before {
+		display: none;
+	}
+	.quantity_counter .quantity_food_1 {
+		width: 15%;
+		padding:0;
 	}
 }
 
