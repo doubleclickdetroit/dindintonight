@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.61, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: dindintonight
 -- ------------------------------------------------------
--- Server version	5.1.61-0+squeeze1
+-- Server version	5.5.34-0ubuntu0.12.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -104,6 +104,7 @@ CREATE TABLE `meals` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `vegetarian` tinyint(1) NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,8 +115,32 @@ CREATE TABLE `meals` (
 
 LOCK TABLES `meals` WRITE;
 /*!40000 ALTER TABLE `meals` DISABLE KEYS */;
-INSERT INTO `meals` VALUES (1,'Rosemary Chicken','ACTIVE',0),(2,'Vegetarian Lasagna','ACTIVE',1);
+INSERT INTO `meals` VALUES (1,'Glazed Salmon','ACTIVE',0,'Fresh salmon marinated in basil, garlic, sea salt, and olive oil, grilled and glazed with a sweet flowery honey. Served with a fluffly long grain rice'),(2,'Vegetarian Fettuccine','ACTIVE',1,'Fettuccine tossed with celery, garlic, diced tomates in a white wine and asiago cream sauce topped with fresh parsely');
 /*!40000 ALTER TABLE `meals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `payments`
+--
+
+DROP TABLE IF EXISTS `payments`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `location_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `payments`
+--
+
+LOCK TABLES `payments` WRITE;
+/*!40000 ALTER TABLE `payments` DISABLE KEYS */;
+/*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -176,4 +201,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-17 15:02:52
+-- Dump completed on 2013-11-17 19:35:08
