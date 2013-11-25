@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "dindintonight",
   "version": "0.0.0",
   "dependencies": {
     "sass-bootstrap": "~3.0.0",
@@ -9,7 +9,7 @@
     "requirejs": "~2.1.5",
     "requirejs-text": "~2.0.5",
     "modernizr": "~2.6.2",
-    "handlebars": "~1.1.2"
+    "handlebars": "~1.0.0"
   },
   "devDependencies": {}
 }
