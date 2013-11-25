@@ -1,34 +1,32 @@
 # DiNDiN TONiGHT
 
-Detroit Startup Weekend
-
-## Getting Started
+### Getting Started
 Ensure that Yeoman, Grunt and Bower are installed.
 
 * First install Yeoman:
-    npm install -g yo
+    `npm install -g yo`
 
 * Next install Grunt and Bower:
-    npm install -g grunt-cli bower
+    `npm install -g grunt-cli bower`
 
 * Then install Node and Bower dependencies:
-    npm install && bower install
+    `npm install && bower install`
 
 * Finally the app is ready to be built:
-    grunt build && grunt server:dist
+    `grunt build && grunt server:dist`
 
-## Additional commands:
+### GRUNT Commands:
 clean:
-    grunt clean
+    `grunt clean`
 
 test specs with Jasmine:
-    grunt test
+    `grunt test`
 
 build:
-    grunt build
+    `grunt build`
 
 server for dev:
-    grunt server
+    `grunt server`
 
 server for dist:
-    grunt build && grunt server:dist
+    `grunt build && grunt server:dist`
