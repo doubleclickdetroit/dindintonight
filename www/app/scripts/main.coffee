@@ -25,6 +25,8 @@ require.config
             exports: 'Handlebars'
 
     paths:
+        libs      : 'libs'
+        modules   : 'modules'
         bootstrap : 'vendor/bootstrap'
         jquery    : '../bower_components/jquery/jquery'
         backbone  : '../bower_components/backbone/backbone'
@@ -33,6 +35,6 @@ require.config
 
 
 
-require ['backbone'], (Backbone) ->
-    console.log 'Hello, World!'
-    Backbone.history.start()
+require [ 'libs/mediator' ], (mediator) ->
+
+    mediator.publish 'appInit', '#todoapp'
