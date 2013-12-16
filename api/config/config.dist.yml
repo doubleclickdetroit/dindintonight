@@ -1,0 +1,10 @@
+slim:
+    debug:     true
+    mode:      "development"
+devmode:       true
+db:
+    driver:   "pdo_mysql"
+    user:     "dindintonight"
+    password: "dindintonight"
+    dbname:   "dindintonight"
+    host:     "localhost"

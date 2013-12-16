@@ -2,9 +2,11 @@
     "require": {
         "slim/slim": "2.*",
         "doctrine/orm": "*",
-        "symfony/yaml": "2.*"
+        "symfony/yaml": "2.*",
+        "symfony/config": "*",
+        "symfony/dependency-injection": "*"
     },
     "autoload": {
-        "psr-0": {"": "src/"}
+        "psr-0": {"DinDin\\DinDin": "src"}
     }
 }
