@@ -1,0 +1,72 @@
+services:
+    emCache:
+        class: 'Doctrine\Common\Cache\ApcCache'
+    emConfig:
+        class: 'Doctrine\ORM\Configuration'
+        factory_class: 'Doctrine\ORM\Tools\Setup'
+        factory_method: 'createAnnotationMetadataConfiguration'
+        arguments: [['%root%/src'], '%devmode%', '%root%/cache/proxies', '@emCache']
+        public: false
+    em:
+        class: 'Doctrine\ORM\EntityManager'
+        factory_class: 'Doctrine\ORM\EntityManager'
+        factory_method: 'create'
+        arguments:
+            - '%db%'
+            - '@emConfig'
+# Controllers #
+#   Locations   #
+    locations:
+        class: 'DinDin\DinDin\Controllers\Locations'
+        arguments: ['@locationRepository']
+    locationsId:
+        class: 'DinDin\DinDin\Controllers\LocationsId'
+        arguments: ['@locationRepository']
+    locationsIdMeals:
+        class: 'DinDin\DinDin\Controllers\LocationsIdMeals'
+        arguments: ['@locationRepository']
+    locationsIdDrops:
+        class: 'DinDin\DinDin\Controllers\LocationsIdDrops'
+        arguments: ['@locationRepository']
+#   Meals   #
+    meals:
+        class: 'DinDin\DinDin\Controllers\Meals'
+        arguments: ['@mealRepository']
+    mealsId:
+        class: 'DinDin\DinDin\Controllers\MealsId'
+        arguments: ['@mealRepository']
+#   Meals   #
+    addresses:
+        class: 'DinDin\DinDin\Controllers\Addresses'
+        arguments: ['@addressRepository']
+    addressesId:
+        class: 'DinDin\DinDin\Controllers\AddressesId'
+        arguments: ['@addressRepository']
+#   Users   #
+    users:
+        class: 'DinDin\DinDin\Controllers\Users'
+        arguments: ['@userRepository']
+    usersId:
+        class: 'DinDin\DinDin\Controllers\UsersId'
+        arguments: ['@userRepository']
+# Repositories #
+    locationRepository:
+        class: 'Doctrine\ORM\EntityRepository'
+        factory_service: 'em'
+        factory_method: 'getRepository'
+        arguments: ['DinDin\DinDin\Entities\Location']
+    mealRepository:
+        class: 'Doctrine\ORM\EntityRepository'
+        factory_service: 'em'
+        factory_method: 'getRepository'
+        arguments: ['DinDin\DinDin\Entities\Meal']
+    userRepository:
+        class: 'Doctrine\ORM\EntityRepository'
+        factory_service: 'em'
+        factory_method: 'getRepository'
+        arguments: ['DinDin\DinDin\Entities\User']
+    addressRepository:
+        class: 'Doctrine\ORM\EntityRepository'
+        factory_service: 'em'
+        factory_method: 'getRepository'
+        arguments: ['DinDin\DinDin\Entities\Address']
