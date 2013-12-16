@@ -15,4 +15,4 @@ $dbParams = array(
     'dbname'   => 'dindintonight',
 );
 
-$entityManager = EntityManager::create( $dbParams, $config );
+$em = EntityManager::create( $dbParams, $config );
