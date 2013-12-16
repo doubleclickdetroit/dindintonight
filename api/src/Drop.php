@@ -1,50 +1,61 @@
 <?php
 /**
  * @Entity @Table(name="drops")
- */
+ **/
 class Drop
 {
-    /**
-     * @Id @GeneratedValue @Column(type="integer")
-     * @var int
-     */
+    /** @Id @Column(type="integer") @GeneratedValue **/
     protected $id;
 
-    /**
-     * @Column(type="integer")
-     * @var string
-     */
-    protected $user_id;
+    /** @Column(type="datetime") **/
+    protected $dateAndTime;
+
+    /** @Column(type="string") **/
+    protected $timezone;
 
     /**
-     * @Column(type="integer")
-     * @var string
+     * @OneToOne(targetEntity="Location")
+     * @JoinColumn(name="location_id", referencedColumnName="id")
      */
-    protected $location_id;
+    protected $location;
+
+    /**
+     * @var bool
+     */
+    private $localized = false;
+
+    public function __construct( \DateTime $dateAndTime )
+    {
+        $this->localized = true;
+        $this->setDateAndTime( $dateAndTime );
+    }
 
     public function getId()
     {
         return $this->id;
     }
 
-    public function getUserId()
+    public function getDateAndTime()
     {
-        return $this->user_id;
+        if ( !$this->localized ) {
+            $this->dateAndTime->setTimeZone( new \DateTimeZone( $this->timezone ) );
+        }
+        return $this->dateAndTime;
     }
 
-    public function setUserId($user_id)
+    public function setDateAndTime( \DateTime $dateAndTime )
     {
-        $this->user_id = $user_id;
+        $this->dateAndTime = $dateAndTime;
+        $this->timezone = $dateAndTime->getTimeZone()->getName();
     }
 
-    public function getLocationId()
+    public function getLocation()
     {
-        return $this->location_id;
+        return $this->location;
     }
 
-    public function setLocationId($location_id)
+    public function setLocation( $location )
     {
-        $this->location_id = $location_id;
+        $this->location = $location;
     }
-
 }

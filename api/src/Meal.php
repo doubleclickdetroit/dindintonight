@@ -10,17 +10,14 @@ class Meal
     /** @Column(type="string") **/
     protected $name;
 
-    /** @Column(type="string") **/
-    protected $status;
-
-    /** @Column(type="string") **/
+    /** @Column(type="text") **/
     protected $description;
 
     /** @Column(type="string") **/
     protected $image;
 
-    /** @Column(type="boolean") **/
-    protected $vegetarian;
+    /** @Column(type="decimal") **/
+    protected $price;
 
     public function getId()
     {
@@ -67,13 +64,13 @@ class Meal
         return $this->status;
     }
 
-    public function setVegetarian($vegetarian)
+    public function setPrice($price)
     {
-        $this->vegetarian = $vegetarian;
+        $this->price = $price;
     }
 
-    public function getVegetarian()
+    public function getPrice()
     {
-        return $this->vegetarian;
+        return $this->price;
     }
 }
