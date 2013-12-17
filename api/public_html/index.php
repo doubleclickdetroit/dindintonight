@@ -7,9 +7,9 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Yaml\Yaml;
 use DinDin\DinDin\RouteLoader;
 
-require '../vendor/autoload.php';
-
 $root = implode( '/', array_slice( explode( '/', __DIR__), 0, -1 ) );
+
+require $root . '/vendor/autoload.php';
 
 $config = new ParameterBag( Yaml::parse( file_get_contents( $root . '/config/config.yml' ) ) ); 
 $fileLocator = new FileLocator( $root . '/config' );
