@@ -35,6 +35,6 @@ require.config
 
 
 
-require [ 'libs/mediator' ], (mediator) ->
-
-    mediator.publish 'appInit', '#todoapp'
+require [ 'views/app' ], (AppView) ->
+    # init app
+    appView = new AppView()
