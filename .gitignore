@@ -7,8 +7,8 @@ www/api
 vendor/*
 api/vendor/*
 
-app/bower_components
-.sass-cache
 .tmp
+.sass-cache
 dist
 node_modules
+app/bower_components/*
