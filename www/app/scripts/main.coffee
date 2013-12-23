@@ -25,8 +25,8 @@ require.config
             exports: 'Handlebars'
 
     paths:
-        libs      : 'libs'
         modules   : 'modules'
+        facade    : 'extensions/facade'
         bootstrap : 'vendor/bootstrap'
         jquery    : '../bower_components/jquery/jquery'
         backbone  : '../bower_components/backbone/backbone'
