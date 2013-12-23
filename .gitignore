@@ -6,3 +6,9 @@ www/api
 /api/config/config.yml
 vendor/*
 api/vendor/*
+
+app/bower_components
+.sass-cache
+.tmp
+dist
+node_modules
