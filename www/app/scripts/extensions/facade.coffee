@@ -1,8 +1,8 @@
-define [ 'core/facade', './mediator' ], (facade, mediator) ->
+define [ 'core/facade', 'extensions/mediator' ], (facade, mediator) ->
 
 
-  facade.mvc = mediator.mvc
-  facade.dom = mediator.dom
+  facade.dom  = mediator.dom
+  facade.util = mediator.util
 
 
 

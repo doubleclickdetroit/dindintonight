@@ -1,11 +1,16 @@
-define [ 'extensions/facade' ], (facade) ->
+define [ 'facade', 'views/AbstractView', 'hbs!tmpl/app' ], (facade, AbstractView, tmpl) ->
 
 
-  class AppView extends facade.mvc.baseView
+  class AppView extends AbstractView
 
     initialize: ->
-      #
-      console.log 'AppView initialized', @
+      super
+
+      # define template
+      @template = tmpl
+
+      # render view
+      @render()
 
 
 

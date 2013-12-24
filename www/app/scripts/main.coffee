@@ -1,7 +1,6 @@
 'use strict'
 
 
-
 require.config
 
     shim:
@@ -25,8 +24,17 @@ require.config
             exports: 'Handlebars'
 
     paths:
-        modules   : 'modules'
-        facade    : 'extensions/facade'
+        # Directories
+        tmpl: 'templates'
+
+        # Helpers
+        facade: 'extensions/facade'
+
+        # Plugins
+        text: '../bower_components/requirejs-text/text'
+        hbs : '../bower_components/require-handlebars-plugin/hbs'
+
+        # Libs
         bootstrap : 'vendor/bootstrap'
         jquery    : '../bower_components/jquery/jquery'
         backbone  : '../bower_components/backbone/backbone'
@@ -35,6 +43,6 @@ require.config
 
 
 
-require [ 'views/app' ], (AppView) ->
+require [ 'facade', 'modules/main' ], (facade) ->
     # init app
-    appView = new AppView()
+    facade.publish 'app-init'
