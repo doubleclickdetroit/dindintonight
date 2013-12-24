@@ -11,4 +11,4 @@ api/vendor/*
 .sass-cache
 dist
 node_modules
-app/bower_components/*
+www/app/bower_components/*
