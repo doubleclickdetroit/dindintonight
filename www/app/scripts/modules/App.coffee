@@ -1,4 +1,5 @@
-define [ 'facade', 'views/App', 'backbone' ], (facade, AppView, Backbone) ->
+define [ 'facade', 'views/App', 'backbone' ],
+(facade, AppView, Backbone) ->
 
 
   class AppModule
@@ -9,5 +10,5 @@ define [ 'facade', 'views/App', 'backbone' ], (facade, AppView, Backbone) ->
 
 
 
-  facade.subscribe 'app-init', (args...) ->
-    appModule = new AppModule args...
+  # exports
+  AppModule

@@ -1,4 +1,5 @@
-define [ 'facade', 'views/AbstractView', 'hbs!tmpl/app' ], (facade, AbstractView, tmpl) ->
+define [ 'facade', 'views/AbstractView', 'hbs!tmpl/app' ],
+(facade, AbstractView, tmpl) ->
 
 
   class AppView extends AbstractView

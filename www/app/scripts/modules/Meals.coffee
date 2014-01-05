@@ -1,4 +1,5 @@
-define [ 'facade' ], (facade) ->
+define [ 'facade' ],
+(facade) ->
 
 
   class MealsModule
@@ -8,5 +9,5 @@ define [ 'facade' ], (facade) ->
 
 
 
-  facade.subscribe 'app-init', ->
-    mealsModule = new MealsModule()
+  # exports
+  MealsModule

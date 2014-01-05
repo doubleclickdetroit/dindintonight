@@ -19,6 +19,8 @@ module.exports = function (grunt) {
     // load all grunt tasks
     require('load-grunt-tasks')(grunt);
 
+    grunt.loadNpmTasks('grunt-symlink');
+
     // configurable paths
     var yeomanConfig = {
         app: 'app',
@@ -321,8 +323,26 @@ module.exports = function (grunt) {
                     ]
                 }
             }
+        },
+        symlink: {
+            app_api: {
+                dest       : '<%= yeoman.app %>/api',
+                relativeSrc: '../../api/public_html',
+                options: {
+                    type: 'dir'
+                }
+            },
+            dist_api: {
+                dest       : '<%= yeoman.dist %>/api',
+                relativeSrc: '../../api/public_html',
+                options: {
+                    type: 'dir'
+                }
+            }
         }
     });
+
+    grunt.loadNpmTasks('grunt-symlink');
 
     grunt.registerTask('createDefaultTemplate', function () {
         grunt.file.write('.tmp/scripts/templates.js', 'this.JST = this.JST || {};');
@@ -347,6 +367,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'symlink:app_api',
             'coffee:dist',
             'createDefaultTemplate',
             'handlebars',
@@ -369,6 +390,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:distBefore',
+        'symlink:dist_api',
         'coffee',
         'createDefaultTemplate',
         'handlebars',

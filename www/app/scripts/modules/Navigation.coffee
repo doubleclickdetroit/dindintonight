@@ -2,7 +2,7 @@ define [ 'facade' ],
 (facade) ->
 
 
-  class LocationsModule
+  class NavigationModule
 
     constructor: ->
       #
@@ -10,4 +10,4 @@ define [ 'facade' ],
 
 
   # exports
-  LocationsModule
+  NavigationModule

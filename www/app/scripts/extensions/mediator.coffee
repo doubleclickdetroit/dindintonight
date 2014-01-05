@@ -1,8 +1,9 @@
-define [ 'jquery', 'underscore', 'core/mediator', 'backbone', 'views/AbstractView' ], ($, _, mediator, Backbone, AbstractView) ->
+define [ 'jquery', 'underscore', 'backbone', 'core/mediator' ], ($, _, Backbone, mediator) ->
 
 
   mediator.dom  = $
   mediator.util = _
+  mediator.mvc  = Backbone
 
 
 
