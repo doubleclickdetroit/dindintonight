@@ -54,7 +54,12 @@ class TimeRequests(object):
         request._start_time = time.time()
 
     def process_response(self, request, response):
-        if settings.DEBUG:
+        try:
+            _start_time = request._start_time
+        except Exception, e:
+            _start_time = None
+
+        if settings.DEBUG and _start_time is not None:
             print 'Responded in %.3f seconds' % (time.time() - request._start_time)
 
         return response

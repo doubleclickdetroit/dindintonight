@@ -52,9 +52,9 @@ virtualenvwrapper.user_scripts creating /Users/< mac username >/.virtualenvs/din
 * Now after getting it all setup you can now perform a `workon dindintonight` to specify that you want to work on the virtual enviroment for the site. You can perform a `deactivate` when you are finished working on the enviroment.
 * Now we need to setup a command in our bash profile to run start our django server and also to install any requirements that may have changed. Open up your .bash_profile or .profile (on all recent macs it is the .bash_profile and it is located at ~/.bash_profile), and at the end of the file, add the following (making sure to change anything that is required below)
 ```
-alias dindintonight='workon dindintonight;export DJANGO_SETTINGS_MODULE=core.settings.local;export STIK_DJANGO_SECRET=buy-some-din-din-tonight-now;cd /PATH/TO/THE/DINDINTONIGHT;pip install -r requirements/local.txt;python manage.py runserver 0.0.0.0:9000;'
+alias dindintonight='workon dindintonight;export DJANGO_SETTINGS_MODULE=core.settings.local;export STIK_DJANGO_SECRET=buy-some-din-din-tonight-now;cd /PATH/TO/THE/DINDINTONIGHT;pip install -r requirements/local.txt;python manage.py syncdb;python manage.py runserver 0.0.0.0:9000;'
 ```
-* Now make sure you reload the your profile by doing a `source ~/.bash_profile` or `source ~/.profile`, once you have done that you can now call anywhere `didintonight` and it will launch your django server and also make sure you are running the latest requirements and librarys
+* Now make sure you reload the your profile by doing a `source ~/.bash_profile` or `source ~/.profile`, once you have done that you can now call anywhere `didintonight` and it will launch your django server and also make sure you are running the latest librarys and also will sync any db changes that are needed
 
 ### GRUNT Commands (This will need to be reconfigured DISREGARD for now):
 clean:
