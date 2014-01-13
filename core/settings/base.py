@@ -197,6 +197,13 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'persons',
+    'meals',
+    'locations',
+    'locations_meals',
+    'addresses',
+    'drops',
+    'drop_meals',
+    'person_addresses',
 )
 
 AUTH_USER_MODEL = 'persons.Person'
@@ -209,7 +216,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## SUIT CONFIGURATION
 # http://glyphicons.com/
 SUIT_CONFIG = {
-    'ADMIN_NAME': 'MySite Admin',
+    'ADMIN_NAME': 'Din Din Tonight Admin',
     'HEADER_TIME_FORMAT': 'h:i A',
     'MENU_ICONS': {
         'persons': 'icon-user',
