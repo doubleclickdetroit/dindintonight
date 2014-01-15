@@ -1,0 +1,2 @@
+from location_viewset import LocationViewSet
+from location_meal_viewset import LocationMealViewSet
