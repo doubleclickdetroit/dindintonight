@@ -35,13 +35,13 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">MySite</a>
+            <a class="navbar-brand" href="/">DinDinTonight</a>
           </div>
           <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
               {% block headernav %}
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#someUrlHere">Some URL Here</a></li>
+              <li><a href="#SomeUrlHereToo">Some URL Over Here Too</a></li>
               {% endblock headernav %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -50,9 +50,9 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ user.username }} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#"></a></li>
-                  <li class="dropdown-header">ACCOUNT</li>
+                  <li class="dropdown-header">Account</li>
                   {# <li><a href="{% url 'user_profile' %}">My Profile</a></li> #}
-                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                  <li><a href="{% url 'account_logout' %}">Logout</a></li>
                 </ul>
               </li>
               {% else %}
@@ -66,7 +66,7 @@
     <div class="container">
       {% block content %}
         <div class="page-header">
-          <h1>GIVE ME CONTENT</h1>
+          <h1>Content would go here</h1>
         </div>
       {% endblock content %}
     </div> <!-- /container -->
@@ -74,7 +74,7 @@
 
     <div id="footer">
       <div class="container">
-        <p class="text-muted">MARCO POLO</p>
+        <p class="text-muted">Something Something Footer</p>
       </div>
     </div>
 
