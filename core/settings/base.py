@@ -140,6 +140,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.tz',
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.request',
+
+    # allauth specific context processors
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#template-loaders
@@ -192,6 +196,16 @@ DJANGO_APPS = (
 THIRD_PARTY_APPS = (
     # Database migration helpers:
     'south',
+
+    # Social Network Login helpers:
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # Allowed network logins
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.twitter',
 )
 
 # Apps specific for this project go here.
@@ -199,11 +213,8 @@ LOCAL_APPS = (
     'persons',
     'meals',
     'locations',
-    'locations_meals',
     'addresses',
     'drops',
-    'drop_meals',
-    'person_addresses',
 )
 
 AUTH_USER_MODEL = 'persons.Person'
@@ -271,3 +282,13 @@ LOGGING = {
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = '%s.wsgi.application' % SITE_NAME
 ########## END WSGI CONFIGURATION
+
+########## AUTHENTICATION BACKEND CONFIGURATION
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
+########## END AUTHENTICATION BACKEND CONFIGURATION

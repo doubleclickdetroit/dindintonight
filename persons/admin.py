@@ -4,7 +4,7 @@ from django.contrib import admin
 # Local Apps
 from core.admin import BaseModelAdmin
 from .models import Person
-
+from .models import PersonAddress
 
 class PersonAdmin(BaseModelAdmin):
     list_display = ['id', 'username', 'is_superuser', 'email', 'created']
@@ -23,3 +23,9 @@ class PersonAdmin(BaseModelAdmin):
 
 
 admin.site.register(Person, PersonAdmin)
+
+class PersonAddressAdmin(BaseModelAdmin):
+    list_display = ['id', 'person', 'address', 'created', 'modified']
+    readonly_fields = ['created', 'modified']
+
+admin.site.register(PersonAddress, PersonAddressAdmin)

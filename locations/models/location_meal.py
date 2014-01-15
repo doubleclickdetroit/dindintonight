@@ -3,7 +3,7 @@ from django.db import models
 
 # 3rd party
 from core.models import BaseModel
-from locations.models import Location
+from .location import Location
 from meals.models import Meal
 
 class LocationMeal(BaseModel):
@@ -14,7 +14,7 @@ class LocationMeal(BaseModel):
     modified        = models.DateTimeField(auto_now=True)
 
     class Meta:
-        app_label = 'locations_meals'
+        app_label = 'locations'
         db_table = 'locations_meals'
         verbose_name = 'Location Meal'
         verbose_name_plural = 'Locations Meals'

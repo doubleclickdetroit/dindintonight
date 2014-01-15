@@ -3,7 +3,7 @@ from django.db import models
 
 # 3rd party
 from core.models import BaseModel
-from drops.models import Drop
+from .drop import Drop
 from meals.models import Meal
 
 class DropMeal(BaseModel):
@@ -15,7 +15,7 @@ class DropMeal(BaseModel):
     modified        = models.DateTimeField(auto_now=True)
 
     class Meta:
-        app_label = 'drop_meals'
+        app_label = 'drops'
         db_table = 'drop_meals'
         verbose_name = 'Drop Meal'
         verbose_name_plural = 'Drop Meals'
