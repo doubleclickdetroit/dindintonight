@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
+
+import views
 import locations.urls as location_urls
 import drops.urls as drop_urls
 import meals.urls as meal_urls
@@ -11,7 +13,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Home
-    url(r'^$', TemplateView.as_view(template_name='base.html')),
+    url(r'^$', views.index, name='index'),
+    # url(r'^$', TemplateView.as_view(template_name='base.html')),
 
     # All Auth
     url(r'^accounts/', include('allauth.urls')),
