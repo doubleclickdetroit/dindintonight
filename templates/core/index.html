@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% for person in person_list %}
-        <li>{{ person.username }}</li>
-    {% endfor %}
+    {{welcome_text}}
 {% endblock %}
