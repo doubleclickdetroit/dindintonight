@@ -1,2 +1,0 @@
-from drop_serializer import DropSerializer
-from drop_meal_serializer import DropMealSerializer

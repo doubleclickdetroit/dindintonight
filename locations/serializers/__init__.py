@@ -1,2 +1,0 @@
-from location_serializer import LocationSerializer
-from location_meal_serializer import LocationMealSerializer

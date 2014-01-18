@@ -1,2 +1,0 @@
-from person_viewset import PersonViewSet
-from person_address_viewset import PersonAddressViewSet

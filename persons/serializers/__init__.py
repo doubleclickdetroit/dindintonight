@@ -1,2 +1,0 @@
-from person_serializer import PersonSerializer
-from person_address_serializer import PersonAddressSerializer
