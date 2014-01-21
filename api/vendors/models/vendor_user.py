@@ -8,7 +8,7 @@ from vendors.models import Vendor
 from users.models import User
 
 class VendorUser(BaseModel):
-    id          = models.IntegerField(primary_key=True)
+    id          = models.AutoField(primary_key=True)
     vendor      = models.ForeignKey(Vendor, related_name='users')
     user        = models.ForeignKey(User, related_name='vendors')
     created     = models.DateTimeField(auto_now_add=True)

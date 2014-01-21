@@ -8,7 +8,7 @@ from clients.models import Client
 from users.models import User
 
 class ClientUser(BaseModel):
-    id          = models.IntegerField(primary_key=True)
+    id          = models.AutoField(primary_key=True)
     client      = models.ForeignKey(Client, related_name='users')
     user        = models.ForeignKey(User, related_name='clients')
     created     = models.DateTimeField(auto_now_add=True)

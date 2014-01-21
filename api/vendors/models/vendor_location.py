@@ -5,12 +5,17 @@ from django.db import models
 from core.utils import debug_print
 from core.models import BaseModel
 from vendors.models import Vendor
-from locations.models import ZipCode
+from locations.models import Location
 
 class VendorLocation(BaseModel):
-    id          = models.IntegerField(primary_key=True)
+    id          = models.AutoField(primary_key=True)
     vendor      = models.ForeignKey(Vendor, related_name='locations')
-    zip_code    = models.ForeignKey(ZipCode)
+    location    = models.ForeignKey(Location)
+    address1    = models.CharField(max_length=255)
+    address2    = models.CharField(max_length=255)
+    address3    = models.CharField(max_length=255)
+    zip_code    = models.CharField(max_length=255)
+    manager     = models.CharField(max_length=255)
     created     = models.DateTimeField(auto_now_add=True)
     modified    = models.DateTimeField(auto_now=True)
 

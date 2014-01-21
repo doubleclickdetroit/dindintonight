@@ -8,7 +8,7 @@ from anonymous_users.models import AnonymousUser
 from cards.models import Card
 
 class AnonymousUserPaymentInfo(BaseModel):
-    id              = models.IntegerField(primary_key=True)
+    id              = models.AutoField(primary_key=True)
     anonymous_user  = models.ForeignKey(AnonymousUser, related_name='payment_info')
     card            = models.ForeignKey(Card, related_name='anonymous_user_payment_info')
     stripe_token    = models.CharField(max_length=45)

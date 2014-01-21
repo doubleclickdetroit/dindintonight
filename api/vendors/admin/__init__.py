@@ -1,0 +1,3 @@
+from vendor_admin import VendorAdmin
+from vendor_location_admin import VendorLocationAdmin
+from vendor_user_admin import VendorUserAdmin

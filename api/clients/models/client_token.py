@@ -7,7 +7,7 @@ from core.models import BaseModel
 from clients.models import Client
 
 class ClientToken(BaseModel):
-    id          = models.IntegerField(primary_key=True)
+    id          = models.AutoField(primary_key=True)
     client      = models.ForeignKey(Client, related_name='tokens')
     value       = models.CharField(max_length=36)
     created     = models.DateTimeField(auto_now_add=True)

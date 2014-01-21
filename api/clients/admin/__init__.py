@@ -1,0 +1,7 @@
+from client_admin import ClientAdmin
+from client_host_admin import ClientHostAdmin
+from client_location_admin import ClientLocationAdmin
+from client_location_detail_admin import ClientLocationDetailAdmin
+from client_location_meal_admin import ClientLocationMealAdmin
+from client_token_admin import ClientTokenAdmin
+from client_user_admin import ClientUserAdmin

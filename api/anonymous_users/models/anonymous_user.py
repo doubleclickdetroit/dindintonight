@@ -4,11 +4,11 @@ from django.db import models
 # Local Apps
 from core.utils import debug_print
 from core.models import BaseModel
-from locations.models import ZipCode
+from locations.models import Location
 
 class AnonymousUser(BaseModel):
-    id          = models.IntegerField(primary_key=True)
-    zip_code    = models.ForeignKey(ZipCode, related_name='anonymous_users')
+    id          = models.AutoField(primary_key=True)
+    location    = models.ForeignKey(Location, related_name='anonymous_users')
     created     = models.DateTimeField(auto_now_add=True)
     modified    = models.DateTimeField(auto_now=True)
 

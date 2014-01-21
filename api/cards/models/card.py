@@ -6,7 +6,7 @@ from core.utils import debug_print
 from core.models import BaseModel
 
 class Card(BaseModel):
-    id          = models.IntegerField(primary_key=True)
+    id          = models.AutoField(primary_key=True)
     name        = models.CharField(max_length=255, blank=True)
     created     = models.DateTimeField(auto_now_add=True)
     modified    = models.DateTimeField(auto_now=True)

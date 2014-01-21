@@ -8,7 +8,7 @@ from users.models import User
 from meals.models import Meal
 
 class UserMealPurchaseHistory(BaseModel):
-    id              = models.IntegerField(primary_key=True)
+    id              = models.AutoField(primary_key=True)
     user            = models.ForeignKey(User, related_name='user_meal_purchase_history')
     meal            = models.ForeignKey(Meal, related_name='user_meal_purchase_history')
     purchased_on    = models.DateTimeField()

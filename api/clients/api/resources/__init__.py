@@ -1,0 +1,4 @@
+from client_location_detail_resource import ClientLocationDetailResource
+from client_location_meal_resource import ClientLocationMealResource
+from client_location_resource import ClientLocationResource
+from client_resource import ClientResource

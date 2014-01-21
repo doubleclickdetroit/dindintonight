@@ -7,7 +7,7 @@ from core.models import BaseModel
 from clients.models import ClientLocation
 
 class ClientLocationDetail(BaseModel):
-    id              = models.IntegerField(primary_key=True)
+    id              = models.AutoField(primary_key=True)
     client_location = models.ForeignKey(ClientLocation, related_name='details')
     address1        = models.CharField(max_length=255, blank=True)
     address2        = models.CharField(max_length=255, blank=True)

@@ -8,7 +8,7 @@ from users.models import User
 from cards.models import Card
 
 class UserPaymentInfo(BaseModel):
-    id              = models.IntegerField(primary_key=True)
+    id              = models.AutoField(primary_key=True)
     user            = models.ForeignKey(User, related_name='payment_info')
     card            = models.ForeignKey(Card, related_name='user_payment_info')
     stripe_token    = models.CharField(max_length=45)

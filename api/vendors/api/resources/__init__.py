@@ -1,0 +1,2 @@
+from vendor_resource import VendorResource
+from vendor_location_resource import VendorLocationResource

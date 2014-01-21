@@ -6,8 +6,7 @@ from core.utils import debug_print
 from core.models import BaseModel
 
 class Vendor(BaseModel):
-    id          = models.IntegerField(primary_key=True)
-    guid        = models.CharField(max_length=36)
+    id          = models.AutoField(primary_key=True)
     name        = models.CharField(max_length=255)
     created     = models.DateTimeField(auto_now_add=True)
     modified    = models.DateTimeField(auto_now=True)
@@ -17,3 +16,6 @@ class Vendor(BaseModel):
         db_table = 'vendors'
         verbose_name = 'Vendor'
         verbose_name_plural = 'Vendors'
+
+    def __unicode__(self):
+        return self.name
