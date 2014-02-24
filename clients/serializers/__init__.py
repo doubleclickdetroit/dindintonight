@@ -1,0 +1,3 @@
+from client_serializer import ClientSerializer
+from client_location_serializer import ClientLocationSerializer
+from client_location_detail_serializer import ClientLocationDetailSerializer
