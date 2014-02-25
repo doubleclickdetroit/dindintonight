@@ -15,11 +15,4 @@ urlpatterns = patterns('',
 
     # Client Location Detail
     url(r'^clients/(?P<client_id>[0-9]+)/locations/(?P<client_location_id>[0-9]+)/details/$', ClientLocationDetailDetail.as_view(), name="api-v1-client-location-detail-detail"),
-
-    # # Package Permissions
-    # url(r'^packages/(?P<package_id>[0-9]+)/permissions/$', api.PermissionList.as_view(), name="api-v2-package-permissions-list"),
-
-    # # Package Plans
-    # url(r'^packages/(?P<package_id>[0-9]+)/plans/$', api.PlanList.as_view(), name="api-v2-package-plan-list"),
-    # url(r'^packages/(?P<package_id>[0-9]+)/plans/(?P<pk>[0-9]+)/$', api.PlanDetail.as_view(), name="api-v2-package-plan-detail"),
 )

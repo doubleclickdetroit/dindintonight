@@ -23,3 +23,8 @@ class VendorLocation(BaseModel):
         db_table = 'vendor_locations'
         verbose_name = 'Vendor Location'
         verbose_name_plural = 'Vendor Locations'
+
+    def __unicode__(self):
+        return '%s, %s, %s, %s, %s, %s' % (self.address1, self.address2,
+            self.address3, self.location.city, self.location.state,
+            self.location.zip_code)
