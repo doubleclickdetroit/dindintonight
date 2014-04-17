@@ -1,16 +1,9 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
 from clients.models import ClientLocationDetail
 from clients.serializers import ClientLocationDetailSerializer
+from core.api.RestView import RESTView
 
-class ClientLocationDetailDetail(APIView):
+class ClientLocationDetailDetail(RESTView):
     """
     Client Location Detail Detail API Class
 
@@ -32,11 +25,11 @@ class ClientLocationDetailDetail(APIView):
         """
         try:
             return ClientLocationDetail.objects.get(client_location__client__pk=client_id,
-                client_location__pk=client_location_id)
+                                                    client_location__pk=client_location_id)
         except ClientLocationDetail.DoesNotExist:
-            raise Http404
+            self.raise_not_found()
 
-    def get(self, request, client_id, client_location_id, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Client Location Detail Detail
 
@@ -46,8 +39,8 @@ class ClientLocationDetailDetail(APIView):
 
         You must pass in a PK otherwise this will fail.
         """
-        client_location_detail = self.get_object(client_id, client_location_id)
+        client_location_detail = self.get_object(kwargs.get('client_id'), kwargs.get('client_location_id'))
 
         client_location_detail_serialized = ClientLocationDetailSerializer(client_location_detail)
 
-        return Response(client_location_detail_serialized.data)
+        return client_location_detail_serialized.data

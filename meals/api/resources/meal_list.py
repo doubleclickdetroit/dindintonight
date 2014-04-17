@@ -1,18 +1,9 @@
-# Django
-from django.http import Http404
-from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
+from core.api.RestView import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
 
-class MealList(APIView):
+class MealList(RESTView):
     """
     Meal List API Class
 
@@ -23,9 +14,12 @@ class MealList(APIView):
     /api/v1/vendors/<vendor_id>/locations/<vendor_location_id>/meals/?show_deleted=true
     """
 
+    URL_NAME = 'api-v1-meal-list'
+
     PER_PAGE = 20
 
-    def get(self, request, vendor_id, vendor_location_id, format=None):
+    def _handle_get(self, request, *args, **kwargs):
+        # , vendor_id, vendor_location_id
         """
         GET handler for Meal List
 
@@ -40,65 +34,24 @@ class MealList(APIView):
         Also in the meta data you can access the current amount of data returned from
         the call as well as how many items exist overall.
         """
+        self.URL_VARIABLES = {
+            'vendor_location_id': kwargs.get('vendor_location_id'),
+            'vendor_id': kwargs.get('vendor_id')
+        }
 
-        queryset = Meal.objects.filter(vendor_location__pk=vendor_location_id,
-            vendor_location__vendor__pk=vendor_id).order_by('available_starting')
+        results = Meal.objects.prefetch_related('vendor_location__vendor').filter(
+            vendor_location__pk=kwargs.get('vendor_location_id'),
+            vendor_location__vendor__pk=kwargs.get('vendor_id')).order_by('available_starting')
 
         show_deleted = request.QUERY_PARAMS.get('show_deleted', False)
 
         if show_deleted in ['false', 0, False]:
-            queryset = queryset.filter(is_deleted=False)
+            results = results.filter(is_deleted=False)
 
-        paginator = Paginator(queryset, self.PER_PAGE)
+        return self.paginated_results(request, results, MealSerializer, use_cache=True, cache_time=self.CACHE_30_DAYS,
+                                      cache_version=1)
 
-        page = request.QUERY_PARAMS.get('page', 1)
 
-        try:
-            meals = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            meals = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999),
-            # deliver last page of results.
-            meals = paginator.page(paginator.num_pages)
-
-        # check to see if we can go back 1 page
-        if meals.has_previous():
-            previous_page = '%s?page=%s' % (reverse('api-v1-meal-list'), int(page) - 1,)
-        else:
-            previous_page = None
-
-        # check to see if we can go forward 1 page
-        if meals.has_next():
-            next_page = '%s?page=%s' % (reverse('api-v1-meal-list'), int(page) + 1,)
-        else:
-            next_page = None
-
-        meals_serialized = MealSerializer(meals, many=True)
-
-        # build object that we are going to return
-        # with all proper meta data and information
-        results = {
-            'meta': {
-                'pages': {
-                    'previous'  : previous_page,
-                    'next'      : next_page,
-                    'current'   : meals.number,
-                    'total'     : paginator.num_pages,
-                },
-                'items': {
-                    'total'     : paginator.count,
-                    'count'     : len(meals_serialized.data),
-                    'per_page'  : self.PER_PAGE,
-                    'remaining' : paginator.count - (((meals.number - 1) * self.PER_PAGE)
-                                                     + len(meals_serialized.data))
-                }
-            },
-            'results'   : meals_serialized.data
-        }
-
-        return Response(results)
 
     # def post(self, request, format=None):
     #     """

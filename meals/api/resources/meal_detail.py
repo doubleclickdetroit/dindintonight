@@ -1,16 +1,9 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
+from core.api.RestView import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
 
-class MealDetail(APIView):
+class MealDetail(RESTView):
     """
     Meal Detail API Class
 
@@ -19,7 +12,6 @@ class MealDetail(APIView):
 
     /api/v1/vendors/<vendor_id>/locations/<vendor_location_id>/meals/<pk>/
     """
-
     def get_object(self, pk, vendor_id, vendor_location_id):
         """
         Method to ease access of getting the queryset for use
@@ -32,11 +24,11 @@ class MealDetail(APIView):
         """
         try:
             return Meal.objects.get(pk=pk, vendor_location_id__pk=vendor_location_id,
-                vendor_location_id__vendor__pk=vendor_id)
+                                    vendor_location_id__vendor__pk=vendor_id)
         except Meal.DoesNotExist:
-            raise Http404
+            self.raise_not_found()
 
-    def get(self, request, pk, vendor_id, vendor_location_id, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Meal Detail
 
@@ -47,8 +39,8 @@ class MealDetail(APIView):
 
         You must pass in a PK otherwise this will fail.
         """
-        meal = self.get_object(pk, vendor_id, vendor_location_id)
+        meal = self.get_object(kwargs.get('pk'), kwargs.get('vendor_id'), kwargs.get('vendor_location_id'))
 
         meal_serialized = MealSerializer(meal)
 
-        return Response(meal_serialized.data)
+        return meal_serialized.data

@@ -1,16 +1,10 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
 from clients.models import Client
 from clients.serializers import ClientSerializer
+from core.api.RestView import RESTView
 
-class ClientDetail(APIView):
+
+class ClientDetail(RESTView):
     """
     Client Detail API Class
 
@@ -31,9 +25,9 @@ class ClientDetail(APIView):
         try:
             return Client.objects.get(pk=pk)
         except Client.DoesNotExist:
-            raise Http404
+            self.raise_not_found()
 
-    def get(self, request, pk, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Client Detail
 
@@ -42,8 +36,8 @@ class ClientDetail(APIView):
 
         You must pass in a PK otherwise this will fail.
         """
-        client = self.get_object(pk)
+        client = self.get_object(kwargs.get('pk'))
 
         client_serialized = ClientSerializer(client)
 
-        return Response(client_serialized.data)
+        return client_serialized.data

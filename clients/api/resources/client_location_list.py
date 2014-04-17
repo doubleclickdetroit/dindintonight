@@ -1,18 +1,10 @@
-# Django
-from django.http import Http404
-from django.core.urlresolvers import reverse
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
 from clients.models import ClientLocation
 from clients.serializers import ClientLocationSerializer
+from core.api.RestView import RESTView
 
-class ClientLocationList(APIView):
+
+class ClientLocationList(RESTView):
     """
     Client Location List API Class
 
@@ -22,9 +14,11 @@ class ClientLocationList(APIView):
     /api/v1/clients/<client_id>/locations/
     """
 
+    URL_NAME = 'api-v1-client-location-list'
+
     PER_PAGE = 20
 
-    def get(self, request, client_id, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Client Location List
 
@@ -38,58 +32,15 @@ class ClientLocationList(APIView):
         Also in the meta data you can access the current amount of data returned from
         the call as well as how many items exist overall.
         """
-        queryset = ClientLocation.objects.filter(client__pk=client_id).order_by('location__state', 'location__city')
-
-        paginator = Paginator(queryset, self.PER_PAGE)
-
-        page = request.QUERY_PARAMS.get('page', 1)
-
-        try:
-            client_locations = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            client_locations = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999),
-            # deliver last page of results.
-            client_locations = paginator.page(paginator.num_pages)
-
-        # check to see if we can go back 1 page
-        if client_locations.has_previous():
-            previous_page = '%s?page=%s' % (reverse('api-v1-client-location-list', args=[client_id]), int(page) - 1,)
-        else:
-            previous_page = None
-
-        # check to see if we can go forward 1 page
-        if client_locations.has_next():
-            next_page = '%s?page=%s' % (reverse('api-v1-client-location-list', args=[client_id]), int(page) + 1,)
-        else:
-            next_page = None
-
-        client_locations_serialized = ClientLocationSerializer(client_locations, many=True)
-
-        # build object that we are going to return
-        # with all proper meta data and information
-        results = {
-            'meta': {
-                'pages': {
-                    'previous'  : previous_page,
-                    'next'      : next_page,
-                    'current'   : client_locations.number,
-                    'total'     : paginator.num_pages,
-                },
-                'items': {
-                    'total'     : paginator.count,
-                    'count'     : len(client_locations_serialized.data),
-                    'per_page'  : self.PER_PAGE,
-                    'remaining' : paginator.count - (((client_locations.number - 1) * self.PER_PAGE)
-                                                     + len(client_locations_serialized.data))
-                }
-            },
-            'results'   : client_locations_serialized.data
+        self.URL_VARIABLES = {
+            'client_id': kwargs.get('client_id')
         }
 
-        return Response(results)
+        results = ClientLocation.objects.prefetch_related('location').filter(client__pk=kwargs.get('client_id')).order_by(
+            'location__state', 'location__city')
+
+        return self.paginated_results(request, results, ClientLocationSerializer, use_cache=True,
+                                      cache_time=self.CACHE_30_DAYS, cache_version=1)
 
     # def post(self, request, format=None):
     #     """

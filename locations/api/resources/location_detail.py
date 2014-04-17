@@ -1,16 +1,9 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
 # Local Apps
+from core.api.RestView import RESTView
 from locations.models import Location
 from locations.serializers import LocationSerializer
 
-class LocationDetail(APIView):
+class LocationDetail(RESTView):
     """
     Location Detail API Class
 
@@ -31,9 +24,9 @@ class LocationDetail(APIView):
         try:
             return Location.objects.get(pk=pk)
         except Location.DoesNotExist:
-            raise Http404
+            self.raise_not_found()
 
-    def get(self, request, pk, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Location Detail
 
@@ -42,8 +35,8 @@ class LocationDetail(APIView):
 
         You must pass in a PK otherwise this will fail.
         """
-        location = self.get_object(pk)
+        location = self.get_object(kwargs.get('pk'))
 
         location_serialized = LocationSerializer(location)
 
-        return Response(location_serialized.data)
+        return location_serialized.data
