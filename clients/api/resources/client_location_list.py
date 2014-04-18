@@ -39,7 +39,7 @@ class ClientLocationList(RESTView):
         results = ClientLocation.objects.prefetch_related('location').filter(client__pk=kwargs.get('client_id')).order_by(
             'location__state', 'location__city')
 
-        return self.paginated_results(request, results, ClientLocationSerializer, use_cache=True,
+        return self.list_results(request, results, ClientLocationSerializer, use_cache=True,
                                       cache_time=self.CACHE_30_DAYS, cache_version=1)
 
     # def post(self, request, format=None):

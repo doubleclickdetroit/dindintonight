@@ -35,8 +35,4 @@ class LocationDetail(RESTView):
 
         You must pass in a PK otherwise this will fail.
         """
-        location = self.get_object(kwargs.get('pk'))
-
-        location_serialized = LocationSerializer(location)
-
-        return location_serialized.data
+        return self.detail_results(self.get_object(kwargs.get('pk')), LocationSerializer)

@@ -2,7 +2,7 @@
 from django.db import models
 
 # Local Apps
-from core.utils import debug_print
+from django.db.models.signals import post_save
 from core.models import BaseModel
 
 class Location(BaseModel):
@@ -23,3 +23,13 @@ class Location(BaseModel):
 
     def __unicode__(self):
         return '%s, %s, %s' % (self.city, self.state, self.zip_code)
+
+
+def location_post_save_handler(sender, instance, **kwargs):
+    from locations.api.resources import LocationList
+
+    # bust the cache on the LocationList
+    location_list = LocationList()
+    location_list.bust_cache()
+
+post_save.connect(location_post_save_handler, sender=Location)

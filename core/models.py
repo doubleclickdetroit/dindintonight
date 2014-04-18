@@ -1,6 +1,5 @@
 # django
 from django.db import models
-from django.conf import settings
 
 # 3rd party
 from model_utils import FieldTracker

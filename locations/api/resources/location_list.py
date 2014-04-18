@@ -23,7 +23,7 @@ class LocationList(RESTView):
 
     URL_NAME = 'api-v1-location-list'
 
-    PER_PAGE = 20
+    PER_PAGE = 50
 
     def _handle_get(self, request, *args, **kwargs):
         """
@@ -56,5 +56,5 @@ class LocationList(RESTView):
         if zip_code is not None:
             results = results.filter(zip_code=zip_code)
 
-        return self.paginated_results(request, results, LocationSerializer, use_cache=True,
-                                      cache_time=self.CACHE_30_DAYS, cache_version=1)
+        return self.list_results(request, results, LocationSerializer, use_cache=True,
+                                 cache_time=self.CACHE_30_DAYS, cache_version=1)

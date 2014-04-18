@@ -9,6 +9,7 @@ from rest_framework.exceptions import PermissionDenied, NotAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from core.api import BadRequest, InternalRequest, MethodNotImplemented, NotAuthorized, NotFound
+from core.utils import debug_print
 
 
 class RESTView(APIView):
@@ -402,8 +403,13 @@ class RESTView(APIView):
         else:
             raise exception
 
-    def paginated_results(self, request, queryset, serializer, use_cache=False, cache_time=60 * 60 * 1,
-                          cache_version=1):
+    def detail_results(self, queryset, serializer):
+        model_serialized = serializer(queryset)
+        results = model_serialized.data
+        return results
+
+
+    def list_results(self, request, queryset, serializer, use_cache=False, cache_time=60 * 60 * 1, cache_version=1):
         """
         Method to create a dictionary with custom meta data
         that includes how to get the next and previous pages
@@ -432,6 +438,7 @@ class RESTView(APIView):
                     additional_url_params += '&{0}={1}'.format(query_param, request.QUERY_PARAMS.get(query_param))
 
             if query_param == 'cache_bust':
+                debug_print('CACHE BUST', color='red')
                 cache_bust = True
 
         # grab the page from the query params and if
@@ -476,9 +483,11 @@ class RESTView(APIView):
 
             # try and get the cache if we are cache busting then we will not even try and just refresh it forcefully
             if not cache_bust:
+                debug_print('LOOKING FOR CACHED RESULTS', color='yellow')
                 results = cache.get(cache_name)
 
         if results is None:
+            debug_print('FRESH FROM DB RESULTS', color='green')
             # init the pagninator with the requested page (if
             # not passed in default to 1) and the requested
             # queryset
@@ -551,6 +560,8 @@ class RESTView(APIView):
             # if we are using the cache then we can update the cache with the new results and the cache time
             if use_cache:
                 cache.set(cache_name, results, cache_time)
+        else:
+            debug_print('FOUND CACHED RESULTS', color='yellow')
 
         return results
 

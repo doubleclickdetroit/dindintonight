@@ -48,7 +48,7 @@ class MealList(RESTView):
         if show_deleted in ['false', 0, False]:
             results = results.filter(is_deleted=False)
 
-        return self.paginated_results(request, results, MealSerializer, use_cache=True, cache_time=self.CACHE_30_DAYS,
+        return self.list_results(request, results, MealSerializer, use_cache=True, cache_time=self.CACHE_30_DAYS,
                                       cache_version=1)
 
 
