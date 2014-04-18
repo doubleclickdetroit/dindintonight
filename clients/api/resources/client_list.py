@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from users.models import User
 from clients.models import Client, ClientUser
 from clients.serializers import ClientSerializer
@@ -38,12 +39,27 @@ class ClientList(RESTView):
                 'Username is a required field!',
             ]
             errors = True
+        else:
+            if User.objects.filter(username=post_data.get('username')).count() > 0:
+                response['username'] = [
+                    'Username "{0}" is currently taken, please try another or request a password reset.'.format(
+                        post_data.get('username')),
+                ]
+                errors = True
+
 
         if post_data.get('email', None) is None:
             response['email'] = [
                 'Email is a required field!',
             ]
             errors = True
+        else:
+            if User.objects.filter(email=post_data.get('email')).count() > 0:
+                response['email'] = [
+                    'Email "{0}" is currently in use, please try another or request a password reset.'.format(
+                        post_data.get('email')),
+                ]
+                errors = True
 
         if post_data.get('password', None) is None:
             response['password'] = [
