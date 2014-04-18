@@ -11,8 +11,8 @@ from core.models import BaseModel
 
 
 class User(AbstractUser, BaseModel):
-    created     = models.DateTimeField(auto_now_add=True)
-    modified    = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email']

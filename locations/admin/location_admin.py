@@ -7,7 +7,7 @@ from locations.models import Location
 
 class LocationAdmin(BaseModelAdmin):
     list_display = ['id', 'city', 'state', 'zip_code',
-        'latitude', 'longitude', 'created', 'modified']
+                    'latitude', 'longitude', 'created', 'modified']
     readonly_fields = ['id', 'created', 'modified']
 
 

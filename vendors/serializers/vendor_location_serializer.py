@@ -18,8 +18,8 @@ class VendorLocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = VendorLocation
         fields = ('id', 'vendor', 'vendor_uri', 'location', 'address1',
-            'address2', 'address3', 'manager', 'meals_uri', 'created',
-            'modified', 'resource_uri')
+                  'address2', 'address3', 'manager', 'meals_uri', 'created',
+                  'modified', 'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):

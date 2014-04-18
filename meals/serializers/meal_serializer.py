@@ -16,10 +16,10 @@ class MealSerializer(serializers.ModelSerializer):
     class Meta:
         model = Meal
         fields = ('id', 'vendor_location', 'description', 'price',
-            'available_starting', 'available_ending', 'is_deleted',
-            'created', 'modified', 'resource_uri')
+                  'available_starting', 'available_ending', 'is_deleted',
+                  'created', 'modified', 'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
         return reverse('api-v1-meal-detail', args=[obj.vendor_location.vendor.pk,
-            obj.vendor_location.pk, obj.pk])
+                                                   obj.vendor_location.pk, obj.pk])
