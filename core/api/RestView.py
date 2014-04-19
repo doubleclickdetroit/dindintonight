@@ -82,6 +82,7 @@ class RESTView(APIView):
             return self.internal_get(user=user, override_pagination_url=request.path,
                                      override_pagination_query_params=request.GET, **query)
         else:
+            debug_print('For internal request at this time we only support using GET!', color='red')
             self.raise_not_implemented()
 
     def get(self, request, format=None, *args, **kwargs):
@@ -158,6 +159,7 @@ class RESTView(APIView):
             self._handle_exception_for_internal(e)
 
     def _handle_get(self, request, *args, **kwargs):
+        debug_print('Override the _handle_get to implement this method on your endpoint!', color='red')
         self.raise_not_implemented()
 
     def post(self, request, format=None, *args, **kwargs):
@@ -209,6 +211,7 @@ class RESTView(APIView):
             self._handle_exception_for_internal(e)
 
     def _handle_post(self, request, *args, **kwargs):
+        debug_print('Override the _handle_post to implement this method on your endpoint!', color='red')
         self.raise_not_implemented()
 
     def put(self, request, format=None, *args, **kwargs):
@@ -266,6 +269,7 @@ class RESTView(APIView):
         the PATCH method on this endpoint as we route
         all PATCH request through the PUT methods
         """
+        debug_print('Override the _handle_put to implement this method on your endpoint!', color='red')
         self.raise_not_implemented()
 
     def patch(self, request, format=None, *args, **kwargs):
@@ -339,6 +343,7 @@ class RESTView(APIView):
             self._handle_exception_for_internal(e)
 
     def _handle_delete(self, request, *args, **kwargs):
+        debug_print('Override the _handle_delete to implement this method on your endpoint!', color='red')
         self.raise_not_implemented()
 
     def _handle_exception_for_external(self, exception, *args, **kwargs):
@@ -377,6 +382,9 @@ class RESTView(APIView):
             # return a 405 since this method is not allowed
             return Response(None, status=status.HTTP_405_METHOD_NOT_ALLOWED)
         else:
+            debug_print('Encountered a exception when executing your endpoint externally, the output is below!',
+                        color='red')
+            debug_print(exception, color='red')
             raise exception
 
 
@@ -401,6 +409,9 @@ class RESTView(APIView):
             # the proper http response
             self.raise_not_authorized()
         else:
+            debug_print('Encountered a exception when executing your endpoint internally, the output is below!',
+                        color='red')
+            debug_print(exception, color='red')
             raise exception
 
     def detail_results(self, queryset, serializer):
@@ -438,8 +449,11 @@ class RESTView(APIView):
                     additional_url_params += '&{0}={1}'.format(query_param, request.QUERY_PARAMS.get(query_param))
 
             if query_param == 'cache_bust':
-                debug_print('CACHE BUST', color='red')
+                debug_print('CACHE BUST!', color='green')
                 cache_bust = True
+
+        debug_print('Additional query params below', color='cyan')
+        debug_print(additional_url_params, color='cyan')
 
         # grab the page from the query params and if
         # not passed in default to one
@@ -470,7 +484,11 @@ class RESTView(APIView):
                     hashlib.md5(overridden_query_params).hexdigest(), page, self.PER_PAGE,
                     hashlib.md5(additional_url_params).hexdigest(), cache_version)
 
+            debug_print('Cache name: "{0}"'.format(cache_name), color='yellow')
+
             cache_keys_name = 'endpoint_{0}_caches'.format(hashlib.md5(self.URL_NAME).hexdigest())
+
+            debug_print('Cache keys name: "{0}"'.format(cache_keys_name), color='yellow')
 
             cache_keys = cache.get(cache_keys_name)
 

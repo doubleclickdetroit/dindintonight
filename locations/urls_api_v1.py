@@ -2,7 +2,7 @@
 from django.conf.urls import patterns, url, include
 
 # Local Apps
-from locations.api.resources import LocationList, LocationDetail
+from locations.api import LocationList, LocationDetail
 
 urlpatterns = patterns('',
     # Locations

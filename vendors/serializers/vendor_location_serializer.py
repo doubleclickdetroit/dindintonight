@@ -8,6 +8,7 @@ from rest_framework import serializers
 from vendors.models import VendorLocation
 from locations.serializers import LocationSerializer
 
+
 class VendorLocationSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     vendor_uri = serializers.SerializerMethodField('get_vendor_uri')

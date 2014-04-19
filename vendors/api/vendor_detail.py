@@ -1,16 +1,8 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
-# Local Apps
+from core.api.RestView import RESTView
 from vendors.models import Vendor
 from vendors.serializers import VendorSerializer
 
-class VendorDetail(APIView):
+class VendorDetail(RESTView):
     """
     Vendor Detail API Class
 
@@ -30,10 +22,10 @@ class VendorDetail(APIView):
         """
         try:
             return Vendor.objects.get(pk=pk)
-        except Client.DoesNotExist:
-            raise Http404
+        except Vendor.DoesNotExist:
+            self.raise_not_found()
 
-    def get(self, request, pk, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Vendor Detail
 
@@ -42,8 +34,6 @@ class VendorDetail(APIView):
 
         You must pass in a PK otherwise this will fail.
         """
-        vendor = self.get_object(pk)
+        vendor = self.get_object(kwargs.get('pk'))
 
-        vendor_serialized = VendorSerializer(vendor)
-
-        return Response(vendor_serialized.data)
+        return self.detail_results(vendor, VendorSerializer)

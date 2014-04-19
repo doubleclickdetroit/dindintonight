@@ -2,21 +2,22 @@
 from django.db import models
 
 # Local Apps
-from core.utils import debug_print
+from django.db.models.signals import post_save
 from core.models import BaseModel
 from vendors.models import Vendor
 from locations.models import Location
 
+
 class VendorLocation(BaseModel):
-    id          = models.AutoField(primary_key=True)
-    vendor      = models.ForeignKey(Vendor, related_name='locations')
-    location    = models.ForeignKey(Location)
-    address1    = models.CharField(max_length=255)
-    address2    = models.CharField(max_length=255)
-    address3    = models.CharField(max_length=255)
-    manager     = models.CharField(max_length=255)
-    created     = models.DateTimeField(auto_now_add=True)
-    modified    = models.DateTimeField(auto_now=True)
+    id = models.AutoField(primary_key=True)
+    vendor = models.ForeignKey(Vendor, related_name='locations')
+    location = models.ForeignKey(Location)
+    address1 = models.CharField(max_length=255)
+    address2 = models.CharField(max_length=255)
+    address3 = models.CharField(max_length=255)
+    manager = models.CharField(max_length=255)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     class Meta:
         app_label = 'vendors'
@@ -26,5 +27,15 @@ class VendorLocation(BaseModel):
 
     def __unicode__(self):
         return '%s, %s, %s, %s, %s, %s' % (self.address1, self.address2,
-            self.address3, self.location.city, self.location.state,
-            self.location.zip_code)
+                                           self.address3, self.location.city, self.location.state,
+                                           self.location.zip_code)
+
+
+def vendor_location_post_save_handler(sender, instance, **kwargs):
+    from vendors.api import VendorLocationList
+    # bust the cache on the VendorLocationList
+    vendor_location_list = VendorLocationList()
+    vendor_location_list.bust_cache()
+
+
+post_save.connect(vendor_location_post_save_handler, sender=VendorLocation)

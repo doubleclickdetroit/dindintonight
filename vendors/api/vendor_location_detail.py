@@ -1,16 +1,8 @@
-# Django
-from django.http import Http404
-
-# Django Rest Framework
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-
-# Local Apps
+from core.api.RestView import RESTView
 from vendors.models import VendorLocation
 from vendors.serializers import VendorLocationSerializer
 
-class VendorLocationDetail(APIView):
+class VendorLocationDetail(RESTView):
     """
     Vendor Location Detail API Class
 
@@ -32,20 +24,20 @@ class VendorLocationDetail(APIView):
         try:
             return VendorLocation.objects.get(pk=pk, vendor__pk=vendor_id)
         except VendorLocation.DoesNotExist:
-            raise Http404
+            self.raise_not_found()
 
-    def get(self, request, vendor_id, pk, format=None):
+    def _handle_get(self, request, *args, **kwargs):
         """
         GET handler for Vendor Location Detail
 
         :request - HTTP request from the api call
+
+        Kwargs
         :pk - PK of the client location that you want to get detail on
         :vendor_id - Vendor Id that the location is related too
 
         You must pass in a PK otherwise this will fail.
         """
-        vendor_location = self.get_object(pk, vendor_id)
+        vendor_location = self.get_object(kwargs.get('pk'), kwargs.get('vendor_id'))
 
-        vendor_location_serialized = VendorLocationSerializer(vendor_location)
-
-        return Response(vendor_location_serialized.data)
+        return self.detail_results(vendor_location, VendorLocationSerializer)
