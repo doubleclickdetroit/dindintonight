@@ -1,3 +1,4 @@
 from vendor_location_editable_serializer import VendorLocationEditableSerializer
 from vendor_serializer import VendorSerializer
 from vendor_location_serializer import VendorLocationSerializer
+from vendor_user_serializer import VendorUserSerializer

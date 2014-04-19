@@ -1,6 +1,6 @@
 from core.api.RestView import RESTView
-from vendors.models import VendorLocation, VendorUser
-from vendors.serializers import VendorLocationSerializer, VendorLocationEditableSerializer
+from vendors.models import VendorUser
+from vendors.serializers import VendorUserSerializer
 
 
 class VendorUserList(RESTView):
@@ -27,31 +27,30 @@ class VendorUserList(RESTView):
             'vendor_id': kwargs.get('vendor_id')
         }
 
-        results = VendorUser.objects.filter(vendor__pk=kwargs.get('vendor_id')).order_by(
-            'location__state', 'location__city')
+        results = VendorUser.objects.filter(vendor__pk=kwargs.get('vendor_id')).order_by('created')
 
-        return self.list_results(request, results, VendorLocationSerializer, use_cache=True,
+        return self.list_results(request, results, VendorUserSerializer, use_cache=True,
                                  cache_time=self.CACHE_30_DAYS, cache_version=1)
 
-    def _handle_post(self, request, *args, **kwargs):
-        """
-        Sample post data
-{
-    "vendor": 1,
-    "location": 1234,
-    "address1": "123 Test Lane",
-    "address2": "Something Something Address 2",
-    "address3": "Something Something Else Address 3",
-    "manager": "This guy!"
-}
-        """
-        serializer = VendorLocationEditableSerializer(data=request.DATA)
-
-        if serializer.is_valid():
-            serializer.save()
-
-            vendor_serialized = VendorLocationSerializer(VendorLocation.objects.get(pk=serializer.data.get('id')))
-
-            return vendor_serialized.data
-
-        return self.raise_bad_request(serializer.errors)
+#     def _handle_post(self, request, *args, **kwargs):
+#         """
+#         Sample post data
+# {
+#     "vendor": 1,
+#     "location": 1234,
+#     "address1": "123 Test Lane",
+#     "address2": "Something Something Address 2",
+#     "address3": "Something Something Else Address 3",
+#     "manager": "This guy!"
+# }
+#         """
+#         serializer = VendorLocationEditableSerializer(data=request.DATA)
+#
+#         if serializer.is_valid():
+#             serializer.save()
+#
+#             vendor_serialized = VendorLocationSerializer(VendorLocation.objects.get(pk=serializer.data.get('id')))
+#
+#             return vendor_serialized.data
+#
+#         return self.raise_bad_request(serializer.errors)

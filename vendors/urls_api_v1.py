@@ -2,7 +2,8 @@
 from django.conf.urls import patterns, url, include
 
 # Local Apps
-from vendors.api import VendorDetail, VendorList, VendorLocationList, VendorLocationDetail, VendorUserList
+from vendors.api import VendorDetail, VendorList, VendorLocationList, VendorLocationDetail, VendorUserDetail, \
+    VendorUserList
 
 urlpatterns = patterns('',
     # Vendors
@@ -10,10 +11,14 @@ urlpatterns = patterns('',
     url(r'^vendors/$', VendorList.as_view(), name="api-v1-vendor-list"),
 
     # Vendor Locations
-    url(r'^vendors/(?P<vendor_id>[0-9]+)/locations/$', VendorLocationList.as_view(), name="api-v1-vendor-location-list"),
-    url(r'^vendors/(?P<vendor_id>[0-9]+)/locations/(?P<pk>[0-9]+)/$', VendorLocationDetail.as_view(), name="api-v1-vendor-location-detail"),
+    url(r'^vendors/(?P<vendor_id>[0-9]+)/locations/$', VendorLocationList.as_view(),
+        name="api-v1-vendor-location-list"),
+    url(r'^vendors/(?P<vendor_id>[0-9]+)/locations/(?P<pk>[0-9]+)/$', VendorLocationDetail.as_view(),
+        name="api-v1-vendor-location-detail"),
 
     # Vendor Users
-    url(r'^vendors/(?P<vendor_id>[0-9]+)/users/$', VendorUserList.as_view(), name="api-v1-vendor-user-list"),
-    # url(r'^vendors/(?P<vendor_id>[0-9]+)/locations/(?P<pk>[0-9]+)/$', VendorLocationDetail.as_view(), name="api-v1-vendor-user-detail"),
+    url(r'^vendors/(?P<vendor_id>[0-9]+)/users/$', VendorUserList.as_view(),
+        name="api-v1-vendor-user-list"),
+    url(r'^vendors/(?P<vendor_id>[0-9]+)/users/(?P<pk>[0-9]+)/$', VendorUserDetail.as_view(),
+        name="api-v1-vendor-user-detail"),
 )
