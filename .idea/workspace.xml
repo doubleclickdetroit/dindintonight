@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4504cf5-fbe7-4056-9b05-b24afb08ad9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/serializers/__init__.py" afterPath="$PROJECT_DIR$/clients/serializers/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_admin.py" afterPath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous_users/models/anonymous_user_meal_purchase_history.py" afterPath="$PROJECT_DIR$/anonymous_users/models/anonymous_user_meal_purchase_history.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_meal_purchase_history_admin.py" afterPath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_meal_purchase_history_admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous_users/models/anonymous_user_payment_info.py" afterPath="$PROJECT_DIR$/anonymous_users/models/anonymous_user_payment_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_payment_info_admin.py" afterPath="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_payment_info_admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/settings/base.py" afterPath="$PROJECT_DIR$/core/settings/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/models/card.py" afterPath="$PROJECT_DIR$/cards/models/card.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cards/admin/card_admin.py" afterPath="$PROJECT_DIR$/cards/admin/card_admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/models/client.py" afterPath="$PROJECT_DIR$/clients/models/client.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/api/client_list.py" afterPath="$PROJECT_DIR$/clients/api/client_list.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/models/client_location.py" afterPath="$PROJECT_DIR$/clients/models/client_location.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/locations/models/location.py" afterPath="$PROJECT_DIR$/locations/models/location.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/models/client_location_detail.py" afterPath="$PROJECT_DIR$/clients/models/client_location_detail.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="dindintonight.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -72,13 +61,11 @@
         <option value="$PROJECT_DIR$/clients/api/client_location_detail_detail.py" />
         <option value="$PROJECT_DIR$/clients/api/client_location_list.py" />
         <option value="$PROJECT_DIR$/clients/models/client_host.py" />
-        <option value="$PROJECT_DIR$/clients/models/client_location_detail.py" />
         <option value="$PROJECT_DIR$/clients/models/client_location_meal.py" />
         <option value="$PROJECT_DIR$/clients/models/client_token.py" />
         <option value="$PROJECT_DIR$/clients/models/client_user.py" />
         <option value="$PROJECT_DIR$/clients/serializers/client_creation_serializer.py" />
         <option value="$PROJECT_DIR$/clients/serializers/client_location_detail_serializer.py" />
-        <option value="$PROJECT_DIR$/clients/serializers/client_location_serializer.py" />
         <option value="$PROJECT_DIR$/clients/serializers/client_serializer.py" />
         <option value="$PROJECT_DIR$/clients/urls_api_v1.py" />
         <option value="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_meal_purchase_history_admin.py" />
@@ -100,6 +87,8 @@
         <option value="$PROJECT_DIR$/franchises/admin/franchise_admin.py" />
         <option value="$PROJECT_DIR$/franchises/admin/__init__.py" />
         <option value="$PROJECT_DIR$/franchises/models/franchise.py" />
+        <option value="$PROJECT_DIR$/clients/models/client_location_detail.py" />
+        <option value="$PROJECT_DIR$/clients/serializers/client_location_serializer.py" />
       </list>
     </option>
   </component>
@@ -178,7 +167,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="meals" />
+              <option name="myItemId" value="clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -192,7 +181,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="meals" />
+              <option name="myItemId" value="clients" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serializers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dindintonight" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dindintonight" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -210,25 +217,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="meals" />
+              <option name="myItemId" value="clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dindintonight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dindintonight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="franchises" />
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -242,29 +235,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="franchises" />
+              <option name="myItemId" value="clients" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dindintonight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="dindintonight" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="franchises" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -644,47 +619,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/anonymous_users/models/anonymous_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="390">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="97" column="12" selection-start="3914" selection-end="3914" vertical-scroll-proportion="0.33233532" vertical-offset="843" max-vertical-offset="15330">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/api/vendor_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1425">
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/users/api/user_list.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="52" selection-start="313" selection-end="515" vertical-scroll-proportion="0.3524229" vertical-offset="0" max-vertical-offset="1485">
-          <folding>
-            <element signature="e#0#29#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/serializers/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="55" selection-start="287" selection-end="307" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <folding>
-            <element signature="e#0#63#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clients/models/client_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="0" selection-start="158" selection-end="432" vertical-scroll-proportion="0.09118541" vertical-offset="0" max-vertical-offset="658">
@@ -706,20 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clients/models/client_location_detail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="106" selection-end="106" vertical-scroll-proportion="0.045592707" vertical-offset="0" max-vertical-offset="658">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/models/client_location.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="20" selection-start="771" selection-end="771" vertical-scroll-proportion="0.39647576" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clients/api/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="29" selection-start="68" selection-end="68" vertical-scroll-proportion="0.02202643" vertical-offset="0" max-vertical-offset="681">
@@ -730,13 +650,6 @@
     <entry file="file://$PROJECT_DIR$/clients/models/client_host.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="0" selection-start="98" selection-end="98" vertical-scroll-proportion="0.04405286" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/models/client.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="20" selection-start="559" selection-end="559" vertical-scroll-proportion="0.44052863" vertical-offset="0" max-vertical-offset="681">
           <folding />
         </state>
       </provider>
@@ -861,20 +774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clients/serializers/client_location_detail_serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="69" selection-start="871" selection-end="871" vertical-scroll-proportion="0.53571427" vertical-offset="0" max-vertical-offset="448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/serializers/client_location_serializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="180" selection-end="180" vertical-scroll-proportion="0.06696428" vertical-offset="0" max-vertical-offset="448">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clients/serializers/client_serializer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="22" selection-start="125" selection-end="141" vertical-scroll-proportion="0.06696428" vertical-offset="0" max-vertical-offset="448">
@@ -982,7 +881,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="448">
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -991,7 +890,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="24" selection-start="287" selection-end="287" vertical-scroll-proportion="0.33482143" vertical-offset="0" max-vertical-offset="448">
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1028,7 +927,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="43" selection-start="329" selection-end="329" vertical-scroll-proportion="0.3013393" vertical-offset="0" max-vertical-offset="495">
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1036,6 +935,86 @@
     <entry file="file://$PROJECT_DIR$/meals/models/meal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="4" selection-start="256" selection-end="295" vertical-scroll-proportion="0.20089285" vertical-offset="0" max-vertical-offset="448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/models/client.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="20" selection-start="559" selection-end="559" vertical-scroll-proportion="0.56473213" vertical-offset="2" max-vertical-offset="450">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
+          <folding>
+            <element signature="e#0#33#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="750">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="780">
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/serializers/client_location_detail_serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="6" selection-start="140" selection-end="140" vertical-scroll-proportion="0.105882354" vertical-offset="0" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/serializers/client_location_serializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="35" selection-start="375" selection-end="375" vertical-scroll-proportion="0.3013393" vertical-offset="0" max-vertical-offset="448">
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/models/client_location_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="49" selection-start="239" selection-end="239" vertical-scroll-proportion="0.16741072" vertical-offset="0" max-vertical-offset="448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/models/client_location.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="29" selection-start="553" selection-end="553" vertical-scroll-proportion="0.36830357" vertical-offset="0" max-vertical-offset="465">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1410">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/serializers/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="16" selection-start="127" selection-end="127" vertical-scroll-proportion="0.06696428" vertical-offset="0" max-vertical-offset="448">
           <folding />
         </state>
       </provider>
