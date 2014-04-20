@@ -1,1 +1,0 @@
-from meal_serializer import MealSerializer

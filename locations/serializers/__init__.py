@@ -1,1 +1,0 @@
-from location_serializer import LocationSerializer

@@ -1,5 +1,0 @@
-from client_creation_serializer import ClientCreationSerializer
-from client_serializer import ClientSerializer
-from client_location_serializer import ClientLocationSerializer
-from client_location_detail_serializer import ClientLocationDetailSerializer
-from client_user_serializer import ClientUserSerializer

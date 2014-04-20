@@ -13,6 +13,20 @@ class VendorList(RESTView):
 
     /api/v1/clients/
     """
+
+    URL_NAME = 'api-v1-vendor-list'
+
+    def _handle_get(self, request, *args, **kwargs):
+        """
+        GET handler for Vendor List
+
+        :request - HTTP request from the api call
+        """
+        results = Vendor.objects.all()
+
+        return self.list_results(request, results, VendorSerializer, use_cache=True, cache_time=self.CACHE_30_DAYS,
+                                 cache_version=1)
+
     def _handle_post(self, request, *args, **kwargs):
         """
         Sample post data
