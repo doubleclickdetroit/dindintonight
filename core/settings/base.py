@@ -216,10 +216,11 @@ LOCAL_APPS = (
     'cards',
     'clients',
     'core',
+    'franchises',
     'locations',
     'meals',
-    'vendors',
     'users',
+    'vendors',
 )
 
 AUTH_USER_MODEL = 'users.User'
@@ -232,7 +233,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 ########## SUIT CONFIGURATION
 # http://glyphicons.com/
 SUIT_CONFIG = {
-    'ADMIN_NAME': 'Din Din Tonight Admin',
+    'ADMIN_NAME': 'Apitizr Admin',
     'HEADER_TIME_FORMAT': 'h:i A',
     'MENU_ICONS': {
         'persons': 'icon-user',

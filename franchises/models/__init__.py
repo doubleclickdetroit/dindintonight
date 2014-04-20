@@ -1,0 +1,1 @@
+from franchise import Franchise

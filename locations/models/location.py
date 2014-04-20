@@ -24,7 +24,7 @@ class Location(BaseModel):
 
 
 def location_post_save_handler(sender, instance, **kwargs):
-    from locations.api.resources import LocationList
+    from locations.api import LocationList
 
     # bust the cache on the LocationList
     location_list = LocationList()

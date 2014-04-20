@@ -20,7 +20,7 @@ class ClientLocation(BaseModel):
 
 
 def client_location_post_save_handler(sender, instance, **kwargs):
-    from clients.api.resources import ClientLocationList
+    from clients.api import ClientLocationList
 
     # bust the cache on the ClientLocationList
     client_location_list = ClientLocationList()

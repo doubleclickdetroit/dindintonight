@@ -1,8 +1,4 @@
-# Django
 from django.db import models
-
-# Local Apps
-from core.utils import debug_print
 from core.models import BaseModel
 
 
