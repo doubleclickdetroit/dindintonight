@@ -1,13 +1,11 @@
 from django.db import models
 from core.models import BaseModel
-from users.models import User
-from cards.models import Card
 
 
 class UserPaymentInfo(BaseModel):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, related_name='payment_info')
-    card = models.ForeignKey(Card, related_name='user_payment_info')
+    user = models.ForeignKey('users.User', related_name='payment_info')
+    card = models.ForeignKey('cards.Card', related_name='user_payment_info')
     stripe_token = models.CharField(max_length=45)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

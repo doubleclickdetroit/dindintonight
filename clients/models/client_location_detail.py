@@ -1,11 +1,10 @@
 from django.db import models
 from core.models import BaseModel
-from clients.models import ClientLocation
 
 
 class ClientLocationDetail(BaseModel):
     id = models.AutoField(primary_key=True)
-    client_location = models.OneToOneField(ClientLocation, related_name='details')
+    client_location = models.OneToOneField('clients.ClientLocation', related_name='details')
     address1 = models.CharField(max_length=255, blank=True)
     address2 = models.CharField(max_length=255, blank=True)
     address3 = models.CharField(max_length=255, blank=True)

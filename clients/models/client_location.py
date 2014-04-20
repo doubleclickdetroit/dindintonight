@@ -1,14 +1,12 @@
 from django.db import models
 from django.db.models.signals import post_save
 from core.models import BaseModel
-from clients.models import Client
-from locations.models import Location
 
 
 class ClientLocation(BaseModel):
     id = models.AutoField(primary_key=True)
-    client = models.ForeignKey(Client, related_name='locations')
-    location = models.ForeignKey(Location, related_name='client_locations')
+    client = models.ForeignKey('clients.Client', related_name='locations')
+    location = models.ForeignKey('locations.Location', related_name='client_locations')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

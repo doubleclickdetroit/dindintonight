@@ -1,13 +1,18 @@
 from django.core.urlresolvers import reverse
 from rest_framework import serializers
 from clients.models import ClientLocation
+
 from locations.serializers import LocationSerializer
 
 
 class ClientLocationSerializer(serializers.ModelSerializer):
     id = serializers.Field()
-    client_uri = serializers.SerializerMethodField('get_client_uri')
     location = LocationSerializer()
+
+    # from clients.serializers import ClientLocationDetailSerializer
+    # detail = ClientLocationDetailSerializer(source='detail')
+
+    client_uri = serializers.SerializerMethodField('get_client_uri')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
 
     class Meta:

@@ -1,12 +1,11 @@
 from django.db import models
 from django.db.models.signals import post_save
 from core.models import BaseModel
-from users.models import User
 
 
 class Franchise(BaseModel):
     id = models.AutoField(primary_key=True)
-    owner = models.OneToOneField(User, related_name='franchise_owners')
+    owner = models.OneToOneField('users.User', related_name='franchise_owners')
     name = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)

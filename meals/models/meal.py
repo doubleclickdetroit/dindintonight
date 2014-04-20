@@ -1,11 +1,10 @@
 from django.db import models
 from core.models import BaseModel
-from vendors.models import VendorLocation
 
 
 class Meal(BaseModel):
     id = models.AutoField(primary_key=True)
-    vendor_location = models.ForeignKey(VendorLocation, related_name='meals')
+    vendor_location = models.ForeignKey('vendors.VendorLocation', related_name='meals')
     name = models.CharField(max_length=255)
     description = models.CharField(max_length=1024)
     price = models.DecimalField(max_digits=10, decimal_places=2)

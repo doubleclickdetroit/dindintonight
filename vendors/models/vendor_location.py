@@ -1,14 +1,12 @@
 from django.db import models
 from django.db.models.signals import post_save
 from core.models import BaseModel
-from vendors.models import Vendor
-from locations.models import Location
 
 
 class VendorLocation(BaseModel):
     id = models.AutoField(primary_key=True)
-    vendor = models.ForeignKey(Vendor, related_name='locations')
-    location = models.ForeignKey(Location)
+    vendor = models.ForeignKey('vendors.Vendor', related_name='locations')
+    location = models.ForeignKey('locations.Location')
     address1 = models.CharField(max_length=255)
     address2 = models.CharField(max_length=255)
     address3 = models.CharField(max_length=255)

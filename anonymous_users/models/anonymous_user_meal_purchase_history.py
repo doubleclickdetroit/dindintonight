@@ -1,16 +1,11 @@
-# Django
 from django.db import models
-
-# Local Apps
 from core.models import BaseModel
-from anonymous_users.models import AnonymousUser
-from meals.models import Meal
 
 
 class AnonymousUserMealPurchaseHistory(BaseModel):
     id = models.AutoField(primary_key=True)
-    anonymous_user = models.ForeignKey(AnonymousUser, related_name='meal_purchase_history')
-    meal = models.ForeignKey(Meal, related_name='anonymous_user_purchase_history')
+    anonymous_user = models.ForeignKey('anonymous_users.AnonymousUser', related_name='meal_purchase_history')
+    meal = models.ForeignKey('meals.Meal', related_name='anonymous_user_purchase_history')
     purchased_on = models.DateTimeField()
     deliver_on = models.DateTimeField()
     delivered_on = models.DateTimeField(blank=True, null=True)
