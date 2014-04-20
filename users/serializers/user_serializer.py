@@ -1,10 +1,5 @@
-# Django
 from django.core.urlresolvers import reverse
-
-# Django Rest Framework
 from rest_framework import serializers
-
-# 3rd party
 from users.models import User
 
 

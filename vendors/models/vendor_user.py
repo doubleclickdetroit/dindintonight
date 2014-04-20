@@ -1,7 +1,4 @@
-# Django
 from django.db import models
-
-# Local Apps
 from core.models import BaseModel
 from vendors.models import Vendor
 from users.models import User

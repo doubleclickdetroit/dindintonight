@@ -1,7 +1,4 @@
-# Django
-from django.conf.urls import patterns, url, include
-
-# Local Apps
+from django.conf.urls import patterns, url
 from vendors.api import VendorDetail, VendorList, VendorLocationList, VendorLocationDetail, VendorUserDetail, \
     VendorUserList
 

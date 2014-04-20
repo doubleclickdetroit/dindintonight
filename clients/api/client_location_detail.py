@@ -1,7 +1,7 @@
-# Local Apps
 from clients.models import ClientLocation
 from clients.serializers import ClientLocationSerializer
 from core.api.RestView import RESTView
+
 
 class ClientLocationDetail(RESTView):
     """

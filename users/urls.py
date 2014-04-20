@@ -1,10 +1,5 @@
-# Django
 from django.conf.urls import patterns, url, include
-
-# Django Rest Framework
 from rest_framework import routers
-
-# 3rd party
 from users import viewsets
 
 router = routers.DefaultRouter()

@@ -1,10 +1,8 @@
-# Django
 from django.db import models
-
-# Local Apps
 from core.models import BaseModel
 from clients.models import Client
 from users.models import User
+
 
 class ClientUser(BaseModel):
     id = models.AutoField(primary_key=True)

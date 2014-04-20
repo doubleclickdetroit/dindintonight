@@ -1,7 +1,4 @@
-# Django
 from django.db import models
-
-# Local Apps
 from django.db.models.signals import post_save
 from core.models import BaseModel
 from vendors.models import Vendor

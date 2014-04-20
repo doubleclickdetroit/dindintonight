@@ -1,7 +1,7 @@
-# Local Apps
 from core.api.RestView import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
+
 
 class MealList(RESTView):
     """

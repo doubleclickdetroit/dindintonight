@@ -1,8 +1,4 @@
-# Django
 from django.db import models
-
-# Local Apps
-from core.utils import debug_print
 from core.models import BaseModel
 from users.models import User
 from meals.models import Meal

@@ -1,7 +1,4 @@
-# Django
-from django.conf.urls import patterns, url, include
-
-# Local Apps
+from django.conf.urls import patterns, url
 from clients.api import ClientList, ClientDetail, ClientLocationList, ClientLocationDetail, ClientLocationDetailDetail
 
 urlpatterns = patterns('',

@@ -1,11 +1,9 @@
-# Django
 from django.db import models
-
-# Local Apps
 from django.db.models.signals import post_save
 from core.models import BaseModel
 from clients.models import Client
 from locations.models import Location
+
 
 class ClientLocation(BaseModel):
     id = models.AutoField(primary_key=True)

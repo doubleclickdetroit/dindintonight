@@ -1,7 +1,4 @@
-# Django Rest Framework
 from rest_framework import serializers
-
-# Local Apps
 from vendors.models import VendorLocation
 
 

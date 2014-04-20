@@ -1,7 +1,7 @@
-# django
-from django.db import models
 from django.contrib.auth.models import UserManager
 from django.contrib.auth import get_user_model
+from core.managers import NoCountManager
+
 
 class UserManager(UserManager, NoCountManager):
     '''

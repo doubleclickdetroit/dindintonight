@@ -1,4 +1,3 @@
-# Local Apps
 from clients.models import Client
 from clients.serializers import ClientSerializer
 from core.api.RestView import RESTView

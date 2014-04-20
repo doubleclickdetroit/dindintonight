@@ -1,9 +1,7 @@
-# Django
 from django.contrib import admin
-
-# Local Apps
 from core.admin import BaseModelAdmin
 from vendors.models import Vendor
+
 
 class VendorAdmin(BaseModelAdmin):
     list_display = ['id', 'name', 'created', 'modified']

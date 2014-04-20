@@ -1,7 +1,4 @@
-# Django
-from django.conf.urls import patterns, url, include
-
-# Local Apps
+from django.conf.urls import patterns, url
 from users.api import UserDetail, UserList
 
 urlpatterns = patterns('',

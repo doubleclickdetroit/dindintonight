@@ -1,9 +1,7 @@
-# Django
 from django.db import models
-
-# Local Apps
 from django.db.models.signals import post_save
 from core.models import BaseModel
+
 
 class Location(BaseModel):
     id = models.AutoField(primary_key=True)

@@ -1,11 +1,7 @@
-# Django
 from django.core.urlresolvers import reverse
-
-# Django Rest Framework
 from rest_framework import serializers
-
-# Local Apps
 from meals.models import Meal
+
 
 class MealSerializer(serializers.ModelSerializer):
     id = serializers.Field()

@@ -1,12 +1,8 @@
-# Django
 from django.core.urlresolvers import reverse
-
-# Django Rest Framework
 from rest_framework import serializers
-
-# Local Apps
 from clients.models import ClientLocation
 from locations.serializers import LocationSerializer
+
 
 class ClientLocationSerializer(serializers.ModelSerializer):
     id = serializers.Field()

@@ -1,11 +1,6 @@
-# Core
 import re
-
-# Django
 from django.core import validators
 from django.utils.translation import ugettext_lazy as _
-
-# Django Rest Framework
 from rest_framework import serializers
 
 class ClientCreationSerializer(serializers.Serializer):

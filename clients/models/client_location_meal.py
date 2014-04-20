@@ -1,10 +1,8 @@
-# Django
 from django.db import models
-
-# Local Apps
 from core.models import BaseModel
 from clients.models import ClientLocation
 from meals.models import Meal
+
 
 class ClientLocationMeal(BaseModel):
     id = models.AutoField(primary_key=True)

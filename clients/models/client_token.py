@@ -1,9 +1,7 @@
-# Django
 from django.db import models
-
-# Local Apps
 from core.models import BaseModel
 from clients.models import Client
+
 
 class ClientToken(BaseModel):
     id = models.AutoField(primary_key=True)

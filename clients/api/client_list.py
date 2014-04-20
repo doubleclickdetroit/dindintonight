@@ -1,4 +1,3 @@
-from django.db import IntegrityError
 from users.models import User
 from clients.models import Client, ClientUser
 from clients.serializers import ClientSerializer

@@ -1,7 +1,7 @@
-# Local Apps
 from core.api.RestView import RESTView
 from locations.models import Location
 from locations.serializers import LocationSerializer
+
 
 class LocationList(RESTView):
     """
