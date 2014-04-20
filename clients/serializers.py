@@ -42,20 +42,29 @@ class ClientLocationDetailSerializer(serializers.ModelSerializer):
 class ClientLocationSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     location = LocationSerializer()
-    details = ClientLocationDetailSerializer(source='details')
+    details = ClientLocationDetailSerializer(source='details', required=False)
     client_uri = serializers.SerializerMethodField('get_client_uri')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
 
     class Meta:
         model = ClientLocation
         fields = ('id', 'client', 'client_uri', 'location', 'details', 'created', 'modified', 'resource_uri')
-        read_only_fields = ('created', 'modified',)
+        read_only_fields = ('client', 'created', 'modified',)
 
     def get_resource_uri(self, obj):
         return reverse('api-v1-client-location-detail', args=[obj.client.pk, obj.pk])
 
     def get_client_uri(self, obj):
         return reverse('api-v1-client-detail', args=[obj.client.pk])
+
+
+class ClientLocationEditableSerializer(serializers.ModelSerializer):
+    id = serializers.Field()
+
+    class Meta:
+        model = ClientLocation
+        fields = ('id', 'client', 'location', 'created', 'modified')
+        read_only_fields = ('created', 'modified',)
 
 
 class ClientSerializer(serializers.ModelSerializer):

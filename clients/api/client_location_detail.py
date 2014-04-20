@@ -1,5 +1,5 @@
 from clients.models import ClientLocation
-from clients.serializers import ClientLocationSerializer
+from clients.serializers import ClientLocationSerializer, ClientLocationEditableSerializer
 from core.api.RestView import RESTView
 
 
@@ -42,3 +42,15 @@ class ClientLocationDetail(RESTView):
         client_location_serialized = ClientLocationSerializer(client_location)
 
         return client_location_serialized.data
+
+    def _handle_put(self, request, *args, **kwargs):
+        client_location = self.get_object(kwargs.get('pk'), kwargs.get('client_id'))
+
+        serializer = ClientLocationEditableSerializer(client_location, data=request.DATA)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return ClientLocationSerializer(self.get_object(kwargs.get('pk'), kwargs.get('client_id'))).data
+
+        return self.raise_bad_request(serializer.errors)

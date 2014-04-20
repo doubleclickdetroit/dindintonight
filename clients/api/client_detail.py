@@ -32,11 +32,24 @@ class ClientDetail(RESTView):
 
         :request - HTTP request from the api call
         :pk - PK of the client that you want to get detail on
-
-        You must pass in a PK otherwise this will fail.
         """
         client = self.get_object(kwargs.get('pk'))
 
         client_serialized = ClientSerializer(client)
 
         return client_serialized.data
+
+    def _handle_put(self, request, *args, **kwargs):
+        """
+        PUT/PATCH handler for Client Detail
+        """
+        client = self.get_object(kwargs.get('pk'))
+
+        serializer = ClientSerializer(client, data=request.DATA)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return serializer.data
+
+        return self.raise_bad_request(serializer.errors)
