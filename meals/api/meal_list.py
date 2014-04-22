@@ -1,6 +1,8 @@
 from core.api.RestView import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
+from vendors.models import VendorLocation
+import datetime
 
 
 class MealList(RESTView):
@@ -19,20 +21,12 @@ class MealList(RESTView):
     PER_PAGE = 20
 
     def _handle_get(self, request, *args, **kwargs):
-        # , vendor_id, vendor_location_id
         """
         GET handler for Meal List
 
         :request - HTTP request from the api call
         :vendor_id - Vendor ID that you want to get meals for
         :vendor_location_id - Vendor Location ID that you want to get meals for
-
-        In the pages meta data it will have the full resource url for you to be able
-        access the next and previous pages, this should symplify the front end devs
-        lives and make it easy for them to build pagination into thre components.
-
-        Also in the meta data you can access the current amount of data returned from
-        the call as well as how many items exist overall.
         """
         self.URL_VARIABLES = {
             'vendor_location_id': kwargs.get('vendor_location_id'),
@@ -49,52 +43,30 @@ class MealList(RESTView):
             results = results.filter(is_deleted=False)
 
         return self.list_results(request, results, MealSerializer, use_cache=True, cache_time=self.CACHE_30_DAYS,
-                                      cache_version=1)
+                                 cache_version=1)
 
+    def _handle_post(self, request, *args, **kwargs):
+        try:
+            vendor_location = VendorLocation.objects.get(pk=kwargs.get('vendor_location_id'),
+                                                         vendor__pk=kwargs.get('vendor_id'))
+        except VendorLocation.DoesNotExist:
+            self.raise_not_found()
 
+        post_data = request.DATA
+        post_data['vendor_location'] = vendor_location.pk
+        serializer = MealSerializer(data=post_data)
 
-    # def post(self, request, format=None):
-    #     """
-    #     POST handler for Package Level List
+        if post_data.get('available_starting', None) is not None:
+            post_data['available_starting'] = datetime.datetime.strptime(post_data['available_starting'],
+                                                                         '%m-%d-%Y').isoformat()
 
-    #     :request - HTTP request from the api call
+        if post_data.get('available_ending', None) is not None:
+            post_data['available_ending'] = datetime.datetime.strptime(post_data['available_ending'],
+                                                                       '%m-%d-%Y').isoformat()
 
-    #     Minimum Required Post Data (example json):
-    #     {
-    #         "name": "Some Name",
-    #         "item": <item_id>
-    #     }
+        if serializer.is_valid():
+            serializer.save()
 
-    #     Upon successful post it will return back the newly created object in
-    #     the response.
+            return serializer.data
 
-    #     If the requestor is not the item owner then they will get a 400 (bad
-    #     request) or if they do not pass the minimum required data they also
-    #     get a 400. Upon successful saving of the package they will get a 201
-    #     (created) response with the newly created object.
-    #     """
-    #     # grab the post data
-    #     post_data = request.DATA
-
-    #     try:
-    #         # try to get required items from the post data
-    #         item        = Item.objects.get(pk=post_data.get('item'), author__pk=request.user.pk) # required
-    #         name        = post_data.get('name') # required
-    #         description = post_data.get('description', '') # not required
-    #     except Exception, e:
-    #         # if we cannot get the bare minimum of the items then we throw a 400 as
-    #         # it is a bad request and cannot be processed
-    #         return Response(e.message, status=status.HTTP_400_BAD_REQUEST)
-
-    #     try:
-    #         # create the package from the item
-    #         package = item.create_package(name, description)
-    #     except Exception, e:
-    #         # if we get any error of any sort then we throw a 500 for a server error
-    #         return Response(e.message, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-    #     # serialize the package
-    #     package_serialized = PackageSerializer(package)
-
-    #     # return back the data and a 201 response code since we created it
-    #     return Response(package_serialized.data, status=status.HTTP_201_CREATED)
+        return self.raise_bad_request(serializer.errors)

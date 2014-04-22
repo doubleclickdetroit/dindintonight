@@ -44,3 +44,21 @@ class MealDetail(RESTView):
         meal_serialized = MealSerializer(meal)
 
         return meal_serialized.data
+
+    def _handle_put(self, request, *args, **kwargs):
+        meal = self.get_object(kwargs.get('pk'), kwargs.get('vendor_id'), kwargs.get('vendor_location_id'))
+
+        post_data = request.DATA
+        post_data['vendor_location'] = meal.vendor_location.pk
+
+        if post_data.get('price', None) is None:
+            post_data['price'] = meal.price
+
+        serializer = MealSerializer(meal, data=post_data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return serializer.data
+
+        return self.raise_bad_request(serializer.errors)
