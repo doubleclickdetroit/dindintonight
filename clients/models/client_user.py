@@ -4,8 +4,8 @@ from core.models import BaseModel
 
 class ClientUser(BaseModel):
     id = models.AutoField(primary_key=True)
-    client = models.OneToOneField('clients.Client', related_name='users')
-    user = models.OneToOneField('users.User', related_name='clients')
+    client = models.ForeignKey('clients.Client')
+    user = models.ForeignKey('users.User')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

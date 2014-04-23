@@ -7,6 +7,7 @@ from core.models import BaseModel
 class Client(BaseModel):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
+    users = models.ManyToManyField('users.User', through='clients.ClientUser', related_name='clients')
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
@@ -20,7 +21,7 @@ class Client(BaseModel):
 def client_post_save_handler(sender, instance, **kwargs):
     from clients.api import ClientList
 
-    # bust the cache on the ClientLocationList
+    # bust the cache on the ClientList
     client_list = ClientList()
     client_list.bust_cache()
 
