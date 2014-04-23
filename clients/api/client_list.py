@@ -19,8 +19,8 @@ class ClientList(RESTView):
 
         user = request.GET.get('user', None)
 
-        # if user is not None:
-        #     results = results.filter(state__iexact=state)
+        if user is not None:
+            results = results.filter(users__pk=user)
 
         return self.list_results(request, results, ClientSerializer, use_cache=True,
                                  cache_time=self.CACHE_30_DAYS, cache_version=1)

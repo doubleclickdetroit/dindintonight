@@ -42,6 +42,11 @@ class ClientDetail(RESTView):
     def _handle_put(self, request, *args, **kwargs):
         """
         PUT/PATCH handler for Client Detail
+
+        Sample Post Data:
+        {
+            "name": "Detroit City Apartments"
+        }
         """
         client = self.get_object(kwargs.get('pk'))
 
