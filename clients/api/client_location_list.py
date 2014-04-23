@@ -1,6 +1,7 @@
-from clients.models import ClientLocation
+from clients.models import ClientLocation, Client
 from clients.serializers import ClientLocationSerializer, ClientLocationEditableSerializer
 from core.api.RestView import RESTView
+from locations.models import Location
 
 
 class ClientLocationList(RESTView):
@@ -36,8 +37,30 @@ class ClientLocationList(RESTView):
     def _handle_post(self, request, *args, **kwargs):
         """
         POST handler for Client Location List
+        Sample Post Data:
+        {
+            "location": 1234
+        }
         """
-        serializer = ClientLocationEditableSerializer(data=request.DATA)
+        try:
+            client = Client.objects.get(pk=kwargs.get('client_id'))
+        except Client.DoesNotExist:
+            self.raise_not_found()
+
+        post_data = request.DATA
+        post_data['client'] = client.pk
+
+        try:
+            Location.objects.get(pk=post_data.get('location', None))
+        except Location.DoesNotExist:
+            response = {
+                'location': [
+                    'Invalid location!',
+                ]
+            }
+            self.raise_bad_request(response)
+
+        serializer = ClientLocationEditableSerializer(data=post_data)
 
         if serializer.is_valid():
             serializer.save()
