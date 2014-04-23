@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4504cf5-fbe7-4056-9b05-b24afb08ad9b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/api/client_location_detail.py" afterPath="$PROJECT_DIR$/clients/api/client_location_detail.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/api/__init__.py" afterPath="$PROJECT_DIR$/clients/api/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/models/client_location_detail.py" afterPath="$PROJECT_DIR$/clients/models/client_location_detail.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/api/client_location_detail_detail.py" afterPath="$PROJECT_DIR$/clients/api/client_location_detail_detail.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/serializers.py" afterPath="$PROJECT_DIR$/clients/serializers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/clients/urls_api_v1.py" afterPath="$PROJECT_DIR$/clients/urls_api_v1.py" />
     </list>
     <ignored path="dindintonight.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,7 +28,92 @@
     <favorites_list name="dindintonight" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meals/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="20" selection-start="122" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_location_meal_list.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/api/client_location_meal_list.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="32" column="74" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/api/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="60" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls_api_v1.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/urls_api_v1.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="17" column="42" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="serializers.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/serializers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="97" column="28" selection-start="4205" selection-end="4205" vertical-scroll-proportion="-9.653846" vertical-offset="1084" max-vertical-offset="1710">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_location_detail.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="58" column="0" selection-start="0" selection-end="2460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1245">
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_location_list.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clients/api/client_location_list.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="9" selection-start="0" selection-end="2151" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1140">
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client_location_meal_detail.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/clients/api/client_location_meal_detail.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="41" column="65" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.775076" vertical-offset="105" max-vertical-offset="1230">
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -37,10 +126,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_meal_purchase_history_admin.py" />
-        <option value="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_payment_info_admin.py" />
-        <option value="$PROJECT_DIR$/anonymous_users/admin/anonymous_user_admin.py" />
-        <option value="$PROJECT_DIR$/clients/serializers/client_user_serializer.py" />
         <option value="$PROJECT_DIR$/clients/serializers/__init__.py" />
         <option value="$PROJECT_DIR$/cards/models/card.py" />
         <option value="$PROJECT_DIR$/cards/admin/card_admin.py" />
@@ -55,7 +140,6 @@
         <option value="$PROJECT_DIR$/anonymous_users/models/anonymous_user_meal_purchase_history.py" />
         <option value="$PROJECT_DIR$/anonymous_users/models/anonymous_user_payment_info.py" />
         <option value="$PROJECT_DIR$/clients/models/client_host.py" />
-        <option value="$PROJECT_DIR$/clients/models/client_location_detail.py" />
         <option value="$PROJECT_DIR$/clients/models/client_token.py" />
         <option value="$PROJECT_DIR$/franchises/models/franchise.py" />
         <option value="$PROJECT_DIR$/meals/models/meal.py" />
@@ -76,7 +160,6 @@
         <option value="$PROJECT_DIR$/franchises/api/franchise_detail.py" />
         <option value="$PROJECT_DIR$/franchises/api/__init__.py" />
         <option value="$PROJECT_DIR$/franchises/urls_api_v1.py" />
-        <option value="$PROJECT_DIR$/clients/api/client_location_detail_detail.py" />
         <option value="$PROJECT_DIR$/meals/api/meal_list.py" />
         <option value="$PROJECT_DIR$/meals/api/meal_detail.py" />
         <option value="$PROJECT_DIR$/clients/models/client_user.py" />
@@ -84,10 +167,16 @@
         <option value="$PROJECT_DIR$/clients/api/client_list.py" />
         <option value="$PROJECT_DIR$/clients/models/client_location_meal.py" />
         <option value="$PROJECT_DIR$/clients/models/client_location.py" />
-        <option value="$PROJECT_DIR$/clients/serializers.py" />
         <option value="$PROJECT_DIR$/clients/models/client.py" />
         <option value="$PROJECT_DIR$/clients/api/client_location_list.py" />
         <option value="$PROJECT_DIR$/clients/api/client_location_detail.py" />
+        <option value="$PROJECT_DIR$/clients/models/client_location_detail.py" />
+        <option value="$PROJECT_DIR$/clients/api/client_location_detail_detail.py" />
+        <option value="$PROJECT_DIR$/clients/urls_api_v1.py" />
+        <option value="$PROJECT_DIR$/clients/api/client_location_meal_list.py" />
+        <option value="$PROJECT_DIR$/clients/api/__init__.py" />
+        <option value="$PROJECT_DIR$/clients/serializers.py" />
+        <option value="$PROJECT_DIR$/clients/api/client_location_meal_detail.py" />
       </list>
     </option>
   </component>
@@ -711,12 +800,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="52" y="22" width="1228" height="778" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32722145" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32722145" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29153094" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -748,28 +837,55 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/core/api/RestView.py</url>
+          <line>387</line>
+          <option name="timeStamp" value="101" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/core/api/RestView.py</url>
+          <line>414</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/clients/api/client_location_detail_detail.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py</url>
+          <line>371</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py</url>
+          <line>372</line>
+          <option name="timeStamp" value="108" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py</url>
+          <line>375</line>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py</url>
+          <line>376</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py</url>
+          <line>377</line>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="100" />
+      <option name="time" value="113" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/clients/models/client_token.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="39" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/models/vendor_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="37" selection-start="175" selection-end="175" vertical-scroll-proportion="0.20235294" vertical-offset="4" max-vertical-offset="480" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendors/models/vendor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="29" selection-start="163" selection-end="163" vertical-scroll-proportion="0.1764706" vertical-offset="0" max-vertical-offset="425" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/users/models/user_payment_info.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="35" selection-start="250" selection-end="250" vertical-scroll-proportion="0.21176471" vertical-offset="0" max-vertical-offset="425" />
@@ -850,11 +966,6 @@
         <state line="4" column="16" selection-start="145" selection-end="145" vertical-scroll-proportion="0.08810572" vertical-offset="0" max-vertical-offset="681" />
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="152" column="8" selection-start="5705" selection-end="5705" vertical-scroll-proportion="0.33233532" vertical-offset="1968" max-vertical-offset="4245" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendors/api/vendor_user_detail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.11702128" vertical-offset="77" max-vertical-offset="735" />
@@ -893,11 +1004,6 @@
         <state line="4" column="6" selection-start="71" selection-end="71" vertical-scroll-proportion="0.06838906" vertical-offset="0" max-vertical-offset="658">
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail_detail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="51" selection-start="906" selection-end="906" vertical-scroll-proportion="0.40729484" vertical-offset="92" max-vertical-offset="750" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/users/serializers.py">
@@ -957,30 +1063,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meals/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="122" selection-end="122" vertical-scroll-proportion="0.066079296" vertical-offset="0" max-vertical-offset="681">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/models/client_location_detail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="6" selection-start="71" selection-end="71" vertical-scroll-proportion="0.06838906" vertical-offset="0" max-vertical-offset="658">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/clients/migrations/0004_auto__chg_field_clientuser_user__del_unique_clientuser_user__chg_field.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.21067415" vertical-offset="75" max-vertical-offset="2775">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/api/RestView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="387" column="0" selection-start="15511" selection-end="15511" vertical-scroll-proportion="-0.25842696" vertical-offset="5732" max-vertical-offset="9435">
           <folding />
         </state>
       </provider>
@@ -995,20 +1080,6 @@
     <entry file="file://$PROJECT_DIR$/clients/models/client.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="43" selection-start="225" selection-end="225" vertical-scroll-proportion="0.20325203" vertical-offset="0" max-vertical-offset="465">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="34" selection-start="2074" selection-end="2074" vertical-scroll-proportion="0.646438" vertical-offset="295" max-vertical-offset="1485">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/clients/models/client_location_meal.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="41" selection-start="275" selection-end="275" vertical-scroll-proportion="0.22959183" vertical-offset="0" max-vertical-offset="392">
           <folding />
         </state>
       </provider>
@@ -1034,18 +1105,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail.py">
+    <entry file="file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="46" selection-start="1624" selection-end="1624" vertical-scroll-proportion="1.6035634" vertical-offset="0" max-vertical-offset="1245">
+        <state line="153" column="45" selection-start="5781" selection-end="5781" vertical-scroll-proportion="0.37203166" vertical-offset="2064" max-vertical-offset="4245">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dindintonight/lib/python2.7/site-packages/django/db/models/query.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="372" column="0" selection-start="13982" selection-end="13982" vertical-scroll-proportion="0.33163264" vertical-offset="5210" max-vertical-offset="25815">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/api/RestView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="387" column="0" selection-start="15511" selection-end="15511" vertical-scroll-proportion="0.68865436" vertical-offset="5379" max-vertical-offset="9435">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="24" selection-start="2793" selection-end="2793" vertical-scroll-proportion="2.372449" vertical-offset="135" max-vertical-offset="1305">
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/clients/api/client_location_list.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="53" selection-start="1183" selection-end="1848" vertical-scroll-proportion="0.17431192" vertical-offset="464" max-vertical-offset="1140">
+        <state line="40" column="9" selection-start="0" selection-end="2151" vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1140">
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>
@@ -1054,17 +1146,74 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/clients/urls_api_v1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="32" selection-start="546" selection-end="555" vertical-scroll-proportion="0.37844038" vertical-offset="0" max-vertical-offset="436">
+        <state line="17" column="42" selection-start="908" selection-end="908" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="465">
           <folding>
             <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/clients/models/client_location_meal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="19" selection-start="150" selection-end="165" vertical-scroll-proportion="0.11398176" vertical-offset="0" max-vertical-offset="658">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/models/client_location_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="24" selection-start="508" selection-end="508" vertical-scroll-proportion="0.22796352" vertical-offset="0" max-vertical-offset="658">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meals/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="20" selection-start="122" selection-end="136" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/clients/api/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="199" selection-end="199" vertical-scroll-proportion="0.13363029" vertical-offset="0" max-vertical-offset="449">
+        <state line="6" column="60" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="195">
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_meal_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="74" selection-start="1127" selection-end="1127" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="97" column="28" selection-start="4205" selection-end="4205" vertical-scroll-proportion="-9.653846" vertical-offset="1084" max-vertical-offset="1710">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="0" selection-end="2460" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1245">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clients/api/client_location_meal_detail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="65" selection-start="1390" selection-end="1390" vertical-scroll-proportion="0.775076" vertical-offset="105" max-vertical-offset="1230">
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

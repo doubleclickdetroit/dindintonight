@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from clients.api import ClientList, ClientDetail, ClientLocationList, ClientLocationDetail, ClientLocationDetailDetail
+from clients.api.client_location_meal_list import ClientLocationMealList
 
 urlpatterns = patterns('',
     # Clients
@@ -12,6 +13,11 @@ urlpatterns = patterns('',
     url(r'^clients/(?P<client_id>[0-9]+)/locations/(?P<pk>[0-9]+)/$', ClientLocationDetail.as_view(),
         name="api-v1-client-location-detail"),
 
+    # Client Location Meals
+    url(r'^clients/(?P<client_id>[0-9]+)/locations/(?P<client_location_id>[0-9]+)/meals/$',
+        ClientLocationMealList.as_view(), name="api-v1-client-location-meal-list"),
+    # url(r'^clients/(?P<client_id>[0-9]+)/locations/(?P<pk>[0-9]+)/$', ClientLocationDetail.as_view(),
+    #     name="api-v1-client-location-detail"),
 
     # Client Location Detail
     url(r'^clients/(?P<client_id>[0-9]+)/locations/(?P<client_location_id>[0-9]+)/details/$',

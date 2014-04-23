@@ -8,8 +8,8 @@ class ClientLocationDetail(BaseModel):
     address1 = models.CharField(max_length=255, blank=True)
     address2 = models.CharField(max_length=255, blank=True)
     address3 = models.CharField(max_length=255, blank=True)
-    phone_number = models.CharField(max_length=20)
-    manager_name = models.CharField(max_length=255)
+    phone_number = models.CharField(max_length=20, blank=True)
+    manager_name = models.CharField(max_length=255, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

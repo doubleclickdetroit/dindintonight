@@ -3,8 +3,9 @@ from django.core import validators
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from clients.models import Client, ClientLocationDetail, ClientLocation, ClientUser
+from clients.models import Client, ClientLocationDetail, ClientLocation, ClientUser, ClientLocationMeal
 from locations.serializers import LocationSerializer
+from meals.serializers import MealSerializer
 from users.serializers import UserSerializer
 
 
@@ -83,6 +84,21 @@ class ClientSerializer(serializers.ModelSerializer):
 
     def get_client_locations_uri(self, obj):
         return reverse('api-v1-client-location-list', args=[obj.pk])
+
+
+class ClientLocationMealSerializer(serializers.ModelSerializer):
+    id = serializers.Field()
+    client_location = ClientLocationSerializer()
+    meal = MealSerializer()
+    resource_uri = serializers.SerializerMethodField('get_resource_uri')
+
+    class Meta:
+        model = ClientLocationMeal
+        fields = ('id', 'client_location', 'meal', 'is_enabled', 'created', 'modified')
+        read_only_fields = ('created', 'modified',)
+
+    def get_resource_uri(self, obj):
+        return '' # reverse('api-v1-client-location-detail', args=[obj.client.pk, obj.pk])
 
 
 class ClientUserSerializer(serializers.ModelSerializer):

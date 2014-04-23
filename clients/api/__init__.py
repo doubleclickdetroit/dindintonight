@@ -3,3 +3,5 @@ from client_list import ClientList
 from client_location_detail import ClientLocationDetail
 from client_location_detail_detail import ClientLocationDetailDetail
 from client_location_list import ClientLocationList
+
+from client_location_meal_list import ClientLocationMealList
