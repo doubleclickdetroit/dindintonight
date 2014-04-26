@@ -2,7 +2,7 @@
 
 
 from os.path import join, normpath
-
+import re
 from base import *
 
 
@@ -45,6 +45,7 @@ CACHES = {
 
 
 ########## TOOLBAR CONFIGURATION
+
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
 INSTALLED_APPS += (
     'debug_toolbar',
@@ -65,8 +66,10 @@ MIDDLEWARE_CLASSES += (
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
     'SHOW_TEMPLATE_CONTEXT': True,
+    'SHOW_TOOLBAR_CALLBACK': 'core.helpers.django_toolbar.show_django_debug_toolbar',
 }
 ########## END TOOLBAR CONFIGURATION
+
 
 try:
     from override import *

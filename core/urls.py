@@ -29,6 +29,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     # API
+    url(r'^api/v1/', include('charges.urls_api_v1')),
     url(r'^api/v1/', include('franchises.urls_api_v1')),
     url(r'^api/v1/', include('locations.urls_api_v1')),
     url(r'^api/v1/', include('clients.urls_api_v1')),

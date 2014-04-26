@@ -64,3 +64,9 @@ CACHES = {}
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = get_env_setting('SECRET_KEY')
 ########## END SECRET CONFIGURATION
+
+
+########## STRIPE CREDIT CARD PROCESSING
+STRIPE_SECRET_KEY = 'sk_live_oTd6djTNRxCeURqgLUYgGLl3'
+STRIPE_PUBLISHABLE_KEY = 'pk_live_8zQjpc9a3HnrLCYVttDDKTMh'
+########## END STRIPE CREDIT CARD PROCESSING

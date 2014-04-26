@@ -214,6 +214,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'anonymous_users',
     'cards',
+    'charges',
     'clients',
     'core',
     'franchises',
@@ -318,3 +319,9 @@ REST_FRAMEWORK = {
     # ]
 }
 ########## END DJANGO REST FRAMEWORK CONFIGURATION
+
+
+########## STRIPE CREDIT CARD PROCESSING
+STRIPE_SECRET_KEY = 'sk_test_XT2yA3vy3Vs9rP9Nb0B37aW6'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_3NyGXdUaWYpsRacIxKN0ndr8'
+########## END STRIPE CREDIT CARD PROCESSING
