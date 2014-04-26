@@ -5,7 +5,7 @@ from locations.serializers import LocationSerializer
 from users.models import User, UserLocation
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     locations = LocationSerializer(source='locations', many=True)
     social_accounts = serializers.SerializerMethodField('get_social_accounts')
@@ -27,7 +27,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             return None
 
 
-class UserLocationSerializerNoUserFK(serializers.HyperlinkedModelSerializer):
+class UserLocationSerializerNoUserFK(serializers.ModelSerializer):
     id = serializers.Field()
     location = LocationSerializer()
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
@@ -41,7 +41,7 @@ class UserLocationSerializerNoUserFK(serializers.HyperlinkedModelSerializer):
         return '' # reverse('api-v1-user-detail', args=[obj.pk])
 
 
-class UserLocationEditableSerializerNoUserFK(serializers.HyperlinkedModelSerializer):
+class UserLocationEditableSerializer(serializers.ModelSerializer):
     id = serializers.Field()
 
     class Meta:
@@ -50,7 +50,7 @@ class UserLocationEditableSerializerNoUserFK(serializers.HyperlinkedModelSeriali
         read_only_fields = ('created', 'modified',)
 
 
-class SocialAccountSerializer(serializers.HyperlinkedModelSerializer):
+class SocialAccountSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     social_tokens = serializers.SerializerMethodField('get_social_tokens')
 
@@ -66,7 +66,7 @@ class SocialAccountSerializer(serializers.HyperlinkedModelSerializer):
             return None
 
 
-class SocialAppSerializer(serializers.HyperlinkedModelSerializer):
+class SocialAppSerializer(serializers.ModelSerializer):
     id = serializers.Field()
 
     class Meta:
@@ -75,7 +75,7 @@ class SocialAppSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('provider', 'name', 'client_id', 'key',)
 
 
-class SocialTokenSerializer(serializers.HyperlinkedModelSerializer):
+class SocialTokenSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     app = SocialAppSerializer()
 

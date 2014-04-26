@@ -5,13 +5,15 @@ from core.models import BaseModel
 
 class Location(BaseModel):
     id = models.AutoField(primary_key=True)
-    city = models.CharField(max_length=255)
-    state = models.CharField(max_length=255)
-    zip_code = models.CharField(max_length=50)
+    city = models.CharField(max_length=255, db_index=True)
+    state = models.CharField(max_length=255, db_index=True)
+    zip_code = models.CharField(max_length=50, db_index=True)
     latitude = models.DecimalField(max_digits=10, decimal_places=6)
     longitude = models.DecimalField(max_digits=10, decimal_places=6)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    index_together = ['city', 'state']
 
     class Meta:
         app_label = 'locations'
