@@ -98,7 +98,17 @@ class ClientLocationMealSerializer(serializers.ModelSerializer):
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
-        return '' # reverse('api-v1-client-location-detail', args=[obj.client.pk, obj.pk])
+        return reverse('api-v1-client-location-meal-detail', args=[obj.client_location.client.pk,
+                                                                   obj.client_location.pk, obj.pk])
+
+
+class ClientLocationMealEditableSerializer(serializers.ModelSerializer):
+    id = serializers.Field()
+
+    class Meta:
+        model = ClientLocationMeal
+        fields = ('id', 'client_location', 'meal', 'is_enabled', 'created', 'modified')
+        read_only_fields = ('created', 'modified',)
 
 
 class ClientUserSerializer(serializers.ModelSerializer):

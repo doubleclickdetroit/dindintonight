@@ -61,7 +61,6 @@ class UserList(RESTView):
                 ]
                 errors = True
 
-
         if post_data.get('email', None) is None:
             response['email'] = [
                 'Email is a required field!',

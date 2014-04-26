@@ -1,6 +1,7 @@
-from clients.models import ClientLocationMeal
-from clients.serializers import ClientLocationMealSerializer
+from clients.models import ClientLocationMeal, Client, ClientLocation
+from clients.serializers import ClientLocationMealSerializer, ClientLocationMealEditableSerializer
 from core.api.RestView import RESTView
+from meals.models import Meal
 
 
 class ClientLocationMealList(RESTView):
@@ -33,37 +34,38 @@ class ClientLocationMealList(RESTView):
         return self.list_results(request, results, ClientLocationMealSerializer, use_cache=True,
                                  cache_time=self.CACHE_30_DAYS, cache_version=1)
 
-    # def _handle_post(self, request, *args, **kwargs):
-    #     """
-    #     POST handler for Client Location Meal List
-    #     Sample Post Data:
-    #     {
-    #         "location": 1234
-    #     }
-    #     """
-    #     try:
-    #         client = Client.objects.get(pk=kwargs.get('client_id'))
-    #     except Client.DoesNotExist:
-    #         self.raise_not_found()
-    #
-    #     post_data = request.DATA
-    #     post_data['client'] = client.pk
-    #
-    #     try:
-    #         Location.objects.get(pk=post_data.get('location', None))
-    #     except Location.DoesNotExist:
-    #         response = {
-    #             'location': [
-    #                 'Invalid location!',
-    #             ]
-    #         }
-    #         self.raise_bad_request(response)
-    #
-    #     serializer = ClientLocationEditableSerializer(data=post_data)
-    #
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #
-    #         return ClientLocationSerializer(ClientLocation.objects.get(pk=serializer.data.get('id'))).data
-    #
-    #     return self.raise_bad_request(serializer.errors)
+    def _handle_post(self, request, *args, **kwargs):
+        """
+        POST handler for Client Location Meal List
+        Sample Post Data:
+        {
+            "location": 1234
+        }
+        """
+        try:
+            client = Client.objects.get(pk=kwargs.get('client_id'))
+        except Client.DoesNotExist:
+            self.raise_not_found()
+
+        try:
+            client_location = ClientLocation.objects.get(pk=kwargs.get('client_location_id'), client=client)
+        except Client.DoesNotExist:
+            self.raise_not_found()
+
+        post_data = request.DATA
+
+        try:
+            meal = Meal.objects.get(pk=post_data.get('meal'))
+        except Client.DoesNotExist:
+            self.raise_not_found()
+
+        post_data['client_location'] = client_location.pk
+
+        serializer = ClientLocationMealEditableSerializer(data=post_data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return ClientLocationMealSerializer(serializer.object).data
+
+        return self.raise_bad_request(serializer.errors)
