@@ -1,4 +1,4 @@
-from core.api.RestView import RESTView
+from core.api import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
 

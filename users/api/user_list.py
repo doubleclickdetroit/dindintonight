@@ -1,5 +1,5 @@
 from users.models import User
-from core.api.RestView import RESTView
+from core.api import RESTView
 from users.serializers import UserSerializer
 
 

@@ -1,6 +1,6 @@
 from locations.models import Location
 from users.models import UserLocation, User
-from core.api.RestView import RESTView
+from core.api import RESTView
 from users.serializers import UserLocationEditableSerializer, UserLocationSerializerNoUserFK
 
 

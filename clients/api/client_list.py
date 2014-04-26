@@ -1,6 +1,6 @@
 from clients.models import Client, ClientUser
 from clients.serializers import ClientSerializer
-from core.api.RestView import RESTView
+from core.api import RESTView
 
 
 class ClientList(RESTView):

@@ -1,5 +1,5 @@
 from users.models import User
-from core.api.RestView import RESTView
+from core.api import RESTView
 from core.utils import debug_print
 from vendors.models import VendorUser, Vendor
 from vendors.serializers import VendorSerializer

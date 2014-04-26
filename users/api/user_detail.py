@@ -1,4 +1,4 @@
-from core.api.RestView import RESTView
+from core.api import RESTView
 from users.models import User
 from users.serializers import UserSerializer
 

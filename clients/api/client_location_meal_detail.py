@@ -1,6 +1,6 @@
 from clients.models import ClientLocationMeal
 from clients.serializers import ClientLocationMealSerializer, ClientLocationMealEditableSerializer
-from core.api.RestView import RESTView
+from core.api import RESTView
 
 
 class ClientLocationMealDetail(RESTView):

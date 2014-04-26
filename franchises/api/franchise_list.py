@@ -1,4 +1,4 @@
-from core.api.RestView import RESTView
+from core.api import RESTView
 from franchises.models import Franchise
 from franchises.serializers import FranchiseSerializer
 

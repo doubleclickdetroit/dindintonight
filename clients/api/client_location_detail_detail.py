@@ -1,6 +1,6 @@
 from clients.models import ClientLocationDetail, ClientLocation
 from clients.serializers import ClientLocationDetailSerializer
-from core.api.RestView import RESTView
+from core.api import RESTView
 
 
 class ClientLocationDetailDetail(RESTView):
