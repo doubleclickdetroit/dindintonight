@@ -23,8 +23,8 @@ class ClientLocationSearchList(RESTView):
         :request - HTTP request from the api call
         :client_id - The ID of the client that we want to get locations for
         """
-        results = ClientLocation.objects.prefetch_related('location').prefetch_related('client').order_by(
-            'location__state', 'location__city')
+        results = ClientLocation.objects.prefetch_related('location').prefetch_related('client').filter(
+            meals__gt=0).order_by('location__state', 'location__city')
 
         state = request.GET.get('state', None)
         city = request.GET.get('city', None)
@@ -63,4 +63,4 @@ class ClientLocationSearchList(RESTView):
             return self.raise_bad_request(response)
 
         return self.list_results(request, results, ClientLocationSerializer, use_cache=True,
-                                      cache_time=self.CACHE_30_DAYS, cache_version=1)
+                                 cache_time=self.CACHE_30_DAYS, cache_version=1)
