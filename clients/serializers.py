@@ -93,10 +93,11 @@ class ClientLocationSerializer(serializers.ModelSerializer):
     details = ClientLocationDetailSerializer(source='details', required=False)
     client_uri = serializers.SerializerMethodField('get_client_uri')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
+    meals_uri = serializers.SerializerMethodField('get_client_location_meals_uri')
 
     class Meta:
         model = ClientLocation
-        fields = ('id', 'client', 'client_uri', 'location', 'details', 'created', 'modified', 'resource_uri')
+        fields = ('id', 'client', 'client_uri', 'location', 'details', 'created', 'modified', 'meals_uri', 'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
@@ -104,6 +105,9 @@ class ClientLocationSerializer(serializers.ModelSerializer):
 
     def get_client_uri(self, obj):
         return reverse('api-v1-client-detail', args=[obj.client.pk])
+
+    def get_client_location_meals_uri(self, obj):
+        return reverse('api-v1-client-location-meal-list', args=[obj.pk, obj.client.pk])
 
 
 class ClientLocationMealSerializer(serializers.ModelSerializer):
