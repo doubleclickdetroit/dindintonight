@@ -5,3 +5,4 @@ from client_location_detail_detail import ClientLocationDetailDetail
 from client_location_list import ClientLocationList
 from client_location_meal_detail import ClientLocationMealDetail
 from client_location_meal_list import ClientLocationMealList
+from client_location_search_list import ClientLocationSearchList

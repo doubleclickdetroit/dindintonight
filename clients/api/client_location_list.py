@@ -1,5 +1,5 @@
 from clients.models import ClientLocation, Client
-from clients.serializers import ClientLocationSerializer, ClientLocationEditableSerializer
+from clients.serializers import ClientLocationMinimumSerializer, ClientLocationEditableSerializer
 from core.api.RestView import RESTView
 from locations.models import Location
 
@@ -31,7 +31,7 @@ class ClientLocationList(RESTView):
         results = ClientLocation.objects.prefetch_related('location').filter(client__pk=kwargs.get('client_id')).\
             order_by('location__state', 'location__city')
 
-        return self.list_results(request, results, ClientLocationSerializer, use_cache=True,
+        return self.list_results(request, results, ClientLocationMinimumSerializer, use_cache=True,
                                       cache_time=self.CACHE_30_DAYS, cache_version=1)
 
     def _handle_post(self, request, *args, **kwargs):
@@ -65,6 +65,6 @@ class ClientLocationList(RESTView):
         if serializer.is_valid():
             serializer.save()
 
-            return ClientLocationSerializer(ClientLocation.objects.get(pk=serializer.data.get('id'))).data
+            return ClientLocationMinimumSerializer(ClientLocation.objects.get(pk=serializer.data.get('id'))).data
 
         return self.raise_bad_request(serializer.errors)
