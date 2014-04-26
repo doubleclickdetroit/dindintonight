@@ -30,7 +30,7 @@ class ClientLocationSearchList(RESTView):
         city = request.GET.get('city', None)
         zip_code = request.GET.get('zip_code', None)
 
-        response = []
+        response = {}
 
         if state is not None and city is not None:
             results = results.filter(location__state__iexact=state, location__city__iexact=city)
