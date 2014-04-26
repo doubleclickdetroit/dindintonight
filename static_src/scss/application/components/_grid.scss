@@ -1,0 +1,5 @@
+#layout {
+    position:         relative;
+    background-color: $white;
+    @include transition(.5s);
+}

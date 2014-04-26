@@ -1,0 +1,20 @@
+.btn-orange {
+    @include button-variant($background: $orange, $shadow: darken($orange, 10%));
+}
+
+.btn-transparent-white {
+    @include button-variant($background: transparent, $shadow: $white);
+    border: 2px solid $white;
+}
+
+.btn-center {
+    @extend %center-child-element;
+}
+
+.btn {
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        @include filter(grayscale(80%));
+    }
+}

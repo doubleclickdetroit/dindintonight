@@ -1,0 +1,144 @@
+// Grays
+// -------------------------
+
+$gray-darkest:           #0D2D33 !default;
+$gray-darker:            #26474D !default;
+$gray-dark:              #4A6767 !default;
+$gray:                   #6E8888 !default;
+$gray-light:             #93ADAE !default;
+$gray-lighter:           #B9CBCB !default;
+$gray-lightest:          #E0E8E9 !default;
+
+// Grey name analogues because bootstrap developers don't know how to spell grey
+$grey-darkest:           $gray-darkest;
+$grey-darker:            $gray-darker;
+$grey-dark:              $gray-dark;
+$grey:                   $gray;
+$grey-light:             $gray-light;
+$grey-lighter:           $gray-lighter;
+$grey-lightest:          $gray-lightest;
+
+// Primary Colors
+// -------------------------
+
+$red:                    #F26A42 !default;
+$orange:                 #F8963F !default;
+$yellow:                 #F7D764 !default;
+$green:                  #2BB673 !default;
+$blue:                   #2B8596 !default;
+
+$white:                  #ffffff !default;
+$black:                  #000000 !default;
+
+// Colors Shades
+// -------------------------
+$red-darker:             darken($red, 20%);
+$red-dark:               darken($red, 10%);
+$red-light:              lighten($red, 10%);
+$red-lighter:            lighten($red, 20%);
+
+$orange-darker:          darken($orange, 20%);
+$orange-dark:            darken($orange, 10%);
+$orange-light:           lighten($orange, 10%);
+$orange-lighter:         lighten($orange, 20%);
+
+$yellow-darker:          darken($yellow, 20%);
+$yellow-dark:            darken($yellow, 10%);
+$yellow-light:           lighten($yellow, 10%);
+$yellow-lighter:         lighten($yellow, 20%);
+
+$green-darker:           darken($green, 20%);
+$green-dark:             darken($green, 10%);
+$green-light:            lighten($green, 10%);
+$green-lighter:          lighten($green, 20%);
+
+$blue-darker:            darken($blue, 20%);
+$blue-dark:              darken($blue, 10%);
+$blue-light:             lighten($blue, 10%);
+$blue-lighter:           lighten($blue, 20%);
+
+
+// Brand colors
+// -------------------------
+
+$brand-primary:         $blue !default;
+$brand-success:         $green !default;
+$brand-warning:         $orange !default;
+$brand-danger:          $red !default;
+$brand-info:            #80B6C0 !default;
+
+// Other colors
+// -------------------------
+$facebook-color:        #3c5a98 !default;
+
+// File Locations
+// -------------------------
+$source-path: '..' !default;
+$image-path:  '#{$source-path}/images' !default;
+
+// Scaffolding
+// -------------------------
+
+$text-color:            $gray-darkest !default;
+
+// Typography
+// -------------------------
+
+$font-family-sans-serif:  "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$headings-font-family:    'Montserrat', $font-family-sans-serif !default;
+$headings-font-weight:    700 !default;
+$headings-color:          $brand-primary !default;
+
+
+// Iconography
+// -------------------------
+$fa-css-prefix:           icon !default;
+$fa-font-path:            "../fonts" !default;
+$icon-font-name:          "FontAwesome" !default;
+
+
+// Buttons
+// -------------------------
+$button-shadow-percent: 10%;
+
+$btn-default-color:              $gray-darker !default;
+$btn-default-bg:                 $gray-lighter !default;
+$btn-default-border:             darken($gray-lighter, $button-shadow-percent) !default;
+
+$btn-primary-bg:                 $brand-primary !default;
+$btn-primary-border:             darken($btn-primary-bg, $button-shadow-percent) !default;
+
+$btn-success-bg:                 $brand-success !default;
+$btn-success-border:             darken($btn-success-bg, $button-shadow-percent) !default;
+
+$btn-warning-bg:                 $brand-warning !default;
+$btn-warning-border:             darken($btn-warning-bg, $button-shadow-percent) !default;
+
+$btn-danger-bg:                  $brand-danger !default;
+$btn-danger-border:              darken($btn-danger-bg, $button-shadow-percent) !default;
+
+$btn-info-bg:                    $brand-info !default;
+$btn-info-border:                darken($btn-info-bg, $button-shadow-percent) !default;
+
+$btn-link-disabled-color:        $gray-lighter !default;
+
+// Badges
+// We don't need no stinkin' ones
+// -------------------------
+$badge-font-weight:           normal !default;
+
+
+// Navbar
+// -------------------------
+
+$navbar-height:                    61px !default;
+
+$navbar-default-bg:                $white !default;
+$navbar-border-radius:             0 !default;
+$navbar-default-border:            $gray-lighter !default;
+
+
+// Container sizes
+// --------------------------------------------------
+
+$container-xs:                     auto !default;

@@ -1,0 +1,116 @@
+@mixin ui-todos( $el ) {
+
+  #{$el} {
+    position: relative;
+    line-height: normal;
+    font-size: .9em;
+
+    &:before {
+      position: absolute;
+      display: block;
+      top : 2px;
+      left: 0;
+      width      : 25px;
+      height     : 25px;
+      line-height: 25px;
+      opacity: .2;
+      content: '\f061';
+      text-indent: 4px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 18px;
+      font-family: $icon-font-name;
+
+      @include border-radius( 25px );
+      @include styleBullet( $orange );
+    }
+
+    &.middle {
+      &:before {
+        top: 50%;
+        margin-top: -13px;
+      }
+    }
+  }
+
+  #{$el}:first-child,
+  #{$el}.complete + #{$el} {
+    &:before {
+      opacity: 1;
+      content: '\f061';
+      color: $white;
+
+      // animate!
+      @include animation(sliding_todo, 2s, linear, infinite);
+    }
+  }
+
+  #{$el}.complete {
+    &:before {
+      opacity: 1;
+      color: $white;
+      content: '\f00c' !important; // Check
+      text-indent: 2px;
+      @include styleBullet( $green );
+
+      // pause animation
+      -webkit-animation-play-state:paused;
+      -moz-animation-play-state   :paused;
+      -o-animation-play-state     :paused;
+      animation-play-state        :paused;
+    }
+  }
+
+  #{$el} {
+    @if $el == button {
+      &.disabled,
+      &:disabled {
+        &:before {
+          display: none;
+        }
+      }
+
+      &:before {
+        margin-left: -40px;
+      }
+    }
+
+    @else {
+      padding-left: 40px;
+      color: #888;
+
+      &:before {
+        color: $white;
+      }
+      &:first-child,
+      &.complete + li {
+        color: #666;
+      }
+      &.complete {
+        color: #999 !important;
+      }
+    }
+  }
+}
+
+
+@mixin styleBullet($color) {
+  border: 1px solid darken( $color, 10% );
+  background-color: $color;
+}
+
+
+// keyframes
+@include keyframe(sliding_todo) {
+  0% {
+    left: 0px;
+  }
+
+  50% {
+    left: 10px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}

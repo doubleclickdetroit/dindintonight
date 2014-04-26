@@ -1,0 +1,13 @@
+.js-card-stack, .card-stack{
+    .card{
+        &.default,
+        &.active {
+            display:block;
+        }
+
+        &,
+        &.inactive {
+            display:none;
+        }
+    }
+}

@@ -1,0 +1,536 @@
+// Vendor Prefixes
+// --------------------------
+// When you want to use things like box-shadow or other CSS properties that
+// require vendor prefixes. Or use something like Compass. I don't care, I'm
+// not your Mom.
+
+// Format:
+
+// $property:   The CSS property you want to prefix
+// $value:      The value you want for your property
+// $vendors:    The vendor prefixes you want to use.
+// $no-prefix:  When you want to have a bare-property (you typically will)
+
+
+@mixin vendor-prefix($property, $value, $vendors: ('webkit','moz', 'o'), $no-prefix: true) {
+    @each $vendor in $vendors  {
+        #{-#{$vendor}-#{$property}}: $value;
+    }
+    // Bare Property
+    @if $no-prefix == true {
+        #{$property}: $value;
+    }
+}
+
+@mixin background-size($size) {
+    @include vendor-prefix('background-size', $size);
+}
+
+@mixin border-radius($size) {
+    @include vendor-prefix('border-radius', $size);
+}
+
+@mixin calc($property, $expression) {
+    #{$property}: -moz-calc(#{$expression});
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+@mixin filter($value) {
+    @include vendor-prefix('filter', $value, $vendors: ('webkit'))
+}
+
+@mixin animation-duration($duration) {
+    @include vendor-prefix('animation-duration', $duration);
+}
+
+@mixin animation-timing-function($timing) {
+    @include vendor-prefix('animation-timing-function', $timing);
+}
+
+@mixin animation-iteration-count($iteration) {
+    @include vendor-prefix('animation-iteration-count', $iteration);
+}
+
+@mixin animation-delay($delay) {
+    @include vendor-prefix('animation-delay', $delay);
+}
+
+@mixin animation-fill-mode($fill-mode) {
+    @include vendor-prefix('animation-fill-mode', $fill-mode);
+}
+
+// Grid System
+// -----------
+// Semantic Grid Mixins
+
+
+// Rivet Framework Grid
+%row {
+    margin-left:  ($grid-gutter-width / -2);
+    margin-right: ($grid-gutter-width / -2);
+    @include clearfix();
+}
+
+
+%container-fixed {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left:  ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+    @include clearfix();
+}
+
+%column {
+    position: relative;
+    // Prevent columns from collapsing when empty
+    min-height: 1px;
+    // Inner gutter via padding
+    padding-left:  ($grid-gutter-width / 2);
+    padding-right: ($grid-gutter-width / 2);
+}
+
+// Form removing XS grid-styles from the media-query
+@mixin check-at-root($size) {
+    @if $size == 'xs' {
+        @at-root(without: media) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}
+
+$grid-sizes : ('xs', $screen-xs-min, $container-xs),
+              ('sm', $screen-sm-min, $container-sm),
+              ('md', $screen-md-min, $container-md),
+              ('lg', $screen-lg-min, $container-lg);
+
+@each $size, $screen-size, $container-size in $grid-sizes {
+
+    @media (min-width: $screen-size) {
+        %container {
+            @include check-at-root($size) {
+                width: $container-size;
+            }
+        }
+        @for $index from 1 through $grid-columns {
+            %col-#{$size}-#{$index} {
+                @include check-at-root($size) {
+                    width: percentage($index / $grid-columns);
+                    float: left;
+                }
+            }
+
+            %col-#{$size}-push-#{$index} {
+                @include check-at-root($size) {
+                    left: percentage(($index / $grid-columns));
+                }
+            }
+
+            %col-#{$size}-pull-#{$index} {
+                @include check-at-root($size) {
+                    right: percentage(($index / $grid-columns));
+                }
+            }
+
+            %col-#{$size}-offset-#{$index} {
+                @include check-at-root($size) {
+                    margin-left: percentage(($index / $grid-columns));
+                }
+            }
+        }
+    }
+}
+
+@mixin container-fixed() {
+    @extend %container-fixed;
+}
+
+@mixin container() {
+    @extend %container;
+    @extend %container-fixed;
+}
+
+@mixin row() {
+    @extend %row;
+}
+
+// Extra Small Column Mixins
+
+@mixin make-xs-column($columns) {
+    @extend %column;
+    @extend %col-xs-#{$columns};
+}
+
+@mixin make-xs-column-push($columns) {
+    @extend %col-xs-push-#{$columns};
+}
+
+@mixin make-xs-column-pull($columns) {
+    @extend %col-xs-pull-#{$columns};
+}
+
+@mixin make-xs-column-offset($columns) {
+    @extend %col-xs-offset-#{$columns};
+}
+
+// Small Column Mixins
+
+@mixin make-sm-column($columns) {
+    @extend %column;
+    @extend %col-sm-#{$columns};
+}
+
+@mixin make-sm-column-push($columns) {
+    @extend %col-sm-push-#{$columns};
+}
+
+@mixin make-sm-column-pull($columns) {
+    @extend %col-sm-pull-#{$columns};
+}
+
+@mixin make-sm-column-offset($columns) {
+    @extend %col-sm-offset-#{$columns};
+}
+
+// Medium Column Mixins
+
+@mixin make-md-column($columns) {
+    @extend %column;
+    @extend %col-md-#{$columns};
+}
+
+@mixin make-md-column-push($columns) {
+    @extend %col-md-push-#{$columns};
+}
+
+@mixin make-md-column-pull($columns) {
+    @extend %col-md-pull-#{$columns};
+}
+
+@mixin make-md-column-offset($columns) {
+    @extend %col-md-offset-#{$columns};
+}
+
+// Large Column Mixins
+
+@mixin make-lg-column($columns) {
+    @extend %column;
+    @extend %col-lg-#{$columns};
+}
+
+@mixin make-lg-column-push($columns) {
+    @extend %col-lg-push-#{$columns};
+}
+
+@mixin make-lg-column-pull($columns) {
+    @extend %col-lg-pull-#{$columns};
+}
+
+@mixin make-lg-column-offset($columns) {
+    @extend %col-lg-offset-#{$columns};
+}
+
+// Vertically aligned content container
+
+@mixin make-valign-container() {
+    display:      table;
+    table-layout: fixed;
+    margin-left:  auto;
+    margin-right: auto;
+    width:        100%;
+
+    @media (min-width: $screen-sm-min) {
+        width: $container-sm;
+    }
+
+    @media (min-width: $screen-md-min) {
+        width: $container-md;
+    }
+
+    @media (min-width: $screen-lg-min) {
+        width: $container-lg;
+    }
+}
+
+@mixin make-valign-row() {
+    display: table-row;
+}
+
+// Vertically aligned columns
+
+@mixin make-xs-valign-column($columns, $gutter: $grid-gutter-width, $valign: middle ) {
+    position:       relative;
+    // Prevent columns from collapsing when empty
+    min-height:     1px;
+    // Inner gutter via padding
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    vertical-align: $valign;
+    width:   percentage(($columns / $grid-columns));
+    display: table-cell;
+}
+
+@mixin make-xs-order-change($position: header) {
+    @if ($position == header) {
+        display: table-header-group;
+    }
+    @elseif $position == footer {
+        display: table-footer-group;
+    }
+}
+
+@mixin make-sm-valign-column($columns, $gutter: $grid-gutter-width, $valign: middle ) {
+    position:       relative;
+    // Prevent columns from collapsing when empty
+    min-height:     1px;
+    // Inner gutter via padding
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    vertical-align: $valign;
+
+    @media (min-width: $screen-sm-min) {
+        width:   percentage(($columns / $grid-columns));
+        display: table-cell;
+    }
+}
+
+@mixin make-sm-order-change($position: header) {
+    @media (max-width: ($screen-sm - 1px)) {
+        @if $position == header {
+            display: table-header-group;
+        }
+        @elseif $position == footer {
+            display: table-footer-group;
+        }
+    }
+}
+
+@mixin make-md-valign-column($columns, $gutter: $grid-gutter-width, $valign: middle ) {
+    position:       relative;
+    // Prevent columns from collapsing when empty
+    min-height:     1px;
+    // Inner gutter via padding
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    vertical-align: $valign;
+
+    @media (min-width: $screen-md-min) {
+        width:   percentage(($columns / $grid-columns));
+        display: table-cell;
+    }
+}
+
+@mixin make-md-order-change($position: header) {
+    @media (max-width: ($screen-md - 1px)) {
+        @if $position == header {
+            display: table-header-group;
+        }
+        @elseif $position == footer {
+            display: table-footer-group;
+        }
+    }
+}
+
+@mixin make-lg-valign-column($columns, $gutter: $grid-gutter-width, $valign: middle ) {
+    position:       relative;
+    // Prevent columns from collapsing when empty
+    min-height:     1px;
+    // Inner gutter via padding
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    vertical-align: $valign;
+
+    @media (min-width: $screen-lg-min) {
+        width:   percentage(($columns / $grid-columns));
+        display: table-cell;
+    }
+}
+
+@mixin make-lg-order-change($position: header) {
+    @media (max-width: ($screen-lg - 1px)) {
+        @if $position == header {
+            display: table-header-group;
+        }
+        @elseif $position == footer {
+            display: table-footer-group;
+        }
+    }
+}
+
+
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+@mixin button-variant($color: $white, $background: $brand-primary, $shadow: $brand-primary) {
+    color:               $color;
+    background-color:    $background;
+    border-color:        $background;
+    border-bottom-color: $shadow;
+    border-bottom-width: 2px;
+    @include transition(.2s);
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        @if $background != transparent {
+            color: $color;
+            background-color: darken($background, 10%);
+        }
+        @else {
+            color: invert($color);
+            background-color: $shadow;
+        }
+    }
+    .open & { &.dropdown-toggle {
+        color: $color;
+        @if $background != transparent {
+            color: $color;
+            background-color: darken($background, 10%);
+        }
+        @else {
+            color: invert($color);
+            background-color: $shadow;
+        }
+    } }
+    &:active,
+    &.active {
+        @include box-shadow(inset 0 3px 0 darken($shadow, 5%));
+    }
+    .open & { &.dropdown-toggle {
+        background-image: none;
+    } }
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        &,
+        &:hover,
+        &:focus,
+        &:active,
+        &.active {
+            background-color: $background;
+        }
+    }
+}
+
+
+// Removing WebKit-style focus
+@mixin tab-focus() {
+  outline: none;
+}
+
+// Media Query Mixins
+// Supply nothing to default to the screen-sm-min breakpoint
+@mixin media-query($min-width: null, $max-width: null) {
+
+    @if $min-width and $max-width {
+        @media (min-width: $min-width) and (max-width: $max-width) { @content; }
+    }
+    @else if $min-width {
+        @media (min-width: $min-width) { @content; }
+    }
+    @else if $max-width {
+        @media (max-width: $max-width) { @content; }
+    }
+    @else {
+        @media (max-width: $screen-sm-min) { @content; }
+    }
+
+}
+
+// Fill-Div/Fullscreen Image
+// --------------------------
+// Sets the background image to fill the enclosing div.
+
+// Format:
+
+// $file:       Image Name and path
+// $extention:  Image extention with "."
+// $attachment: When attachment is set to "fixed", it will remain fixed
+//              relative to the browser window. "scroll" will move as normal.
+// $position:   The placement of the background in relation to its div
+// $retina:     True/false if the image has retina optimized verison in the
+//              format "image_name@2x"
+// $ie:         If you also need IE support for your background image.
+//              You will also need a lt-ie9 class on your HTML element.
+//              If you don't know what I mean, see:
+//              http://www.paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+
+@mixin fill-image($file, $extention: '.jpg', $attachment: scroll, $position: center center, $size: cover, $retina: false, $ie: false) {
+    @if $ie == false {
+        background-image: url(#{$file}#{$extention});
+        background-attachment: $attachment;
+        background-position: $position;
+        @include background-size($size);
+        @if $retina == true {
+            @media all and (-webkit-min-device-pixel-ratio : 1.5) {
+                background-image: url(#{$file}#{'@2x'}#{$extention});
+            }
+        }
+    }
+    @elseif $ie == true {
+        filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$file}#{$extention}', sizingMethod='scale');
+        -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$file}#{$extention}', sizingMethod='scale')";
+    }
+}
+
+
+// Animation
+// --------------------------
+// Creates CSS3 Animations
+
+// Format:
+
+// $animation:  Name of animation (Defined within Keyframe)
+// $duration:   How long the animation takes (ex. .5s)
+// $timing:     Specifies the way an animation should prgress over its duration
+//              (ex. linear, ease, ease-in, etc)
+// $iteration:  How many times an animation should run (infinite or # of times)
+// $delay:      How long the animation should wait until it starts (ex. .5s)
+// $fill-mode:  How an animation should apply styles to its target before and
+//              after it is executing.  (ex. forwards, backwards, both, none)
+
+@mixin animation ($animation, $duration: null , $timing: null , $iteration: null, $delay: null, $fill-mode: null) {
+
+    @include vendor-prefix('animation-name', #{$animation});
+    @if $duration {
+        @include animation-duration($duration);
+    }
+    @if $timing {
+        @include animation-timing-function($timing);
+    }
+    @if $iteration {
+        @include animation-iteration-count($iteration);
+    }
+    @if $delay {
+        @include animation-delay($delay);
+    }
+    @if $fill-mode {
+        @include animation-fill-mode($fill-mode);
+    }
+
+}
+
+@mixin keyframe ($animation_name) {
+    @at-root {
+        @-webkit-keyframes $animation_name {
+            @content;
+        }
+
+        @-moz-keyframes $animation_name {
+            @content;
+        }
+
+        @-o-keyframes $animation_name {
+            @content;
+        }
+
+        @keyframes $animation_name {
+            @content;
+        }
+    }
+}

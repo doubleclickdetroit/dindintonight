@@ -9,9 +9,12 @@ vendor/*
 api/vendor/*
 .idea/*
 
+.grunt
+static/*
+static_src/lib/bower_components/*
+
 .db
 .tmp
 .sass-cache
 dist
 node_modules
-www/app/bower_components/*

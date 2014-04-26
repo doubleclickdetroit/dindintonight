@@ -1,0 +1,57 @@
+form {
+    .errors {
+         // Hiding the border-radius of the input
+        margin-top: $border-radius-small * -1;
+
+        .errorlist {
+            @include border-bottom-radius($border-radius-small);
+        }
+    }
+
+    .errorlist {
+
+        @extend %fade-in;
+        @include animation-timing-function(ease-in);
+        @include animation-duration(.5s);
+
+        list-style:   none;
+        background:   $brand-danger;
+        color:        $white;
+        padding-left: 0;
+        font-size:    .7em;
+
+        li {
+            padding: 3px 5px;
+        }
+    }
+
+    .form-errors {
+        margin:     0 -15px;
+        .errorlist {
+            padding:       15px;
+            margin-bottom: 0px;
+            margin-top:    5px;
+        }
+    }
+
+
+
+    .required:after {
+        content:     '*';
+        color:       $brand-danger;
+        display:     inline;
+        margin-left: 3px;
+    }
+
+    .optional {
+        opacity: .5;
+
+        &:after {
+            content:        "(Optional)";
+            font-size:      .8em;
+            display:        inline;
+            vertical-align: top;
+            margin-left:    5px;
+        }
+    }
+}

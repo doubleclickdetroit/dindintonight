@@ -1,0 +1,177 @@
+
+// Navbar styling for Header and Footer
+
+$mobile-nav-width-fallback: 80%;
+
+.navbar-brand {
+    display:   block;
+    padding:   8.5px $navbar-padding-horizontal;
+    width:     300px;
+    float:     left;
+    img {
+        height:    44px !important;  // Fixing expanding SVG on IE9
+    }
+    @include media-query($max-width: 300px + $navbar-height) {
+        width:          200px;
+        padding-top:    16.5px;
+        padding-bottom: 16.5px;
+        img {
+            height:         28px !important;  // Fixing expanding SVG on IE9
+        }
+    }
+}
+
+
+#header.navbar {
+    margin-bottom: 0;
+    @include box-shadow(0 0 4px rgba($black, .3));
+    @include transition(.5s);
+
+    .navbar-links {
+        float: right;
+        left:  100%; // Make sure .navbar-links doesn't have position: relative or else
+        // Slideout Nav Bar Styles
+        @include transition(left .5s);
+
+        @include media-query() {
+            float:      none;
+            text-align: center;
+            position:   fixed;
+            overflow-y: scroll;
+            background: darken($blue, 15%);
+            top:        0;
+            bottom:     0;
+            left:       100%;
+            width:      $mobile-nav-width-fallback;
+            width:      calc(100% - #{$navbar-height});
+
+            a {
+                color: $white;
+                font-size: $font-size-h4;
+            }
+
+        }
+    }
+
+    .navbar-nav {
+        float:          none;
+        display:        inline-block;
+        vertical-align: middle;
+        @include media-query() {
+             display:      block;
+             margin-left:  0;
+             margin-right: 0;
+        }
+    }
+
+    .navbar-toggle {
+        float:     right;
+        font-size: 2em;
+        color:     $orange;
+        border:    none;
+        @include navbar-vertical-align(57px);
+    }
+}
+
+%right-calc {
+    right: $mobile-nav-width-fallback;
+    right: calc(100% - #{$navbar-height + $navbar-padding-horizontal/2});
+}
+
+// Styles for when the mobile nav is open
+#header.navbar {
+    right: 0;
+
+    &.navigation-open {
+        @extend %right-calc;
+        cursor: pointer;
+
+        // Styling for the links on open
+        .navbar-links {
+            left: 100% - $mobile-nav-width-fallback;
+            left: calc(#{$navbar-height + $navbar-padding-horizontal/2});
+        }
+
+    }
+
+}
+
+#layout {
+    right: 0;
+    @include transition(.5s);
+    // Overlay for when Navigation is Open
+    &:before {
+        content:    '';
+        top:        0;
+        left:       0;
+        bottom:     0;
+        @extend %right-calc;
+        position:   fixed;
+        display:    none;
+        z-index:    0;
+        background: transparent;
+    }
+
+    &.navigation-open {
+        @extend %right-calc;
+        cursor: pointer;
+        &:before {
+            display: block;
+        }
+    }
+}
+
+body  {
+    // Stops from scrolling while the dashboard navigation is open
+    &.navigation-open {
+        overflow: hidden;
+    }
+}
+
+// End mobile Nav open styles
+
+
+// Footer Styles
+#footer.navbar {
+    border-right:  none;
+    border-bottom: none;
+    border-left:   none;
+
+    .navbar-brand {
+        @include media-query() {
+            float:        none;
+            margin-left:  auto;
+            margin-right: auto;
+        }
+    }
+
+    .links {
+        float: right;
+        @include media-query() {
+            text-align: center;
+            float:      none;
+            margin:     0 auto;
+        }
+
+        a {
+            color: $blue;
+        }
+    }
+
+    footer {
+        text-align: right;
+        padding: $navbar-padding-vertical $navbar-padding-horizontal;
+        @include media-query() {
+            text-align: center;
+        }
+    }
+
+    .icon-heart {
+        color: red;
+    }
+
+    .copy {
+        color: $grey-light;
+    }
+
+}

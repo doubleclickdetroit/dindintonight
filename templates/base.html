@@ -9,8 +9,7 @@
 
     <!-- Le styles -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.0/css/font-awesome.min.css">
-    <link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/stiky-footer.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- This file store project specific CSS -->
 
     {% block css %}{% endblock css %}
@@ -81,18 +80,36 @@
     {% block modals %}{% endblock modals %}
     {% block templates %}{% endblock templates %}
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.4.0/moment.min.js"></script>
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="{{ STATIC_URL }}js/libs/twig.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.0/backbone-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+    <script>
+        var require = {
+            config: {
+                'main': {
+                    {% if foo %}
+                        foo : {% autoescape off %}{{ foo }}{% endautoescape %},
+                    {% endif %}
+                    {% if bar %}
+                        bar : {% autoescape off %}{{ bar }}{% endautoescape %}
+                    {% endif %}
+                }
+            }
+        };
 
-  {% block js %}{% endblock js %}
+        // Add page_config to require.config
+        (function(e){for(var t in e||{}){require.config[t]=e[t]}})(
+            {% block page_config %}{% endblock page_config %}
+        );
+    </script>
+    <script src="{{ STATIC_URL }}lib/bower_components/requirejs/require.js" data-main="{{ STATIC_URL }}js/main.js"></script>
+    <script>
+        require(['main'], function(app) {
+            app.require({% block page_module %}{% endblock page_module %});
+        });
+    </script>
+
+    {% if True %}
+        <!-- Livereload script rendered -->
+        <!-- <script src="http://social.pr:35729/livereload.js"></script> -->
+    {% endif %}
+
   </body>
 </html>

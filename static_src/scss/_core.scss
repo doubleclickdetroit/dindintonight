@@ -1,0 +1,8 @@
+// Core variables and mixins
+
+@import "application/custom-variables";
+@import "sass-bootstrap/lib/variables";
+@import "sass-bootstrap/lib/mixins";
+@import "application/custom-mixins"; // Must be included after in order to override
+@import "application/custom-extends";
+@import "application/custom-animations";

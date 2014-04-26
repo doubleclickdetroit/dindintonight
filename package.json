@@ -1,0 +1,21 @@
+{
+  "name": "socialproof",
+  "author": "Ben Babics <Ben Babics@stik.com>",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-requirejs": "latest",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-jasmine": "~0.5.1",
+    "grunt-exec": "~0.4.5",
+    "grunt-concurrent": "~0.5.0",
+    "connect-livereload": "~0.2.0",
+    "load-grunt-tasks": "~0.1.0",
+    "mkdirp": "^0.3.5",
+    "grunt-contrib-sass": "^0.7.3",
+    "grunt-template-jasmine-requirejs": "^0.1.10"
+  }
+}

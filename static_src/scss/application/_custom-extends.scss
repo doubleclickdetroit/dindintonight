@@ -1,0 +1,84 @@
+// General Extends
+// -------------------------
+
+%center-child-element {
+    text-align: center;
+    display:    block;
+}
+
+// Grid Extends
+// -------------------------
+
+%expand-full-page {
+    min-height:      100vh;
+    min-height:      calc(100vh - 102px - #{$navbar-height});
+}
+
+%centered-full-page {
+    @extend %expand-full-page;
+    line-height: 100vh;
+    line-height: calc(100vh - 240px);
+}
+
+%centered-full-page-element {
+    display:          inline-block;
+    vertical-align:   middle;
+    line-height:      1;
+}
+
+// Type Extends
+// -------------------------
+
+%body-font-header {
+    font-family: $font-family-base;
+    font-weight: normal;
+}
+
+%uppercase-headings {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+%headings-font {
+    @extend %uppercase-headings;
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+}
+
+%text-on-background {
+    color:       $white;
+    text-shadow: 0 0 10px $black;
+}
+
+%blockquote-cite-right {
+    display:     block;
+    text-align:  right;
+    font-weight: 300;
+    font-size:   $font-size-h3;
+    color:       $grey;
+    margin-top:  30px;
+    @include media-query() {
+        margin-top:    0;
+        padding-right: 30px;
+        font-size:     $font-size-h4;
+    }
+
+    img {
+        display:    inline-block;
+        width:      128px;
+        margin-top: 5px;
+    }
+}
+
+%text-no-select {
+    @include vendor-prefix('user-select', 'none', $vendors: ('webkit', 'khtml', 'moz', 'o'));
+}
+
+// Image Extends
+// -------------------------
+
+%circle-photo {
+    border: 1px solid $white;
+    @include box-shadow(0 1px rgba($black, .3));
+    @include border-radius(50%);
+}
