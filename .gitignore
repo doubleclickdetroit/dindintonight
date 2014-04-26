@@ -7,6 +7,7 @@ www/api
 /api/config/config.yml
 vendor/*
 api/vendor/*
+.idea/*
 
 .db
 .tmp
