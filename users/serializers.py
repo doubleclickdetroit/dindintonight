@@ -5,9 +5,23 @@ from locations.serializers import LocationSerializer
 from users.models import User, UserLocation, UserStripeCard
 
 
+class UserLocationSerializerNoUserFK(serializers.ModelSerializer):
+    id = serializers.Field()
+    location = LocationSerializer()
+    resource_uri = serializers.SerializerMethodField('get_resource_uri')
+
+    class Meta:
+        model = UserLocation
+        fields = ('id', 'location', 'created', 'modified',)
+        read_only_fields = ('created', 'modified',)
+
+    def get_resource_uri(self, obj):
+        return ''  # reverse('api-v1-user-detail', args=[obj.pk])
+
+
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.Field()
-    locations = LocationSerializer(source='locations', many=True)
+    locations = UserLocationSerializerNoUserFK(source='locations', many=True)
     social_accounts = serializers.SerializerMethodField('get_social_accounts')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
 
@@ -25,20 +39,6 @@ class UserSerializer(serializers.ModelSerializer):
             return SocialAccountSerializer(SocialAccount.objects.filter(user=obj), many=True).data
         except SocialAccount.DoesNotExist:
             return None
-
-
-class UserLocationSerializerNoUserFK(serializers.ModelSerializer):
-    id = serializers.Field()
-    location = LocationSerializer()
-    resource_uri = serializers.SerializerMethodField('get_resource_uri')
-
-    class Meta:
-        model = UserLocation
-        fields = ('id', 'location', 'created', 'modified',)
-        read_only_fields = ('created', 'modified',)
-
-    def get_resource_uri(self, obj):
-        return '' # reverse('api-v1-user-detail', args=[obj.pk])
 
 
 class UserLocationEditableSerializer(serializers.ModelSerializer):
@@ -93,9 +93,9 @@ class UserStripeCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserStripeCard
         fields = ('id', 'user', 'card_id', 'name', 'description', 'last4', 'type', 'expiration_month',
-                  'expiration_year', 'fingerprint', 'country', 'created', 'modified',)
+                  'expiration_year', 'fingerprint', 'country', 'created', 'modified', 'resource_uri',)
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
-        return '' # reverse('api-v1-user-detail', args=[obj.pk])
+        return reverse('api-v1-user-cards-detail', args=[obj.user.pk, obj.pk])
 

@@ -1,15 +1,16 @@
 from django.conf.urls import patterns, url
 
-from api import ChargeProcess, ChargeRetrieve, CardList
+from api import ChargeProcess, ChargeRetrieve, CardList, CardDetail
 
 
 urlpatterns = patterns('',
-    # Card Processing
+    # Charge Processing
     url(r'^charges/process/$', ChargeProcess.as_view(), name="api-v1-charge-process"),
 
-    # Card Retrieve
+    # Charge Retrieve
     url(r'^charges/retrieve/(?P<id>[a-z0-9\-]+)/$', ChargeRetrieve.as_view(), name="api-v1-charge-retrieve"),
 
-    # Card Create
+    # Cards
     url(r'^users/(?P<user_id>[0-9]+)/cards/$', CardList.as_view(), name="api-v1-user-cards-list"),
+    url(r'^users/(?P<user_id>[0-9]+)/cards/(?P<pk>[0-9]+)/$', CardDetail.as_view(), name="api-v1-user-cards-detail"),
 )

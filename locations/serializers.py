@@ -11,8 +11,7 @@ class LocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Location
-        fields = ('id', 'city', 'state', 'zip_code', 'latitude',
-                  'longitude', 'created', 'modified', 'resource_uri')
+        fields = ('id', 'city', 'state', 'zip_code', 'latitude', 'longitude', 'created', 'modified', 'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
