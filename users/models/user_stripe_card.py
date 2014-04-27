@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 from core.models import BaseModel
 
 
@@ -27,9 +27,19 @@ class UserStripeCard(BaseModel):
 
 def user_stripe_card_post_save_handler(sender, instance, **kwargs):
     from stripe_api.api import CardList
-
     # bust the cache on the CardList
     card_list = CardList()
     card_list.bust_cache()
 
+
 post_save.connect(user_stripe_card_post_save_handler, sender=UserStripeCard)
+
+
+def user_stripe_card_post_delete_handler(sender, instance, **kwargs):
+    from stripe_api.api import CardList
+    # bust the cache on the CardList
+    card_list = CardList()
+    card_list.bust_cache()
+
+
+post_delete.connect(user_stripe_card_post_delete_handler, sender=UserStripeCard)
