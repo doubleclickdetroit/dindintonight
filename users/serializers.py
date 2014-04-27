@@ -2,7 +2,7 @@ from allauth.socialaccount.models import SocialAccount, SocialToken, SocialApp
 from django.core.urlresolvers import reverse
 from rest_framework import serializers
 from locations.serializers import LocationSerializer
-from users.models import User, UserLocation
+from users.models import User, UserLocation, UserStripeCard
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -83,3 +83,19 @@ class SocialTokenSerializer(serializers.ModelSerializer):
         model = SocialToken
         fields = ('id', 'token', 'token_secret', 'expires_at',)
         read_only_fields = ('token', 'token_secret', 'expires_at',)
+
+
+class UserStripeCardSerializer(serializers.ModelSerializer):
+    id = serializers.Field()
+    user = UserSerializer()
+    resource_uri = serializers.SerializerMethodField('get_resource_uri')
+
+    class Meta:
+        model = UserStripeCard
+        fields = ('id', 'user', 'card_id', 'name', 'description', 'last4', 'type', 'expiration_month',
+                  'expiration_year', 'fingerprint', 'country', 'created', 'modified',)
+        read_only_fields = ('created', 'modified',)
+
+    def get_resource_uri(self, obj):
+        return '' # reverse('api-v1-user-detail', args=[obj.pk])
+
