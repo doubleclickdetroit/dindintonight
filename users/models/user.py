@@ -1,7 +1,9 @@
 from django.db import models
+from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from core.models import BaseModel
+import stripe
 
 
 class User(AbstractUser, BaseModel):
@@ -19,8 +21,23 @@ class User(AbstractUser, BaseModel):
 
 
 def user_post_save_handler(sender, instance, **kwargs):
-    from users.api import UserList
+    created = kwargs.get('created')
 
+    if created:
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+
+        customer_response = stripe.Customer.create(
+            email=instance.email,
+            description='{0} - {1}'.format(instance.username, instance.get_full_name)
+        )
+
+        from users.models import UserStripeCustomer
+        customer = UserStripeCustomer()
+        customer.user = instance
+        customer.customer_id = customer_response.id
+        customer.save()
+
+    from users.api import UserList
     # bust the cache on the UserList
     user_list = UserList()
     user_list.bust_cache()

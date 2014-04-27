@@ -214,12 +214,12 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'anonymous_users',
     'cards',
-    'charges',
     'clients',
     'core',
     'franchises',
     'locations',
     'meals',
+    'stripe_api',
     'users',
     'vendors',
 )

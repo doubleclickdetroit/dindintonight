@@ -1,14 +1,15 @@
 from core.api import RESTView
+from django.conf import settings
 import stripe
 
 
-class ProcessCharge(RESTView):
+class ChargeProcess(RESTView):
     """
     Process Charge API Class
 
     Example URLs:
 
-    /api/v1/charge/process/
+    /api/v1/charges/process/
     """
 
     def _handle_post(self, request, *args, **kwargs):
@@ -39,6 +40,7 @@ class ProcessCharge(RESTView):
         if errors:
             self.raise_bad_request(response)
 
+        stripe.api_key = settings.STRIPE_SECRET_KEY
         charge = stripe.Charge.create(
             amount=amount,
             currency=currency,
