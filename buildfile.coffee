@@ -35,9 +35,5 @@ module.exports =
       name   : 'main'
       include: ['backbone','bootstrap','BaseModule','BaseService','BaseController','BaseView']
     }
-    {
-      name   : 'foo/main'
-      exclude: ['main']
-    }
     # !! Generator Adds Module Here !!
   ]
