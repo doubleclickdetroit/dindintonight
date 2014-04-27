@@ -233,6 +233,7 @@ gruntFn = (grunt) ->
   ]
 
   grunt.registerTask 'test', [
+    'copy:dev'
     'build:test'
     'watch:test'
   ]
