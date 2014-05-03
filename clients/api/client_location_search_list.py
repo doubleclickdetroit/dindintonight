@@ -1,6 +1,7 @@
 from clients.models import ClientLocation
 from clients.serializers import ClientLocationSerializer
 from core.api import RESTView
+from franchises.models import Franchise
 from locations.models import Location
 
 
@@ -12,6 +13,7 @@ class ClientLocationSearchList(RESTView):
 
     /api/v1/search/clients/locations/?city=detroit&state=mi
     /api/v1/search/clients/locations/?zip_code=48092
+    /api/v1/search/clients/locations/?franchise=1
     """
 
     URL_NAME = 'api-v1-client-location-search-list'
@@ -29,6 +31,7 @@ class ClientLocationSearchList(RESTView):
         state = request.GET.get('state', None)
         city = request.GET.get('city', None)
         zip_code = request.GET.get('zip_code', None)
+        franchise = request.GET.get('franchise', None)
 
         response = {}
 
@@ -44,6 +47,17 @@ class ClientLocationSearchList(RESTView):
                 return self.raise_bad_request(response)
 
             results = results.filter(location__state__iexact=location.state, location__city__iexact=location.city)
+        elif franchise is not None:
+            try:
+                franchise = Franchise.objects.get(pk=franchise)
+            except Location.DoesNotExist:
+                response['franchise'] = [
+                    'Franchise requested doesn\'t exist',
+                ]
+                return self.raise_bad_request(response)
+
+            results = results.filter(client__franchise=franchise)
+
         else:
             if state is None:
                 response['state'] = [
@@ -58,6 +72,11 @@ class ClientLocationSearchList(RESTView):
             if zip_code is None:
                 response['zip_code'] = [
                     'Zip Code must be passed',
+                ]
+
+            if franchise is None:
+                response['franchise'] = [
+                    'Franchise must be passed',
                 ]
 
             return self.raise_bad_request(response)
