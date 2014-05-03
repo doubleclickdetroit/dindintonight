@@ -142,7 +142,7 @@ gruntFn = (grunt) ->
 
     requirejs:
       compile:
-        options: app_config.build
+        options: dindin_config.build
 
     watch:
       html:
