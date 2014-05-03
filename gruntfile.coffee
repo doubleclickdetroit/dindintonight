@@ -1,5 +1,5 @@
 # app config
-dindin_config =
+apitizr_config =
   app    : './'
   src    : 'static_src'
   release: 'static'
@@ -7,7 +7,6 @@ dindin_config =
     all      : 'lib'
     managed  : 'lib/bower_components'
     unmanaged: 'lib/other_components'
-  build: require './buildfile'
 
 # grunt scope
 gruntFn = (grunt) ->
@@ -18,7 +17,7 @@ gruntFn = (grunt) ->
   # configuration
   gruntConfig =
 
-    app_config: dindin_config
+    app_config: apitizr_config
 
     clean:
       tmp     : '<%= app_config.src %>/.tmp'
@@ -142,7 +141,7 @@ gruntFn = (grunt) ->
 
     requirejs:
       compile:
-        options: dindin_config.build
+        options: require( './buildfile' )
 
     watch:
       html:
