@@ -25,11 +25,15 @@ requirejs.config
       deps: ['jquery']
       exports: 'jquery'
 
+    stripe_api:
+      exports: 'Stripe'
+
     underscore:
       exports: '_'
 
   paths:
     # Libs
+    stripe_api   : 'https://js.stripe.com/v2/?1'
     jquery       : '../lib/bower_components/jquery/jquery'
     underscore   : '../lib/bower_components/underscore/underscore'
     backbone     : '../lib/bower_components/backbone/backbone'

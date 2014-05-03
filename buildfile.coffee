@@ -43,5 +43,9 @@ module.exports =
         'BaseView'
       ]
     }
+    {
+      name   : 'payment/main'
+      exclude: ['main']
+    }
     # !! Generator Adds Module Here !!
   ]
