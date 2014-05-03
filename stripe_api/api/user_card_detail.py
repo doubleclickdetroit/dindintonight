@@ -5,7 +5,7 @@ from users.serializers import UserStripeCardSerializer
 import stripe
 
 
-class CardDetail(RESTView):
+class UserCardDetail(RESTView):
     """
     Card Detail API Class
 

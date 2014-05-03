@@ -6,8 +6,9 @@ from core.models import BaseModel
 
 class Client(BaseModel):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
+    franchise = models.ForeignKey('franchises.Franchise', related_name='clients')
     users = models.ManyToManyField('users.User', through='clients.ClientUser', related_name='clients')
+    name = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

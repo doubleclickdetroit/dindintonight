@@ -5,7 +5,7 @@ from users.models import User, UserStripeCard
 from users.serializers import UserStripeCardSerializer
 
 
-class CardList(RESTView):
+class UserCardList(RESTView):
     """
     Card List API Class
 

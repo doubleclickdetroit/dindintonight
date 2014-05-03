@@ -4,6 +4,7 @@ from core.models import BaseModel
 
 class Vendor(BaseModel):
     id = models.AutoField(primary_key=True)
+    franchise = models.ForeignKey('franchises.Franchise', related_name='vendors')
     name = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
