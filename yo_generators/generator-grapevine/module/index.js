@@ -20,7 +20,7 @@ var ModuleGenerator = yeoman.generators.NamedBase.extend({
         this.mkdir( spec_path );
 
         // scaffold mvc dirs
-        var _i, _len, dirs = ['controllers','models','views','templates','mixins','helpers'];
+        var _i, _len, dirs = ['controllers','collections','models','views','templates','mixins','helpers'];
         for (_i = 0, _len = dirs.length; _i < _len; _i++) {
             this.mkdir( coffee_path +'/'+ dirs[_i] );
         }
