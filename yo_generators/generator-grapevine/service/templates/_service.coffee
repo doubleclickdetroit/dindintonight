@@ -5,19 +5,19 @@ define [
 (facade, BaseService) ->
 
 
-    class <%= name_service %> extends BaseService
+  class <%= name_service %> extends BaseService
 
-        constants: {}
+    constants: {}
 
-        initialize: ->
-          #
-
-
-        ###
-          # Event Handlers
-        ###
+    initialize: ->
+      #
 
 
+    ###
+      # Event Handlers
+    ###
 
-    # Register service
-    facade.register '<%= id %>', <%= name_service %>
+
+
+  # Register service
+  facade.register '<%= id %>', <%= name_service %>
