@@ -23,7 +23,7 @@ define [
     ### Event Handlers ###
     handleLoadedSubModule: (module_name) ->
       @subscribe "#{module_name}:loaded", (Module) ->
-        new Module().start()
+        new Module().start() if Module.is_module
 
 
 

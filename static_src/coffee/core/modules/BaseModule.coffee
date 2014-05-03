@@ -72,6 +72,12 @@ define [
 
 
     ###
+      # Static Properties
+    ###
+    @is_module: true
+
+
+    ###
       # Private Methods
     ###
     setupModule = ->
