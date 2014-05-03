@@ -2,6 +2,7 @@ define [
   'backbone'
 ], (Backbone) ->
 
+
   class BaseView extends Backbone.View
 
     serialize : ->
@@ -23,3 +24,7 @@ define [
 
       @
 
+
+
+  # exports
+  BaseView

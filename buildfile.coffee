@@ -22,6 +22,7 @@ module.exports =
     # Core
     facade         : 'core/facade'
     BaseView       : 'core/views/BaseView'
+    BaseModel      : 'core/models/BaseModel'
     BaseModule     : 'core/modules/BaseModule'
     BaseService    : 'core/services/BaseService'
     BaseController : 'core/controllers/BaseController'
