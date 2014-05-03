@@ -20,11 +20,11 @@ module.exports =
     plate        : '../../lib/other_components/plate/dist/plate'
     jinja        : '../../lib/other_components/jinja.js/lib/jinja'
     # Core
-    facade          : 'core/facade'
-    BaseView        : 'core/views/BaseView'
-    BaseModule      : 'core/modules/BaseModule'
-    BaseService     : 'core/services/BaseService'
-    BaseController  : 'core/controllers/BaseController'
+    facade         : 'core/facade'
+    BaseView       : 'core/views/BaseView'
+    BaseModule     : 'core/modules/BaseModule'
+    BaseService    : 'core/services/BaseService'
+    BaseController : 'core/controllers/BaseController'
     # Aliases
     helpers : 'core/helpers/'
     django  : '../../../'
@@ -33,7 +33,14 @@ module.exports =
   modules: [
     {
       name   : 'main'
-      include: ['backbone','bootstrap','BaseModule','BaseService','BaseController','BaseView']
+      include: [
+        'backbone'
+        'bootstrap'
+        'BaseModule'
+        'BaseService'
+        'BaseController'
+        'BaseView'
+      ]
     }
     # !! Generator Adds Module Here !!
   ]

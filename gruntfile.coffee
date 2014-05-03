@@ -1,5 +1,5 @@
 # app config
-socialproof_config =
+dindin_config =
   app    : './'
   src    : 'static_src'
   release: 'static'
@@ -18,7 +18,7 @@ gruntFn = (grunt) ->
   # configuration
   gruntConfig =
 
-    app_config: socialproof_config
+    app_config: dindin_config
 
     clean:
       tmp     : '<%= app_config.src %>/.tmp'
@@ -55,8 +55,7 @@ gruntFn = (grunt) ->
     concurrent:
       dev:
         tasks : [
-          'watch',
-          'exec:django_run_local',
+          'watch'
         ]
         options :
           logConcurrentOutput : true
@@ -143,11 +142,7 @@ gruntFn = (grunt) ->
 
     requirejs:
       compile:
-        options: socialproof_config.build
-
-    exec:
-      # Run the django development server
-      django_run_local : 'python ./manage.py runserver'
+        options: app_config.build
 
     watch:
       html:
