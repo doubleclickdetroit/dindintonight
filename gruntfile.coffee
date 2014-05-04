@@ -110,6 +110,14 @@ gruntFn = (grunt) ->
           dest: '<%= app_config.release %>'
           src: 'images/**/*'
         ]
+      templates:
+        files: [
+          dot    : true
+          expand : true
+          cwd    : '<%= app_config.src %>/coffee'
+          dest   : '<%= app_config.release %>/js'
+          src    : '**/*.html'
+        ]
 
       tmp_css:
         files:[
@@ -165,15 +173,17 @@ gruntFn = (grunt) ->
           # Required to avoid 'build' being run twice
           spawn: false
 
+      templates:
+        files: ['<%= app_config.src %>/coffee/**/*.html']
+        tasks: ['copy:templates']
+        options:
+          spawn: false
+
       images:
         files:['<%= app_config.src %>/images/**/*']
         tasks: ['copy:images']
         options:
           livereload: true
-
-      test:
-        files: ['<%= app_config.src %>/**/*.coffee']
-        tasks: ['build:test','jasmine']
 
   # register tasks
 
@@ -190,6 +200,7 @@ gruntFn = (grunt) ->
     'copy:lib'
     'copy:fonts'
     'copy:images'
+    'copy:templates'
   ]
 
   grunt.registerTask 'compile:release', [
