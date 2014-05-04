@@ -1,22 +1,13 @@
 define [
-  'facade'
   'BaseView'
 ],
-(facade, BaseView) ->
+(BaseView) ->
 
 
   class PaymentView extends BaseView
 
     initialize: (settings={}) ->
-      # install sandbox to view
-      @sandbox ?= facade.installTo {}, 'payment'
-
-      # set values
-      @sandbox.value greeting: 'Allo'
-
-      # initial welcome
-      @sandbox.on      'welcome', @handleWelcome, @
-      @sandbox.trigger 'welcome', 'PaymentView'
+      #
 
 
     render: ->
@@ -27,9 +18,7 @@ define [
     ###*
      * Event Handlers
     ###
-    handleWelcome: ->
-      greeting = @sandbox.value().greeting
-      console?.log "#{greeting}, PaymentView, and welcome!!"
+
 
 
   # exports

@@ -4,16 +4,16 @@ define [
   'BaseModule'
   './controllers/PaymentController'
   './views/PaymentView'
+  './views/ManageView'
 ],
-(module, facade, BaseModule, PaymentController, PaymentView) ->
+(module, facade, BaseModule, PaymentController, PaymentView, ManageView) ->
 
 
   class PaymentModule extends BaseModule
 
     controller: PaymentController
 
-    constants:
-      GREETING: 'Why, hello there'
+    constants: {}
 
 
     initialize: ->
@@ -21,6 +21,8 @@ define [
 
 
     createController: (Controller) ->
+      console.log '*** createController', arguments
+
       # create the controller
       @controller = new Controller
         # bootstrap with module data
@@ -28,9 +30,7 @@ define [
         # references
         views:
           payment: PaymentView
-
-      # welcome the newly initialized controller
-      @trigger 'controller:welcome', @constant().GREETING
+          manage : ManageView
 
 
 

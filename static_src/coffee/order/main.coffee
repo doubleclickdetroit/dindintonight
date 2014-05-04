@@ -12,8 +12,7 @@ define [
 
     controller: OrderController
 
-    constants:
-      GREETING: 'Why, hello there'
+    constants: {}
 
 
     initialize: ->
@@ -28,9 +27,6 @@ define [
         # references
         views:
           order: OrderView
-
-      # welcome the newly initialized controller
-      @trigger 'controller:welcome', @constant().GREETING
 
 
 

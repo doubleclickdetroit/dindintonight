@@ -1,35 +1,25 @@
 define [
-  'facade'
   'BaseView'
+  'text!../templates/order.html'
 ],
-(facade, BaseView) ->
+(BaseView, tmpl_order) ->
 
 
   class OrderView extends BaseView
 
     initialize: (settings={}) ->
-      # install sandbox to view
-      @sandbox ?= facade.installTo {}, 'order'
-
-      # set values
-      @sandbox.value greeting: 'Allo'
-
-      # initial welcome
-      @sandbox.on      'welcome', @handleWelcome, @
-      @sandbox.trigger 'welcome', 'OrderView'
+      #
 
 
     render: ->
-      @$el.html '<h1>OrderView</h1>'
+      @$el.html tmpl_order
       @
 
 
     ###*
      * Event Handlers
     ###
-    handleWelcome: ->
-      greeting = @sandbox.value().greeting
-      console?.log "#{greeting}, OrderView, and welcome!!"
+
 
 
   # exports

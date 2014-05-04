@@ -8,18 +8,20 @@ define [
 
 
     initialize: (settings) ->
-      # sandbox event listeners
-      @sandbox.on 'controller:welcome', @handleControllerWelcome, @
-
       # init views
       @views.payment = new @views.payment()
+      @views.manage  = new @views.manage()
+
+      # sandbox event listeners
+      @sandbox.on 'manage:submit', @handleManageSubmit, @
+
 
 
     ###*
      * Event Handlers
     ###
-    handleControllerWelcome: (greeting) ->
-      console?.log "#{greeting}, PaymentController!", @bootstrap
+    handleManageSubmit: ($form) ->
+      console.log 'handleManageSubmit', $form
 
 
     ###*

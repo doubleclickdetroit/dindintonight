@@ -1,25 +1,29 @@
 define [
   'BaseController'
+  'UserService'
 ],
-(BaseController) ->
+(BaseController, UserService) ->
 
 
   class OrderController extends BaseController
 
 
     initialize: (settings) ->
-      # sandbox event listeners
-      @sandbox.on 'controller:welcome', @handleControllerWelcome, @
-
       # init views
       @views.order = new @views.order()
+
+      # require sub-modules
+      @sandbox.on 'create', =>
+        @sandbox.require 'payment', (PaymentModule) =>
+          @paymentModule = new PaymentModule()
+          @paymentModule.start()
+          setTimeout (=>@paymentModule.stop()), 3000
+          setTimeout (=>@paymentModule.start()), 6000
 
 
     ###*
      * Event Handlers
     ###
-    handleControllerWelcome: (greeting) ->
-      console?.log "#{greeting}, OrderController!", @bootstrap
 
 
     ###*
