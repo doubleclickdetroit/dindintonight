@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
+from rest_framework.renderers import JSONRenderer
 from core.models import BaseModel
 import stripe
 
@@ -18,6 +19,16 @@ class User(AbstractUser, BaseModel):
         db_table = 'users'
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+
+    @property
+    def serialized(self):
+        from users.serializers import UserSerializer
+        return UserSerializer(self).data
+
+    @property
+    def json(self):
+        from users.serializers import UserSerializer
+        return JSONRenderer().render(UserSerializer(self).data)
 
 
 def user_post_save_handler(sender, instance, **kwargs):

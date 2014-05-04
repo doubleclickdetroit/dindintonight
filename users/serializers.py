@@ -19,16 +19,31 @@ class UserLocationSerializerNoUserFK(serializers.ModelSerializer):
         return ''  # reverse('api-v1-user-detail', args=[obj.pk])
 
 
+class UserStripeCardSerializerNoUserFK(serializers.ModelSerializer):
+    id = serializers.Field()
+    resource_uri = serializers.SerializerMethodField('get_resource_uri')
+
+    class Meta:
+        model = UserStripeCard
+        fields = ('id', 'user', 'card_id', 'name', 'description', 'last4', 'type', 'expiration_month',
+                  'expiration_year', 'fingerprint', 'country', 'created', 'modified', 'resource_uri',)
+        read_only_fields = ('created', 'modified',)
+
+    def get_resource_uri(self, obj):
+        return reverse('api-v1-user-cards-detail', args=[obj.user.pk, obj.pk])
+
+
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     locations = UserLocationSerializerNoUserFK(source='locations', many=True)
+    cards = UserStripeCardSerializerNoUserFK(source='cards', many=True)
     social_accounts = serializers.SerializerMethodField('get_social_accounts')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
 
     class Meta:
         model = User
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'date_joined', 'created', 'modified',
-                  'social_accounts', 'locations', 'resource_uri',)
+                  'social_accounts', 'locations', 'cards', 'resource_uri',)
         read_only_fields = ('date_joined', 'created', 'modified',)
 
     def get_resource_uri(self, obj):
