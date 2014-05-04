@@ -9,8 +9,14 @@
 {% endblock page_config %}
 
 {% block page_module %}
+    [ 'locations', 'meals', 'payment', 'order' ]
 {% endblock page_module %}
 
 {% block content %}
-    {{welcome_text}}
+    <article>
+        <section data-outlet="locations:module"></section>
+        <section data-outlet="meals:module"></section>
+        <section data-outlet="payment:module"></section>
+        <section data-outlet="order:module"></section>
+    </article>
 {% endblock %}
