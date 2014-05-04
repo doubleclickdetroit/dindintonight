@@ -8,8 +8,9 @@ define [
 
     constructor: (settings={}) ->
       # cache resources
-      @models = {}
-      @views  = {}
+      @collections = {}
+      @models      = {}
+      @views       = {}
 
       # install sandbox to settings resources
       installSandboxToResources.call @, settings
@@ -37,10 +38,15 @@ define [
         @views[ name ] = view
         installSandbox.call @, view
 
-        # install sandbox on models
+      # install sandbox on models
       for name, model of resources.models
         @models[ name ] = model
         installSandbox.call @, model
+
+      # install sandbox on collections
+      for name, collection of resources.collections
+        @collections[ name ] = collection
+        installSandbox.call @, collection
 
 
     installSandbox = (resource) ->
