@@ -18,15 +18,6 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    {# Bootstrapping the logged in user to the page or null if not auth'd #}
-    <script>
-        {% if request.user.is_authenticated %}
-            var user = JSON.parse('{{ request.user.json|safe }}');
-        {% else %}
-            var user = null;
-        {% endif %}
-    </script>
   </head>
 
   <body>
@@ -92,12 +83,10 @@
     <script>
         var require = {
             config: {
-                'main': {
-                    {% if foo %}
-                        foo : {% autoescape off %}{{ foo }}{% endautoescape %},
-                    {% endif %}
-                    {% if bar %}
-                        bar : {% autoescape off %}{{ bar }}{% endautoescape %}
+                main: {
+                    resource_uri: '/api/v1/search/clients/locations/?franchise=1',
+                    {% if request.user.is_authenticated %}
+                    user: {{ request.user.json|safe }}
                     {% endif %}
                 }
             }

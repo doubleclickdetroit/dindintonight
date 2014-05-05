@@ -58,8 +58,10 @@ requirejs.config
 
 # System module
 define [
+  'module'
   'app/main'
 ],
-(App) ->
+(module, App) ->
 
+  console.log 'GrapevineJS', module.config()
   new App().start()
