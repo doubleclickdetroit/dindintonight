@@ -16,7 +16,7 @@ define [
     controller: BaseController
 
 
-    constructor: ->
+    constructor: (settings={}) ->
       # setup module with stuff :)
       setupModule.call @
 
@@ -31,16 +31,16 @@ define [
       @on 'remove', @handleRemovingModule, @
 
       # invoke initialize
-      @initialize()
+      @initialize settings
 
 
     ### Convenience Methods ###
-    start: ->
-      @trigger 'add'
+    start: (settings) ->
+      @trigger 'add', settings
 
 
-    stop: ->
-      @trigger 'remove'
+    stop: (settings) ->
+      @trigger 'remove', settings
 
 
     ### Abstract Methods ###
@@ -57,18 +57,18 @@ define [
 
 
     ### Event Handlers ###
-    handleAddingModule: ->
+    handleAddingModule: (settings) ->
       # call our private methods setting the proper context of this instance
       # this method can be overriden as a hook for the "add" event
       # but "super" must be called in order to access the private method
-      createController.call @
+      createController.call @, settings
 
 
-    handleRemovingModule: ->
+    handleRemovingModule: (settings) ->
       # call our private methods setting the proper context of this instance
       # this method can be overriden as a hook for the "remove" event
       # but "super" must be called in order to access the private method
-      destroyController.call @
+      destroyController.call @, settings
 
 
     ###
@@ -88,14 +88,14 @@ define [
         $placeholder.html $module
 
 
-    createController = ->
+    createController = (settings={}) ->
       # remove previous controller, if it exists
-      destroyController()
+      destroyController settings
 
       # create the controller by calling abstract method
       # and pass in controller definition that now has facade mixed-in
       # __controller is a factory that accepts an id to return the appropriate controller
-      @createController __controller
+      @createController __controller, settings
 
       # broadcast to other clients the state of the module
       # @controller.onCreate() is important because it is the mechanism to broadcast
@@ -104,12 +104,12 @@ define [
       publishControllerState.call @, 'onCreate', 'create'
 
 
-    destroyController = ->
+    destroyController = (settings={}) ->
       # do not proceed if the controller doesn't exist
       return unless @controller?
 
       # prepare for destruction of the controller
-      @destroyController()
+      @destroyController settings
 
       # broadcast to other clients the state of the module
       publishControllerState.call @, 'onDestroy', 'destroy'
