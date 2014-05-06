@@ -16,8 +16,8 @@ define [
     constants: {}
 
 
-    initialize: ->
-      #
+    initialize: (settings) ->
+      console.log 'PaymentModule', settings
 
 
     createController: (Controller) ->
