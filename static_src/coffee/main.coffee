@@ -63,5 +63,4 @@ define [
 ],
 (module, App) ->
 
-  console.log 'GrapevineJS', module.config()
   new App().start()
