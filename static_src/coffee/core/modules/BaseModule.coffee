@@ -8,7 +8,7 @@ define [
   class BaseModule
 
     # this will old the controller factory
-    __controller = null
+    __controller: null
 
     # ability to assign a controller class or a hash of controllers
     # this will be passed as a factory as the only argument to @createController
@@ -95,7 +95,7 @@ define [
       # create the controller by calling abstract method
       # and pass in controller definition that now has facade mixed-in
       # __controller is a factory that accepts an id to return the appropriate controller
-      @createController __controller, settings
+      @createController @__controller, settings
 
       # broadcast to other clients the state of the module
       # @controller.onCreate() is important because it is the mechanism to broadcast
@@ -155,7 +155,7 @@ define [
         factory = (id) -> if id? then definition[ id ] else BaseController
 
       # assign factory to our private property
-      __controller = factory
+      @__controller = factory
 
 
     publishControllerState = (method_name, state) ->
