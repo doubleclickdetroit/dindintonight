@@ -26,10 +26,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'apitizr',
-        'USER': 'rgarrison3',
-        'PASSWORD': 'f1r3sal3!',
-        'HOST': '50.57.127.217',
-        'PORT': '',
+        'USER': 'development',
+        'PASSWORD': '#ap1t1zrD3vel0pm3nt!',
+        'HOST': 'apitizr-dev-mysql-db-apollo.cgjmi8jujgek.us-west-2.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 ########## END DATABASE CONFIGURATION
