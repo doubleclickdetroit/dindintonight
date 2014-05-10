@@ -8,12 +8,8 @@ define [
 
 
     initialize: (settings) ->
-      # init views
-      @views.payment = new @views.payment()
-      @views.manage  = new @views.manage()
-
       # sandbox event listeners
-      @sandbox.on 'manage:submit', @handleManageSubmit, @
+      @sandbox.on 'payment:submit', @handleManageSubmit, @
 
 
 
@@ -28,10 +24,12 @@ define [
      * Create & Destroy Methods
     ###
     onCreate: ->
-      @views.payment.render().$el
+      @selected_view = new @views.selected()
+      console.log 'Controller', @selected_view
+      @selected_view.render().$el
 
     onDestroy: ->
-      @views.payment.$el
+      @selected_view.$el.remove()
 
 
 

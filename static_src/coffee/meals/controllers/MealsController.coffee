@@ -11,25 +11,23 @@ define [
       # sandbox event listeners
       @sandbox.on 'controller:welcome', @handleControllerWelcome, @
 
-      # init views
-      @views.meals = new @views.meals()
-
 
     ###*
      * Event Handlers
     ###
     handleControllerWelcome: (greeting) ->
-      console?.log "#{greeting}, MealsController!", @bootstrap
+      # console?.log "#{greeting}, MealsController!", @bootstrap
 
 
     ###*
      * Create & Destroy Methods
     ###
     onCreate: ->
-      @views.meals.render().$el
+      @meals_view = new @views.meals()
+      @meals_view.render().$el
 
     onDestroy: ->
-      @views.meals.$el
+      @meals_view.$el.remove()
 
 
 

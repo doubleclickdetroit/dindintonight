@@ -3,10 +3,9 @@ define [
   'facade'
   'BaseModule'
   './controllers/PaymentController'
-  './views/PaymentView'
-  './views/ManageView'
+  './factories/ViewFactory'
 ],
-(module, facade, BaseModule, PaymentController, PaymentView, ManageView) ->
+(module, facade, BaseModule, PaymentController, ViewFactory) ->
 
 
   class PaymentModule extends BaseModule
@@ -17,20 +16,18 @@ define [
 
 
     initialize: (settings) ->
-      console.log 'PaymentModule', settings
+      # set selected view
+      @selected_view = ViewFactory settings.id
 
 
     createController: (Controller) ->
-      console.log '*** createController', arguments
-
       # create the controller
       @controller = new Controller
         # bootstrap with module data
         bootstrap: module.config()
         # references
         views:
-          payment: PaymentView
-          manage : ManageView
+          selected: @selected_view
 
 
 

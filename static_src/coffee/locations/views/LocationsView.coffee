@@ -29,7 +29,7 @@ define [
     ###
     handleWelcome: ->
       greeting = @sandbox.value().greeting
-      console?.log "#{greeting}, LocationsView, and welcome!!"
+      # console?.log "#{greeting}, LocationsView, and welcome!!"
 
 
   # exports

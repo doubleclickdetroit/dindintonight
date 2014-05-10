@@ -1,23 +1,32 @@
 define [
   'BaseView'
+  'text!../templates/form.html'
 ],
-(BaseView) ->
+(BaseView, tmpl_form) ->
 
 
   class PaymentView extends BaseView
+
+    events:
+      'submit' : 'handleFormSubmission'
+
 
     initialize: (settings={}) ->
       #
 
 
     render: ->
-      @$el.html '<h1>PaymentView</h1>'
+      @$el.html tmpl_form
       @
 
 
     ###*
      * Event Handlers
     ###
+    handleFormSubmission: (evt) ->
+      evt.preventDefault()
+      $form = @$ '#payment-form'
+      @sandbox.trigger 'payment:submit', $form
 
 
 
