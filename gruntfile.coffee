@@ -45,10 +45,10 @@ gruntFn = (grunt) ->
       test:
         files: [{
           expand: true
-          cwd: '<%= app_config.src %>/test/spec'
-          src: '**/*.coffee'
-          dest: '<%= app_config.release %>/test/spec'
-          ext: '.js'
+          cwd: '<%= app_config.src %>/test'
+          src: '**/*.spec.coffee'
+          dest: '<%= app_config.release %>/test'
+          ext: '.spec.js'
         }]
 
     concurrent:
@@ -140,7 +140,7 @@ gruntFn = (grunt) ->
         src: '<% app_config.release %>/js/**/*.js'
         options:
           keepRunner: true
-          specs : '<%= app_config.release %>/test/spec/{,*/}*.js'
+          specs : '<%= app_config.release %>/test/{,*/}*.spec.js'
           template: require( 'grunt-template-jasmine-requirejs' )
           templateOptions:
             requireConfigFile: './static/js/main.js'
@@ -184,6 +184,12 @@ gruntFn = (grunt) ->
         tasks: ['copy:images']
         options:
           livereload: true
+
+      test:
+        files:['<%= app_config.src %>/test/**/*.spec.coffee']
+        tasks: ['build:test']
+        options:
+          spawn: false
 
   # register tasks
 
