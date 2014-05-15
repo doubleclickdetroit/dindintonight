@@ -216,6 +216,7 @@ LOCAL_APPS = (
     'cards',
     'clients',
     'core',
+    'core.email',
     'franchises',
     'locations',
     'meals',
@@ -320,8 +321,27 @@ REST_FRAMEWORK = {
 }
 ########## END DJANGO REST FRAMEWORK CONFIGURATION
 
-
 ########## STRIPE CREDIT CARD PROCESSING
 STRIPE_SECRET_KEY = 'sk_test_XT2yA3vy3Vs9rP9Nb0B37aW6'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_3NyGXdUaWYpsRacIxKN0ndr8'
 ########## END STRIPE CREDIT CARD PROCESSING
+
+########## SENDGRID CONFIGURATION
+SENDGRID_USERNAME = 'rtgarrison3'
+SENDGRID_PASSWORD = 'RtG11315'
+########## END SENDGRID CONFIGURATION
+
+########## AWS CONFIGURATION
+AWS_ACCESS_KEY_ID = 'AKIAIABX56SZWLVRJASA'
+
+# Not url encoded /pUYCxgkzGFPeSsAkArd50WZgDa1Z4aMe1gI7f0a
+AWS_SECRET_ACCESS_KEY = '%2FpUYCxgkzGFPeSsAkArd50WZgDa1Z4aMe1gI7f0a'
+########## END AWS CONFIGURATION
+
+########## CELERY CONFIGURATION
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
+BROKER_TRANSPORT = 'sqs'
+BROKER_TRANSPORT_OPTIONS = {'region': 'us-west-2'}
+BROKER_URL = 'sqs://{0}:{1}@'.format(AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY)
+########## END CELERY CONFIGURATION

@@ -14,7 +14,6 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 ########## END DEBUG CONFIGURATION
 
-
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -70,6 +69,15 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 ########## END TOOLBAR CONFIGURATION
 
+########## CELERY CONFIGURATION
+CELERY_DEFAULT_QUEUE = 'apitizr-dev-celery-ares'
+CELERY_QUEUES = {
+    CELERY_DEFAULT_QUEUE: {
+        'exchange': CELERY_DEFAULT_QUEUE,
+        'binding_key': CELERY_DEFAULT_QUEUE,
+    }
+}
+########## END CELERY CONFIGURATION
 
 try:
     from override import *

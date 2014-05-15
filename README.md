@@ -82,6 +82,11 @@ What it looks like all together
 alias dindintonight='sudo ipfw flush;sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to any 80 in;workon dindintonight;export DJANGO_SETTINGS_MODULE=core.settings.local;export STIK_DJANGO_SECRET=buy-some-din-din-tonight-now;cd /PATH/TO/THE/DINDINTONIGHT;pip install -r requirements/local.txt;python manage.py syncdb;python manage.py runserver local.dindintonight.co:8080;'
 ```
 
+And lastly add the celery launcher (make sure that the path is correct to the repo)
+```
+alias apitizr_celery="cd /Users/rob/Documents/GitHub/DoubleClickDetroit/dindintonight/;workon dindintonight;celery worker --app=core -l info;"
+```
+
 * Now make sure you reload the your profile by doing a `source ~/.bash_profile` or `source ~/.profile`, once you have done that you can now call anywhere `didintonight` and it will launch your django server and also make sure you are running the latest librarys and also will sync any db changes that are needed
 
 ### GRUNT Commands (This will need to be reconfigured DISREGARD for now):

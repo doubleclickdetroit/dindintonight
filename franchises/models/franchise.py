@@ -1,3 +1,4 @@
+from autoslug import AutoSlugField
 from django.db import models
 from django.db.models.signals import post_save
 from core.models import BaseModel
@@ -7,6 +8,7 @@ class Franchise(BaseModel):
     id = models.AutoField(primary_key=True)
     owner = models.OneToOneField('users.User', related_name='franchise_owners')
     name = models.CharField(max_length=255)
+    slug = AutoSlugField(populate_from='name', unique=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
