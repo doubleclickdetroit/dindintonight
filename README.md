@@ -34,7 +34,7 @@ fi
 ```
 * Now make sure you reload the your profile by doing a `source ~/.bash_profile` or `source ~/.profile`
 * Open a new terminal window. You should see virtualenvwrapper.sh being run and setting up your .virtualenvs directory.
-* Test creating a new virtualenv `mkvirtualenv dindintonight`
+* Test creating a new virtualenv `mkvirtualenv apitizr`
 * You should see something in the console like
 
 ```
@@ -57,7 +57,7 @@ virtualenvwrapper.user_scripts creating /Users/< mac username >/.virtualenvs/din
 ###########################
 
 # Local DinDinTonight
-127.0.0.1 local.dindintonight.co
+127.0.0.1 local.apitizr.com
 ```
 
 * Now we need to setup a command in our bash profile to run start our django server and also to install any requirements that may have changed. Open up your .bash_profile or .profile (on all recent macs it is the .bash_profile and it is located at ~/.bash_profile), and at the end of the file, add the following (making sure to change anything that is required below)
@@ -67,24 +67,24 @@ What the commands look like broken down and the explanations of what they do
 ```
 sudo ipfw flush;                                                # this will flush out all existing custom firewall rules that may exist in the system firewall
 sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to any 80 in; # add a firewall rule that will forward anything coming in on port 80 to port 8080
-workon dindintonight;                                           # change the virtual enviroment to dindintonight
+workon apitizr;                                                 # change the virtual enviroment to apitizr
 export DJANGO_SETTINGS_MODULE=core.settings.local;              # export out what the settings file is that we are going to load for the dev server
-export STIK_DJANGO_SECRET=buy-some-din-din-tonight-now;         # set the secret key which we use for debugging (this can be anything)
-cd /PATH/TO/THE/DINDINTONIGHT;                                  # change directory to the path that the dindintonight git repo is at
+export APITIZR_DJANGO_SECRET=buy-some-apitizr-now;              # set the secret key which we use for debugging (this can be anything)
+cd /PATH/TO/THE/APITIZR;                                        # change directory to the path that the apitizr git repo is at
 pip install -r requirements/local.txt;                          # now install any requirements or update them with any libraries that are required
 python manage.py syncdb;                                        # tell django that we want to sync the db so we are working with the latest and greatest
-python manage.py runserver local.dindintonight.co:8080;                      # now fire up the server and run it on port 8080 (which if we remember will get anything from port 80)
+python manage.py runserver local.apitizr.com:8080;              # now fire up the server and run it on port 8080 (which if we remember will get anything from port 80)
 ```
 
 What it looks like all together
 
 ```
-alias dindintonight='sudo ipfw flush;sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to any 80 in;workon dindintonight;export DJANGO_SETTINGS_MODULE=core.settings.local;export STIK_DJANGO_SECRET=buy-some-din-din-tonight-now;cd /PATH/TO/THE/DINDINTONIGHT;pip install -r requirements/local.txt;python manage.py syncdb;python manage.py runserver local.dindintonight.co:8080;'
+alias apitizr='sudo ipfw flush;sudo ipfw add 100 fwd 127.0.0.1,8080 tcp from any to any 80 in;workon apitizr;export DJANGO_SETTINGS_MODULE=core.settings.local;export APITIZR_DJANGO_SECRET=buy-some-apitizr-now;cd /PATH/TO/THE/APITIZR;pip install -r requirements/local.txt;python manage.py syncdb;python manage.py runserver local.apitizr.com:8080;'
 ```
 
 And lastly add the celery launcher (make sure that the path is correct to the repo)
 ```
-alias apitizr_celery="cd /Users/rob/Documents/GitHub/DoubleClickDetroit/dindintonight/;workon dindintonight;celery worker --app=core -l info;"
+alias apitizr_celery="cd /Users/rob/Documents/GitHub/DoubleClickDetroit/dindintonight/;workon apitizr;celery worker --app=core -l info;"
 ```
 
 * Now make sure you reload the your profile by doing a `source ~/.bash_profile` or `source ~/.profile`, once you have done that you can now call anywhere `didintonight` and it will launch your django server and also make sure you are running the latest librarys and also will sync any db changes that are needed
