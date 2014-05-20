@@ -50,11 +50,15 @@
       ],
       "exports": "jquery"
     },
+    "stripe_api": {
+      "exports": "Stripe"
+    },
     "underscore": {
       "exports": "_"
     }
   },
   "paths": {
+    "stripe_api": "https://js.stripe.com/v2/?1",
     "jquery": "../lib/bower_components/jquery/jquery",
     "underscore": "../lib/bower_components/underscore/underscore",
     "backbone": "../lib/bower_components/backbone/backbone",
@@ -63,9 +67,13 @@
     "text": "../lib/bower_components/requirejs-text/text",
     "facade": "core/facade",
     "BaseView": "core/views/BaseView",
+    "BaseModel": "core/models/BaseModel",
     "BaseModule": "core/modules/BaseModule",
     "BaseService": "core/services/BaseService",
     "BaseController": "core/controllers/BaseController",
+    "MapService": "map/main",
+    "StripeService": "stripe/main",
+    "UserService": "user/main",
     "helpers": "core/helpers/"
   }
 });
@@ -78,7 +86,7 @@
       
     ],
     function(){
-      require(['static/test/spec/AppModuleSpec.js','static/test/spec/MediatorSpec.js','static/test/spec/ReviewModuleSpec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+      require(['static/test/spec/AppModuleSpec.js','static/test/spec/MediatorSpec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
         require(['.grunt/grunt-contrib-jasmine/jasmine-helper.js'], function(){
           // good to go! Our tests should already be running.
         })
