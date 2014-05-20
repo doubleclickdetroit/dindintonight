@@ -7,7 +7,9 @@ define [
 
   class MapService extends BaseService
 
-    constants: {}
+    constants:
+      API_KEY: 'AIzaSyC-rbtKvoVTkbBME7aIAvBs2f-S917uXcg'
+
 
     initialize: ->
       #

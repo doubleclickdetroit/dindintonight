@@ -5,7 +5,7 @@ define [
 (BaseView, tmpl_form) ->
 
 
-  class PaymentView extends BaseView
+  class EditView extends BaseView
 
     events:
       'submit' : 'handleFormSubmission'
@@ -31,4 +31,4 @@ define [
 
 
   # exports
-  PaymentView
+  EditView

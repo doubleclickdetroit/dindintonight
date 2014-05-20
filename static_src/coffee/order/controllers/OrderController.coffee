@@ -9,17 +9,14 @@ define [
 
 
     initialize: (settings) ->
-      # init views
-      @views.order = new @views.order()
-
       # require sub-modules
-      @sandbox.on 'create', =>
-        @sandbox.require 'payment', (PaymentModule) =>
-          @paymentModule       = new PaymentModule { id: 'payment' }
-          @managePaymentModule = new PaymentModule { id: 'manager' }
+      @sandbox.require 'payment', (PaymentModule) =>
+        paymentModule = new PaymentModule()
 
-          # initially start paymentModule
-          @paymentModule.start()
+        paymentModule.on 'create', ($module) =>
+          @order_view.$el.append $module
+
+        paymentModule.start()
 
 
     ###*
@@ -31,10 +28,11 @@ define [
      * Create & Destroy Methods
     ###
     onCreate: ->
-      @views.order.render().$el
+      @order_view = new @views.order()
+      @order_view.render().$el
 
     onDestroy: ->
-      @views.order.$el
+      @order_view.$el.remove()
 
 
 

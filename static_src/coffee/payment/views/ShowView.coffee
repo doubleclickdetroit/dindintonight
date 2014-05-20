@@ -4,13 +4,13 @@ define [
 (BaseView) ->
 
 
-  class ManageView extends BaseView
+  class ShowView extends BaseView
 
     initialize: (settings={}) ->
       #
 
     render: ->
-      @$el.html '<h1>ManageView</h1>'
+      @$el.html '<h1>ShowView</h1>'
       @
 
 
@@ -21,4 +21,4 @@ define [
 
 
   # exports
-  ManageView
+  ShowView

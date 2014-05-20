@@ -63,4 +63,5 @@ define [
 ],
 (module, App) ->
 
+  console.log 'bootstrap', module.config()
   new App().start()

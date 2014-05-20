@@ -24,12 +24,11 @@ define [
      * Create & Destroy Methods
     ###
     onCreate: ->
-      @selected_view = new @views.selected()
-      console.log 'Controller', @selected_view
-      @selected_view.render().$el
+      @manager_view = new @views.manager()
+      @manager_view.render().$el
 
     onDestroy: ->
-      @selected_view.$el.remove()
+      @manager_view.$el.remove()
 
 
 

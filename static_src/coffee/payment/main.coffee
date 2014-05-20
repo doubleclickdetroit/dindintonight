@@ -3,9 +3,9 @@ define [
   'facade'
   'BaseModule'
   './controllers/PaymentController'
-  './factories/ViewFactory'
+  './views/ManagerView'
 ],
-(module, facade, BaseModule, PaymentController, ViewFactory) ->
+(module, facade, BaseModule, PaymentController, ManagerView) ->
 
 
   class PaymentModule extends BaseModule
@@ -15,11 +15,6 @@ define [
     constants: {}
 
 
-    initialize: (settings) ->
-      # set selected view
-      @selected_view = ViewFactory settings.id
-
-
     createController: (Controller) ->
       # create the controller
       @controller = new Controller
@@ -27,7 +22,7 @@ define [
         bootstrap: module.config()
         # references
         views:
-          selected: @selected_view
+          manager: ManagerView
 
 
 
