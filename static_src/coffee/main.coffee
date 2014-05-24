@@ -39,7 +39,8 @@ requirejs.config
     backbone     : '../lib/bower_components/backbone/backbone'
     bootstrap    : '../lib/bower_components/sass-bootstrap/dist/js/bootstrap'
     localstorage : '../lib/bower_components/backbone.localStorage/backbone.localStorage-min'
-    text         : '../lib/bower_components/requirejs-text/text'
+    text         : '../lib/bower_components/requirejs-plugins/lib/text'
+    async        : '../lib/bower_components/requirejs-plugins/src/async'
     # Core
     facade          : 'core/facade'
     BaseView        : 'core/views/BaseView'
