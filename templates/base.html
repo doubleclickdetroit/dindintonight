@@ -12,6 +12,9 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- This file store project specific CSS -->
 
+    {# this may end up being loaded async #}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-rbtKvoVTkbBME7aIAvBs2f-S917uXcg&sensor=true"></script>
+
     {% block css %}{% endblock css %}
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -83,11 +86,13 @@
     <script>
         var require = {
             config: {
-                main: {
-                    resource_uri: '/api/v1/search/clients/locations/?franchise=1',
+                'main': {
                     {% if request.user.is_authenticated %}
                     user: {{ request.user.json|safe }}
                     {% endif %}
+                },
+                'locations/main': {
+                    resource_uri: '/api/v1/search/clients/locations/?franchise=1'
                 }
             }
         };

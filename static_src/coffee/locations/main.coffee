@@ -3,34 +3,33 @@ define [
   'facade'
   'BaseModule'
   './controllers/LocationsController'
+  './collections/LocationsCollection'
+  './models/LocationModel'
   './views/LocationsView'
 ],
-(module, facade, BaseModule, LocationsController, LocationsView) ->
+(module, facade, BaseModule, LocationsController, LocationsCollection, LocationModel, LocationsView) ->
 
 
   class LocationsModule extends BaseModule
 
     controller: LocationsController
 
-    constants:
-      GREETING: 'Why, hello there'
-
-
-    initialize: ->
-      #
+    constants: {}
 
 
     createController: (Controller) ->
       # create the controller
       @controller = new Controller
-        # bootstrap with module data
-        bootstrap: module.config()
-        # references
+        collections:
+          locations: LocationsCollection.extend
+            model: LocationModel
+            url  : module.config().resource_uri
+
+        models:
+          location: LocationModel
+
         views:
           locations: LocationsView
-
-      # welcome the newly initialized controller
-      @trigger 'controller:welcome', @constant().GREETING
 
 
 

@@ -1,44 +1,47 @@
 define [
   'facade'
   'BaseService'
+  './map/GoogleMapsService'
 ],
-(facade, BaseService) ->
+(facade, BaseService, GoogleMapsService) ->
 
 
   class MapService extends BaseService
 
-    $api = null
+    __api = new GoogleMapsService()
 
-    constants:
-      API_FN : 'mapsApiInitialize'
-      API_KEY: 'AIzaSyC-rbtKvoVTkbBME7aIAvBs2f-S917uXcg'
+    constants: {}
 
 
     initialize: ->
-      loadScript.apply @
+      #
 
 
-    loadScript = ->
-      api_fn = @constant().API_FN
+    createMap: ($map, settings) ->
+      d = @util.deferred()
 
-      script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = "https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=#{api_fn}"
-      document.body.appendChild(script)
+      # check for location
+      location = settings?.location || {}
 
-      window[api_fn] = =>
-        if $api?
-          console?.log 'MapService API has already been initialized.'
-        else
-          handleMapsApiInitialize.apply @
+      # determine type of location
+      if location.address?
+        q = __api.geocodeAddress( location.address ).then (response) ->
+          settings.center = response.coords
 
+      else if location.lat? and location.lng?
+        q = __api.geocodeCoords( location.lat, location.lng ).then (response) ->
+          settings.center = response.coords
 
-    ###
-      # Event Handlers
-    ###
-    handleMapsApiInitialize = ->
-      $api = google.maps
-      @trigger 'ready'
+      else
+        q = facade.util.deferred().resolve().promise()
+
+      # when location is determined, create map
+      q.done ->
+        map = __api.createMap $map, settings
+        d.resolve map
+
+      # return promise
+      d.promise()
 
 
 
