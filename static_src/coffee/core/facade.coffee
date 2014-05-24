@@ -61,6 +61,9 @@ define [
   # Encapsulating it here and being diligent to this way of thinking lends itself to easily swapping out libraries down the road.
   #
   facade.dom =
+    create: (html, attrs={}) ->
+      $ html, attrs
+
     find: (selector, context=document) ->
       return $( selector ) if selector is window
       $( context ).find selector
@@ -95,6 +98,7 @@ define [
     isFunction: _.isFunction
     deferred  : $.Deferred
     method    : $.proxy
+    'when'    : $.when
 
 
   # InstallTo Object/Prototype
