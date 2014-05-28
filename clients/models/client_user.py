@@ -14,3 +14,6 @@ class ClientUser(BaseModel):
         db_table = 'client_users'
         verbose_name = 'Client User'
         verbose_name_plural = 'Client Users'
+
+    def __unicode__(self):
+        return '{0} - {1} - {2}'.format(self.pk, self.client.name, self.user)

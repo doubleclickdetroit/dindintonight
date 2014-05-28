@@ -18,6 +18,9 @@ class Client(BaseModel):
         verbose_name = 'Client'
         verbose_name_plural = 'Clients'
 
+    def __unicode__(self):
+        return '{0} - {1}'.format(self.pk, self.name)
+
 
 def client_post_save_handler(sender, instance, **kwargs):
     from clients.api import ClientList

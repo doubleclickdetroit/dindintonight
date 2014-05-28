@@ -218,6 +218,7 @@ LOCAL_APPS = (
     'core',
     'core.email',
     'franchises',
+    'leads',
     'locations',
     'meals',
     'stripe_api',

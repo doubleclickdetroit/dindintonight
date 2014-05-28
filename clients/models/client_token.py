@@ -14,3 +14,6 @@ class ClientToken(BaseModel):
         db_table = 'client_tokens'
         verbose_name = 'Client Token'
         verbose_name_plural = 'Client Tokens'
+
+    def __unicode__(self):
+        return '{0} - {1} - {2}'.format(self.pk, self.client.name, self.value)

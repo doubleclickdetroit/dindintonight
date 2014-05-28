@@ -11,6 +11,14 @@ class BaseModel(models.Model):
     class Meta:
         abstract = True
 
+    @property
+    def serialized(self):
+        raise NotImplementedError
+
+    @property
+    def json(self):
+        raise NotImplementedError
+
     @classmethod
     def field_names(cls):
         '''

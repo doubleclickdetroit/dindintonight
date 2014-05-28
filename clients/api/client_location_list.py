@@ -65,6 +65,6 @@ class ClientLocationList(RESTView):
         if serializer.is_valid():
             serializer.save()
 
-            return ClientLocationMinimumSerializer(ClientLocation.objects.get(pk=serializer.data.get('id'))).data
+            return ClientLocationMinimumSerializer(serializer.object).data
 
         return self.raise_bad_request(serializer.errors)

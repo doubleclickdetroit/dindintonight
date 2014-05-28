@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from core.models import BaseModel
 
 
@@ -18,3 +19,16 @@ class ClientLocationDetail(BaseModel):
         db_table = 'client_location_details'
         verbose_name = 'Client Location Detail'
         verbose_name_plural = 'Client Location Details'
+
+    def __unicode__(self):
+        return '{0} - {1} - {2}'.format(self.pk, self.address1, self.manager_name)
+
+
+def client_location_detail_post_save_handler(sender, instance, **kwargs):
+    from clients.api import ClientLocationSearchList
+
+    # bust the cache on the ClientLocationSearchList
+    client_location_search_list = ClientLocationSearchList()
+    client_location_search_list.bust_cache()
+
+post_save.connect(client_location_detail_post_save_handler, sender=ClientLocationDetail)

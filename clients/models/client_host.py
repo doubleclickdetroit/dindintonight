@@ -14,3 +14,6 @@ class ClientHost(BaseModel):
         db_table = 'client_hosts'
         verbose_name = 'Client Host'
         verbose_name_plural = 'Client Hosts'
+
+    def __unicode__(self):
+        return '{0} - {1} {2}'.format(self.pk, self.client.name, self.value)

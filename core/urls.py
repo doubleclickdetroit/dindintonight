@@ -36,4 +36,5 @@ urlpatterns = patterns('',
     url(r'^api/v1/', include('vendors.urls_api_v1')),
     url(r'^api/v1/', include('meals.urls_api_v1')),
     url(r'^api/v1/', include('users.urls_api_v1')),
+    url(r'^api/v1/', include('leads.urls_api_v1')),
 )
