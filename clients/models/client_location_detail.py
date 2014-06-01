@@ -9,6 +9,8 @@ class ClientLocationDetail(BaseModel):
     address1 = models.CharField(max_length=255, blank=True)
     address2 = models.CharField(max_length=255, blank=True)
     address3 = models.CharField(max_length=255, blank=True)
+    latitude = models.DecimalField(max_digits=10, decimal_places=6)
+    longitude = models.DecimalField(max_digits=10, decimal_places=6)
     phone_number = models.CharField(max_length=20, blank=True)
     manager_name = models.CharField(max_length=255, blank=True)
     created = models.DateTimeField(auto_now_add=True)
