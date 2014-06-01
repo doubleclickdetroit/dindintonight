@@ -21,7 +21,7 @@ define [
         lng: data.location.longitude
 
       image:
-        url: 'http://placehold.it/40x40'
+        url: data.images[0].location
 
 
 
