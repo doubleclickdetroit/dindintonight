@@ -5,7 +5,7 @@ from core.models import BaseModel
 
 class ClientLocationImage(BaseModel):
     id = models.AutoField(primary_key=True)
-    client_location = models.OneToOneField('clients.ClientLocation', related_name='images')
+    client_location = models.ForeignKey('clients.ClientLocation', related_name='images')
     name = models.CharField(max_length=125, blank=True)
     description = models.CharField(max_length=1024, blank=True)
     location = models.CharField(max_length=2048, blank=True)
