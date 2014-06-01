@@ -8,8 +8,8 @@ class Location(BaseModel):
     city = models.CharField(max_length=255, db_index=True)
     state = models.CharField(max_length=255, db_index=True)
     zip_code = models.CharField(max_length=50, db_index=True)
-    latitude = models.DecimalField(max_digits=10, decimal_places=6)
-    longitude = models.DecimalField(max_digits=10, decimal_places=6)
+    latitude = models.CharField(max_length=50, db_index=True)
+    longitude = models.CharField(max_length=50, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
