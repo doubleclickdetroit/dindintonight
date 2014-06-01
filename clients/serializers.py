@@ -3,7 +3,8 @@ from django.core import validators
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
-from clients.models import Client, ClientLocationDetail, ClientLocation, ClientUser, ClientLocationMeal
+from clients.models import Client, ClientLocationDetail, ClientLocation, ClientUser, ClientLocationMeal, \
+    ClientLocationImage
 from locations.serializers import LocationSerializer
 from meals.serializers import MealSerializer
 from users.serializers import UserSerializer
@@ -28,8 +29,8 @@ class ClientLocationDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ClientLocationDetail
-        fields = ('id', 'client_location', 'client_location_uri', 'address1', 'address2', 'address3', 'phone_number',
-                  'manager_name', 'resource_uri')
+        fields = ('id', 'client_location', 'client_location_uri', 'address1', 'address2', 'address3', 'latitude',
+                  'longitude', 'phone_number', 'manager_name', 'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):
@@ -40,10 +41,20 @@ class ClientLocationDetailSerializer(serializers.ModelSerializer):
         return reverse('api-v1-client-location-detail', args=[obj.client_location.client.pk, obj.client_location.pk])
 
 
+class ClientLocationImageSerializer(serializers.ModelSerializer):
+    id = serializers.Field()
+
+    class Meta:
+        model = ClientLocationImage
+        fields = ('id', 'name', 'description', 'location', 'created', 'modified')
+        read_only_fields = ('created', 'modified',)
+
+
 class ClientLocationMinimumSerializer(serializers.ModelSerializer):
     id = serializers.Field()
     location = LocationSerializer()
     details = ClientLocationDetailSerializer(source='details', required=False)
+    images = ClientLocationImageSerializer(source='images', required=False)
     client_uri = serializers.SerializerMethodField('get_client_uri')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
 
@@ -91,13 +102,15 @@ class ClientLocationSerializer(serializers.ModelSerializer):
     client = ClientSerializer()
     location = LocationSerializer()
     details = ClientLocationDetailSerializer(source='details', required=False)
+    images = ClientLocationImageSerializer(source='images', required=False)
     client_uri = serializers.SerializerMethodField('get_client_uri')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
     meals_uri = serializers.SerializerMethodField('get_client_location_meals_uri')
 
     class Meta:
         model = ClientLocation
-        fields = ('id', 'client', 'client_uri', 'location', 'details', 'created', 'modified', 'meals_uri', 'resource_uri')
+        fields = ('id', 'client', 'client_uri', 'location', 'details', 'images', 'created', 'modified', 'meals_uri',
+                  'resource_uri')
         read_only_fields = ('created', 'modified',)
 
     def get_resource_uri(self, obj):

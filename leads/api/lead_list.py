@@ -16,7 +16,12 @@ class LeadList(RESTView):
     URL_NAME = 'api-v1-lead-list'
 
     def _handle_get(self, request, *args, **kwargs):
-        results = Lead.objects.filter(franchise_pk=kwargs.get('franchise_id'))
+        try:
+            franchise = Franchise.objects.get(pk=kwargs.get('franchise_id'))
+        except Franchise.DoesNotExist:
+            self.raise_not_found()
+
+        results = Lead.objects.filter(franchise=franchise)
 
         return self.list_results(request, results, LeadSerializer, use_cache=True,
                                  cache_time=self.CACHE_30_DAYS, cache_version=1)
