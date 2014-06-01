@@ -89,15 +89,13 @@ define [
           anchor: __api.Point settings.image.anchor_x, settings.image.anchor_y
       }
 
-      # reveal method to render on map
-      addTo: (map_instance) ->
-        new __api.Marker
-          map     : map_instance
-          position: settings.location
-          icon    : settings.image
-          shape   : settings.shape
-          title   : settings.title
-          zIndex  : settings.zIndex
+      # return marker
+      new __api.Marker
+        position: settings.location
+        icon    : settings.image
+        shape   : settings.shape
+        title   : settings.title
+        zIndex  : settings.zIndex
 
 
     addMarkers: (map_instance, collection) ->
@@ -105,8 +103,9 @@ define [
 
       facade.util.each collection, (settings) =>
 
-        # create the marker
-        marker = @createMarker( settings ).addTo map_instance
+        # create the marker and add to the map
+        marker = @createMarker settings
+        marker.setMap map_instance
 
         # extend the bounds to include each marker's position
         bounds.extend marker.position
