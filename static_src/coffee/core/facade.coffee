@@ -85,8 +85,11 @@ define [
   #
   facade.util = _.extend {}, mediator.util,
 
+    extend_fn = (arg) ->
+      lib = if arg is true then $ else _
+      lib['extend']['apply']( null, arguments )
+
     each      : _.each
-    extend    : _.extend
     once      : _.once
     omit      : _.omit
     keys      : _.keys
@@ -99,6 +102,7 @@ define [
     deferred  : $.Deferred
     method    : $.proxy
     'when'    : $.when
+    extend    : extend_fn
 
 
   # InstallTo Object/Prototype
