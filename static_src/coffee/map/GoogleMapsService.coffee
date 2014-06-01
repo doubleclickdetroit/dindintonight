@@ -13,6 +13,11 @@ define [
         zoom: 18
 
 
+    createMap: ($map, settings={}) ->
+      options = facade.util.extend {}, settings, @defaults
+      new __api.Map $map, options
+
+
     geocodeAddress: (address) ->
       q = facade.util.deferred()
 
@@ -45,13 +50,69 @@ define [
       q.promise()
 
 
+    createBounds: ->
+      new __api.LatLngBounds()
+
+
     createCoords: (lat, lng) ->
       new __api.LatLng lat, lng
 
 
-    createMap: ($map, settings={}) ->
-      options = facade.util.extend {}, settings, @defaults
-      new __api.Map $map, options
+    createMarker: (options={}) ->
+      settings =
+        title : ''
+        location:
+          lat: 42.335994
+          lng: -83.049623
+        image:
+          url     : 'http://placehold.it/40x40'
+          width   : 40
+          height  : 40
+          origin_x: 0
+          origin_y: 0
+          anchor_x: 0
+          anchor_y: 40
+        shape:
+          type  : 'poly'
+          coords: [1, 1, 1, 20, 18, 20, 18 , 1]
+        zIndex: 1
+
+      # deep extend settings
+      facade.util.extend true, settings, options
+
+      # reassign values
+      facade.util.extend true, settings, {
+        location: @createCoords settings.location.lat, settings.location.lng
+        image:
+          size  : __api.Size  settings.image.width,    settings.image.height
+          origin: __api.Point settings.image.origin_x, settings.image.origin_y
+          anchor: __api.Point settings.image.anchor_x, settings.image.anchor_y
+      }
+
+      # reveal method to render on map
+      addTo: (map_instance) ->
+        new __api.Marker
+          map     : map_instance
+          position: settings.location
+          icon    : settings.image
+          shape   : settings.shape
+          title   : settings.title
+          zIndex  : settings.zIndex
+
+
+    addMarkers: (map_instance, collection) ->
+      bounds = @createBounds()
+
+      facade.util.each collection, (settings) =>
+
+        # create the marker
+        marker = @createMarker( settings ).addTo map_instance
+
+        # extend the bounds to include each marker's position
+        bounds.extend marker.position
+
+      # fit the map to the newly inclusive bounds
+      map_instance.fitBounds bounds
 
 
 

@@ -44,6 +44,10 @@ define [
       d.promise()
 
 
+    addMarkers: (map_instance, locations_collection) ->
+      __api.addMarkers map_instance, locations_collection
+
+
 
   # Register service
   facade.register 'map', MapService
