@@ -22,17 +22,15 @@ define [
 
     initMapServiceLocationView: =>
       # get data to init map
-      $map     = @locations_view.$el.find '#map-canvas'
+      $map     = @locations_view.$el.find( '#map-canvas' ).get(0)
       location = @locations_collection.first().toJSON().location
 
       # init map
-      map_loader = MapService.createMap $map.get(0), {
-        location: lat: location.latitude, lng: location.longitude
-      }
+      map_loader = MapService.createMap $map, { location: location }
 
       # broadcast map
-      map_loader.done (map) =>
-        @sandbox.trigger 'map:create', map
+      map_loader.done (map_instance) =>
+        @sandbox.trigger 'map:create', map_instance
 
 
     ###*
