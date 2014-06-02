@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block page_config %}
+{% endblock page_config %}
+
+{% block page_module %}
+    [ 'locations', 'meals', 'order' ]
+{% endblock page_module %}
+
+{% block content %}
+    <article>
+        <section data-outlet="locations:module"></section>
+        <section data-outlet="meals:module"></section>
+        <section data-outlet="order:module"></section>
+    </article>
+{% endblock %}
