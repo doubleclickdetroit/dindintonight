@@ -193,13 +193,13 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    # Database migration helpers:
+    # Database migration helpers
     'south',
 
     # Django Rest Framework
     'rest_framework',
 
-    # Social Network Login helpers:
+    # Social Network Login helpers
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -208,6 +208,9 @@ THIRD_PARTY_APPS = (
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin',
     'allauth.socialaccount.providers.twitter',
+
+    # Django Storages
+    'storages',
 )
 
 # Apps specific for this project go here.

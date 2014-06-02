@@ -7,8 +7,8 @@ from core.models import BaseModel
 class Franchise(BaseModel):
     id = models.AutoField(primary_key=True)
     owner = models.OneToOneField('users.User', related_name='franchise_owners')
+    slug = AutoSlugField(populate_from='name', unique=True, db_index=True)
     name = models.CharField(max_length=255)
-    slug = AutoSlugField(populate_from='name', unique=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
