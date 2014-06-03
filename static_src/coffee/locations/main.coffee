@@ -23,13 +23,16 @@ define [
         collections:
           locations: LocationsCollection.extend
             model: LocationModel
-            url  : module.config().resource_uri
 
         models:
           location: LocationModel
 
         views:
           locations: LocationsView
+
+      # initially notify resource_uri
+      # this may need to be bound to the 'create' event
+      @trigger 'resource:uri', module.config().resource_uri
 
 
 
