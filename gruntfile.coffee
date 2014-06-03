@@ -116,7 +116,7 @@ gruntFn = (grunt) ->
           expand : true
           cwd    : '<%= app_config.src %>/coffee'
           dest   : '<%= app_config.release %>/js'
-          src    : '**/*.html'
+          src    : '**/*.{hbs,html}'
         ]
 
       tmp_css:
@@ -153,7 +153,7 @@ gruntFn = (grunt) ->
 
     watch:
       html:
-        files: ['**/templates/*.html']
+        files: ['**/templates/*.{hbs,html}']
         options:
           livereload: true
 
@@ -174,7 +174,7 @@ gruntFn = (grunt) ->
           spawn: false
 
       templates:
-        files: ['<%= app_config.src %>/coffee/**/*.html']
+        files: ['<%= app_config.src %>/coffee/**/*.{hbs,html}']
         tasks: ['copy:templates']
         options:
           spawn: false
