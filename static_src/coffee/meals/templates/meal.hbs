@@ -1,0 +1,13 @@
+<article id="{{ id }}" class="meal">
+    <h1>{{ description }}</h1>
+
+    <img
+        src="{{#if image_url }}{{ image_url }}{{ else }}http://www.placehold.it/350x150{{/if}}"
+        alt="{{ description }}">
+
+    <div class="price">
+        <button class="add"><i class="icon-plus-sign"></i></button>
+        <output class="qty">{{ qty }}</output>
+        <button class="remove"><i class="icon-minus-sign"></i></button>
+    </div>
+</article>

@@ -1,35 +1,36 @@
 define [
-  'facade'
   'BaseView'
+  'hbs!../templates/meals'
 ],
-(facade, BaseView) ->
+(BaseView, hbs_meals) ->
 
 
   class MealsView extends BaseView
 
     initialize: (settings={}) ->
-      # install sandbox to view
-      @sandbox ?= facade.installTo {}, 'meals'
+      super
 
-      # set values
-      @sandbox.value greeting: 'Allo'
+      # initially inject the collection template
+      @$el.html hbs_meals( title: 'MealsView' )
 
-      # initial welcome
-      @sandbox.on      'welcome', @handleWelcome, @
-      @sandbox.trigger 'welcome', 'MealsView'
+      # cache elements
+      @$meals = @$ '.meals'
+
+      # collection listeners
+      @collection.on 'sync', @render, @
 
 
     render: ->
-      @$el.html '<h1>MealsView</h1>'
+      @collection.each (meal_model) =>
+        meal_view = new @subviews.meal model: meal_model
+        @$meals.append meal_view.$el
+
       @
 
 
     ###*
      * Event Handlers
     ###
-    handleWelcome: ->
-      greeting = @sandbox.value().greeting
-      # console?.log "#{greeting}, MealsView, and welcome!!"
 
 
   # exports

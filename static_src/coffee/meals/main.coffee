@@ -3,21 +3,19 @@ define [
   'facade'
   'BaseModule'
   './controllers/MealsController'
+  './collections/MealsCollection'
+  './models/MealModel'
   './views/MealsView'
+  './views/MealView'
 ],
-(module, facade, BaseModule, MealsController, MealsView) ->
+(module, facade, BaseModule, MealsController, MealsCollection, MealModel, MealsView, MealView) ->
 
 
   class MealsModule extends BaseModule
 
     controller: MealsController
 
-    constants:
-      GREETING: 'Why, hello there'
-
-
-    initialize: ->
-      #
+    constants: {}
 
 
     createController: (Controller) ->
@@ -26,11 +24,16 @@ define [
         # bootstrap with module data
         bootstrap: module.config()
         # references
+        collections:
+          meals: MealsCollection.extend
+            model: MealModel
+
+        models:
+          meal: MealModel
+
         views:
           meals: MealsView
-
-      # welcome the newly initialized controller
-      @trigger 'controller:welcome', @constant().GREETING
+          meal : MealView
 
 
 
