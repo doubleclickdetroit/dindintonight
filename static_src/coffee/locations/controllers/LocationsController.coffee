@@ -11,14 +11,24 @@ define [
       @locations_collection = new @collections.locations()
 
       # fetch the collection
-      @sandbox.on 'create', @handleCreateController, @
+      @sandbox.on 'resource:uri', @handleUpdatingCollectionUri, @
+      @sandbox.on 'location:selected', @handleLocationSelection, @
 
 
     ###*
      * Event Handlers
     ###
-    handleCreateController: ->
+    handleUpdatingCollectionUri: (resource_uri) ->
+      @locations_collection.url = resource_uri
       @locations_collection.fetch()
+
+
+    handleLocationSelection: (location_id) ->
+      model = @locations_collection.findWhere id: location_id
+      meals_uri = model.get 'meals_uri'
+
+      if meals_uri?
+        @sandbox.publish 'meals:resource:uri', meals_uri
 
 
     ###*

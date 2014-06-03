@@ -1,16 +1,16 @@
 define [
   'BaseView'
   'MapService'
-  'text!../templates/map.html'
+  'hbs!../templates/map'
 ],
-(BaseView, MapService, tmpl_map) ->
+(BaseView, MapService, hbs_map) ->
 
 
   class LocationsView extends BaseView
 
     initialize: (settings={}) ->
       # initially inject the template
-      @$el.html tmpl_map
+      @$el.html hbs_map( title: 'LocationsView' )
 
       # collection listeners
       @collection.on 'sync', @render, @
@@ -37,11 +37,18 @@ define [
 
 
     render: ->
+      # collection n'sync, add the markers
       if @map?
         @createMarkers()
 
+      # if needed, create the map and add markers
       else
         @createMap().done => @createMarkers()
+
+      setTimeout (=>
+        location_id = @collection.first().get 'id'
+        @sandbox.trigger 'location:selected', location_id
+      ), 5000
 
       @
 
