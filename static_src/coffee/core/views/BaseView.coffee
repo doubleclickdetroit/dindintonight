@@ -5,6 +5,10 @@ define [
 
   class BaseView extends Backbone.View
 
+    initialize: (settings={}) ->
+      @subviews = settings.subviews if settings.subviews?
+
+
     serialize : ->
       # If a model exists
       return @model.toJSON() if @model?
