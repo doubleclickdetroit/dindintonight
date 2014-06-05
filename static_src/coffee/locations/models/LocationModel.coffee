@@ -6,6 +6,9 @@ define [
 
   class LocationModel extends BaseModel
 
+    defaults:
+      selected: false
+
 
     url: ->
       attrs = @attributes.resource_uri

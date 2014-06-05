@@ -20,6 +20,9 @@ define [
     createController: (Controller) ->
       # create the controller
       @controller = new Controller
+        bootstrap:
+          resource_uri: module.config().resource_uri
+
         collections:
           locations: LocationsCollection.extend
             model: LocationModel
@@ -29,10 +32,6 @@ define [
 
         views:
           locations: LocationsView
-
-      # initially notify resource_uri
-      # this may need to be bound to the 'create' event
-      @trigger 'resource:uri', module.config().resource_uri
 
 
 

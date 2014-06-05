@@ -1,7 +1,8 @@
 define [
   'BaseController'
+  'UserService'
 ],
-(BaseController) ->
+(BaseController, UserService) ->
 
 
   class LocationsController extends BaseController
@@ -9,26 +10,22 @@ define [
 
     initialize: (settings) ->
       @locations_collection = new @collections.locations()
+      UserService.registerLocationsResource @locations_collection
 
       # fetch the collection
-      @sandbox.on 'resource:uri', @handleUpdatingCollectionUri, @
-      @sandbox.on 'location:selected', @handleLocationSelection, @
+      @sandbox.on 'create',            @handleAssigningCollectionUri, @
+      @sandbox.on 'location:selected', @handleLocationSelection,      @
 
 
     ###*
      * Event Handlers
     ###
-    handleUpdatingCollectionUri: (resource_uri) ->
-      @locations_collection.url = resource_uri
-      @locations_collection.fetch()
-
+    handleAssigningCollectionUri: ->
+      resource_uri = @bootstrap.resource_uri
+      UserService.assignLocationResourceUri resource_uri
 
     handleLocationSelection: (location_id) ->
-      model = @locations_collection.findWhere id: location_id
-      meals_uri = model.get 'meals_uri'
-
-      if meals_uri?
-        @sandbox.publish 'meals:resource:uri', meals_uri
+      @locations_collection.selectLocation location_id
 
 
     ###*
@@ -39,7 +36,6 @@ define [
         collection: @locations_collection
 
       @locations_view.$el
-
 
     onDestroy: ->
       @locations_view.$el.remove()

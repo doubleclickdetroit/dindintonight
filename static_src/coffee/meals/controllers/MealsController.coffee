@@ -1,7 +1,8 @@
 define [
   'BaseController'
+  'UserService'
 ],
-(BaseController) ->
+(BaseController, UserService) ->
 
 
   class MealsController extends BaseController
@@ -9,17 +10,12 @@ define [
 
     initialize: (settings) ->
       @meals_collection = new @collections.meals()
-
-      # sandbox event listeners
-      @sandbox.on 'resource:uri', @handleUpdatingCollectionUri, @
+      UserService.registerMealsResource @meals_collection
 
 
     ###*
      * Event Handlers
     ###
-    handleUpdatingCollectionUri: (resource_uri) ->
-      @meals_collection.url = resource_uri
-      @meals_collection.fetch()
 
 
     ###*
@@ -32,7 +28,6 @@ define [
         collection: @meals_collection
 
       @meals_view.render().$el
-
 
     onDestroy: ->
       @meals_view.$el.remove()
