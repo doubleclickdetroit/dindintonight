@@ -31,6 +31,11 @@ define [
       @payment_resource = payment_resource
       registerResource @payment_resource, @delegatePaymentEvents, @
 
+    registerOrderResource: (order_resource) ->
+      unregisterResource @order_resource
+      @order_resource = order_resource
+      registerResource @order_resource, @delegateOrderEvents, @
+
 
     ###
       # Resource URI Assignment
@@ -47,6 +52,10 @@ define [
       @payment_resource.url = resource_uri
       @payment_resource.fetch() if resource_uri?
 
+    assignOrderResourceUri: (resource_uri) ->
+      @orer_resource.url = resource_uri
+      @orer_resource.fetch() if resource_uri?
+
 
     ###
       # Event Delegates
@@ -54,12 +63,18 @@ define [
     delegateLocationsEvents: (evt, context, value, options) ->
       switch evt
         when 'change:selected' then @handleLocationSelected(context)
+        else console.log 'delegateLocationsEvents', arguments
 
     delegateMealsEvents: (evt, context, value, options) ->
-      console.log 'delegateMealsEvents', arguments
+      switch evt
+        when 'change:qty' then @handleMealQuantity(context, value)
+        else console.log 'delegateMealsEvents', arguments
 
     delegatePaymentEvents: (evt, context, value, options) ->
       console.log 'delegatePaymentEvents', arguments
+
+    delegateOrderEvents: (evt, context, value, options) ->
+      console.log 'delegateOrderEvents', arguments
 
 
     ###
@@ -68,6 +83,9 @@ define [
     handleLocationSelected: (location_model) ->
       meals_uri = location_model.get 'meals_uri'
       @assignMealsResourceUri meals_uri
+
+    handleMealQuantity: (meal_model, qty) ->
+      console.log 'handleMealQuantity', meal_model.attributes, qty
 
 
     ###

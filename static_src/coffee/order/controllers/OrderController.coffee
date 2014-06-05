@@ -9,7 +9,13 @@ define [
 
 
     initialize: (settings) ->
+      @order_model = new @models.order()
+      UserService.registerOrderResource @order_model
+
       # require sub-modules
+      @loadSubModules()
+
+    loadSubModules: ->
       @sandbox.require 'payment', (PaymentModule) =>
         paymentModule = new PaymentModule()
 

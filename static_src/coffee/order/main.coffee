@@ -3,9 +3,10 @@ define [
   'facade'
   'BaseModule'
   './controllers/OrderController'
+  './models/OrderModel'
   './views/OrderView'
 ],
-(module, facade, BaseModule, OrderController, OrderView) ->
+(module, facade, BaseModule, OrderController, OrderModel, OrderView) ->
 
 
   class OrderModule extends BaseModule
@@ -18,13 +19,13 @@ define [
     initialize: ->
       #
 
-
     createController: (Controller) ->
       # create the controller
       @controller = new Controller
-        # bootstrap with module data
-        bootstrap: module.config()
         # references
+        models:
+          order: OrderModel
+
         views:
           order: OrderView
 
