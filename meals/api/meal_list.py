@@ -33,7 +33,7 @@ class MealList(RESTView):
             'vendor_id': kwargs.get('vendor_id')
         }
 
-        results = Meal.objects.prefetch_related('vendor_location__vendor').filter(
+        results = Meal.objects.prefetch_related('vendor_location__vendor__images', 'images').filter(
             vendor_location__pk=kwargs.get('vendor_location_id'),
             vendor_location__vendor__pk=kwargs.get('vendor_id')).order_by('available_starting')
 

@@ -19,3 +19,6 @@ class Meal(BaseModel):
         db_table = 'meals'
         verbose_name = 'Meal'
         verbose_name_plural = 'Meals'
+
+    def __unicode__(self):
+        return 'Vendor Location {0} - {1}'.format(self.vendor_location.pk, self.name)
