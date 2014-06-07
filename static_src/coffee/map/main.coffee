@@ -17,23 +17,16 @@ define [
       #
 
 
-    createMap: ($map, settings) ->
+    createMap: ($map, settings={}) ->
       d = @util.deferred()
 
-      # check for location
-      location = settings?.location || {}
-
       # determine type of location
-      if location.address?
-        q = __api.geocodeAddress( location.address ).then (response) ->
-          settings.center = response.coords
-
-      else if location.lat? and location.lng?
-        q = __api.geocodeCoords( location.lat, location.lng ).then (response) ->
-          settings.center = response.coords
-
+      if settings.address?
+        q = __api.geocodeAddress( settings.address ).then (response) ->
+          facade.util.extend settings, response.coords
       else
         q = facade.util.deferred().resolve().promise()
+
 
       # when location is determined, create map
       q.done ->

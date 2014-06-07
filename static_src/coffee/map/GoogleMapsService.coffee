@@ -1,12 +1,15 @@
+
+
 define [
   'facade'
+  'GMaps'
 ],
-(facade) ->
+(facade, GMaps) ->
 
 
   class GoogleMapsService
 
-    __api = google.maps
+    __api = GMaps
 
     constructor: ->
       @defaults =
@@ -14,27 +17,28 @@ define [
 
 
     createMap: ($map, settings={}) ->
-      options = facade.util.extend {}, settings, @defaults
-      new __api.Map $map, options
+      options = facade.util.extend { div: $map }, settings, @defaults
+      new __api options
 
 
     geocodeAddress: (address) ->
       q = facade.util.deferred()
 
       @createGeocode( address: address ).done (results, status) ->
-        if (status == google.maps.GeocoderStatus.OK)
-          q.resolve { address: address, coords: results[0].geometry.location }
+        if (status is 'OK')
+          latlng = results[0].geometry.location
+          coords = lat: latlng.lat(), lng: latlng.lng()
+          q.resolve { address: address, coords: coords }
         else
           q.reject { error: "Geocode was not successful for the following reason #{status}" }
 
       q.promise()
 
 
-    geocodeCoords: (lat, lng) ->
+    geocodeCoords: (coords) ->
       q = facade.util.deferred()
 
-      coords = @createCoords lat, lng
-      @createGeocode( latLng: coords ).done (results, status) ->
+      @createGeocode( coords ).done (results, status) ->
         return q.resolve({ address: results[1], coords: coords }) if results[1]?
         q.reject({ error: "Geocoder failed due to #{status}" })
 
@@ -44,18 +48,14 @@ define [
     createGeocode: (position) ->
       q = facade.util.deferred()
 
-      geocoder = new __api.Geocoder()
-      geocoder.geocode position, q.resolve
+      options = facade.util.extend position, { callback: q.resolve }
+      __api.geocode options
 
       q.promise()
 
 
     createBounds: ->
       new __api.LatLngBounds()
-
-
-    createCoords: (lat, lng) ->
-      new __api.LatLng lat, lng
 
 
     createMarker: (options={}) ->
@@ -99,6 +99,7 @@ define [
 
 
     addMarkers: (map_instance, collection) ->
+      return false
       bounds = @createBounds()
 
       facade.util.each collection, (settings) =>

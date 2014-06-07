@@ -20,10 +20,11 @@ define [
       # get data to init map
       $map = @$el.find( '#map-canvas' ).get(0)
 
+      # default to city view of first location
+      location = @collection.first().toJSON().location
+
       # init map with map default position
-      map_loader = MapService.createMap $map, {
-        location: @collection.first().toJSON().location
-      }
+      map_loader = MapService.createMap $map, location
 
       # broadcast map
       map_loader.then (map_instance) =>
