@@ -20,7 +20,7 @@ define [
       # get data to init map
       $map = @$el.find( '#map-canvas' ).get(0)
 
-      # init map
+      # init map with map default position
       map_loader = MapService.createMap $map, {
         location: @collection.first().toJSON().location
       }

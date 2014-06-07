@@ -21,6 +21,9 @@ define [
      * Event Handlers
     ###
     handleAssigningCollectionUri: ->
+      # handle assigning resource_uri to UserService
+      # this is a bit unconventional as all other resources
+      # are handled internally by UserService
       resource_uri = @bootstrap.resource_uri
       UserService.assignLocationResourceUri resource_uri
 
