@@ -37,6 +37,10 @@ define [
       d.promise()
 
 
+    addMarker: (map_instance, options) ->
+      __api.addMarker map_instance, options
+
+
     addMarkers: (map_instance, locations_collection) ->
       __api.addMarkers map_instance, locations_collection
 

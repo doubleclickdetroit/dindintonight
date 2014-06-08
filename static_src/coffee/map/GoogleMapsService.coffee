@@ -115,6 +115,15 @@ define [
       map_instance.fitBounds bounds
 
 
+    addMarker: (map_instance, options={}) ->
+      settings = facade.util.extend options, {
+        verticalAlign  : 'top'
+        horizontalAlign: 'center'
+      }
+
+      map_instance.drawOverlay settings
+
+
 
   # exports
   GoogleMapsService

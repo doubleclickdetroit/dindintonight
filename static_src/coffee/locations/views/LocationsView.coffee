@@ -2,8 +2,9 @@ define [
   'BaseView'
   'MapService'
   'hbs!../templates/map'
+  'hbs!../templates/overlay'
 ],
-(BaseView, MapService, hbs_map) ->
+(BaseView, MapService, hbs_map, hbs_overlay) ->
 
 
   class LocationsView extends BaseView
@@ -21,10 +22,11 @@ define [
       $map = @$el.find( '#map-canvas' ).get(0)
 
       # default to city view of first location
-      location = @collection.first().toJSON().location
+      serving_area = @collection.first().toJSON().serving_area
+      serving_area.click = -> console.log 'map evt', arguments
 
       # init map with map default position
-      map_loader = MapService.createMap $map, location
+      map_loader = MapService.createMap $map, serving_area
 
       # broadcast map
       map_loader.then (map_instance) =>
@@ -33,8 +35,18 @@ define [
 
 
     createMarkers: ->
-      locations_json = @collection.toJSON()
-      MapService.addMarkers @map, locations_json
+      @collection.each (location_model) =>
+        location_json = location_model.toJSON()
+        console.log location_model.attributes
+        location_html = hbs_overlay location_json
+
+        options = @sandbox.util.extend location_json, {
+          details: location_json
+          content: location_html
+          click: -> console.log 'yo', arguments
+        }
+
+        MapService.addMarker @map, options
 
 
     render: ->
