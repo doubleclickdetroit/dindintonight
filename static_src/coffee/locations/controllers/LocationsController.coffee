@@ -13,8 +13,7 @@ define [
       UserService.registerLocationsResource @locations_collection
 
       # fetch the collection
-      @sandbox.on 'create',            @handleAssigningCollectionUri, @
-      @sandbox.on 'location:selected', @handleLocationSelection,      @
+      @sandbox.on 'create', @handleAssigningCollectionUri, @
 
 
     ###*
@@ -27,9 +26,6 @@ define [
       resource_uri = @bootstrap.resource_uri
       UserService.assignLocationResourceUri resource_uri
 
-    handleLocationSelection: (location_id) ->
-      @locations_collection.selectLocation location_id
-
 
     ###*
      * Create & Destroy Methods
@@ -37,6 +33,8 @@ define [
     onCreate: ->
       @locations_view = new @views.locations
         collection: @locations_collection
+        subviews:
+          location: @views.location
 
       @locations_view.$el
 

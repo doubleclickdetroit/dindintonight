@@ -27,7 +27,7 @@ define [
           meal: @views.meal
         collection: @meals_collection
 
-      @meals_view.render().$el
+      @meals_view.$el
 
     onDestroy: ->
       @meals_view.$el.remove()

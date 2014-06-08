@@ -93,6 +93,7 @@ define [
     once      : _.once
     omit      : _.omit
     keys      : _.keys
+    pick      : _.pick
     throttle  : _.throttle
     debounce  : _.debounce
     isString  : _.isString

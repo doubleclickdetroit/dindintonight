@@ -6,15 +6,18 @@ define [
 
   class LocationsCollection extends Backbone.Collection
 
+    initialize: ->
+      @on 'change:selected', @selectLocation, @
+
 
     parse: (response) ->
       response.results
 
 
-    selectLocation: (location_id) ->
-      @each (location) ->
-        is_location = location_id is location.attributes.id
-        location.set 'selected', is_location, silent: !is_location
+    selectLocation: (location_model) ->
+      locations = @without( location_model )
+      @sandbox.util.each locations, (location) ->
+        location.set 'selected', false, silent: true
 
 
 

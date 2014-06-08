@@ -25,12 +25,6 @@ requirejs.config
       deps: ['jquery']
       exports: 'jquery'
 
-    GMaps:
-      deps: [
-        'jquery'
-        'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyC-rbtKvoVTkbBME7aIAvBs2f-S917uXcg&sensor=true'
-      ]
-
     stripe_api:
       exports: 'Stripe'
 
@@ -45,7 +39,6 @@ requirejs.config
     underscore   : '../lib/bower_components/underscore/underscore'
     backbone     : '../lib/bower_components/backbone/backbone'
     bootstrap    : '../lib/bower_components/sass-bootstrap/dist/js/bootstrap'
-    GMaps        : '../lib/bower_components/gmaps/gmaps'
     localstorage : '../lib/bower_components/backbone.localStorage/backbone.localStorage-min'
     # RequireJS Plugins
     hbs          : '../lib/bower_components/require-handlebars-plugin/hbs'
@@ -59,7 +52,6 @@ requirejs.config
     BaseService     : 'core/services/BaseService'
     BaseController  : 'core/controllers/BaseController'
     # Services
-    MapService    : 'map/main'
     StripeService : 'stripe/main'
     UserService   : 'user/main'
     # Aliases

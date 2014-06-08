@@ -18,6 +18,15 @@ define [
       attrs.meal
 
 
+    toJSON: ->
+      attrs  = @pick 'description', 'price', 'qty'
+      images = @attributes.images
+
+      @sandbox.util.extend attrs, {
+        image_url: images[0].location
+      }
+
+
     addQty: ->
       qty = @get 'qty'
       @set 'qty', ++qty

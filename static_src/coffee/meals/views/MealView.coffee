@@ -16,7 +16,7 @@ define [
       super
 
       # initially inject the template
-      @$el.html hbs_meal( @model.toJSON() )
+      @$el.html hbs_meal( @serialize() )
 
       # cache elements
       @$output = @$ '.qty'

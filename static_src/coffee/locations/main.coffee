@@ -6,8 +6,9 @@ define [
   './collections/LocationsCollection'
   './models/LocationModel'
   './views/LocationsView'
+  './views/LocationView'
 ],
-(module, facade, BaseModule, LocationsController, LocationsCollection, LocationModel, LocationsView) ->
+(module, facade, BaseModule, LocationsController, LocationsCollection, LocationModel, LocationsView, LocationView) ->
 
 
   class LocationsModule extends BaseModule
@@ -32,6 +33,7 @@ define [
 
         views:
           locations: LocationsView
+          location : LocationView
 
 
 
