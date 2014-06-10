@@ -12,7 +12,6 @@ define [
       @sandbox.on 'payment:submit', @handleManageSubmit, @
 
 
-
     ###*
      * Event Handlers
     ###
@@ -24,7 +23,11 @@ define [
      * Create & Destroy Methods
     ###
     onCreate: ->
-      @manager_view = new @views.manager()
+      @manager_view = new @views.manager
+        subviews:
+          edit: @views.edit
+          show: @views.show
+
       @manager_view.render().$el
 
     onDestroy: ->

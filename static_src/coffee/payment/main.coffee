@@ -4,9 +4,10 @@ define [
   'BaseModule'
   './controllers/PaymentController'
   './views/ManagerView'
+  './views/EditView'
+  './views/ShowView'
 ],
-(module, facade, BaseModule, PaymentController, ManagerView) ->
-
+(module, facade, BaseModule, PaymentController, ManagerView, EditView, ShowView) ->
 
   class PaymentModule extends BaseModule
 
@@ -23,6 +24,8 @@ define [
         # references
         views:
           manager: ManagerView
+          edit   : EditView
+          show   : ShowView
 
 
 

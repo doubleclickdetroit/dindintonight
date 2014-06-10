@@ -1,9 +1,7 @@
 define [
   'BaseView'
-  './EditView'
-  './ShowView'
 ],
-(BaseView, EditView, ShowView) ->
+(BaseView) ->
 
 
   class ManagerView extends BaseView
@@ -16,7 +14,7 @@ define [
 
 
     render: ->
-      @$el.html '<h1>ManagerView</h1>'
+      @$el.html '<h1>PaymentView</h1>'
       @
 
 
