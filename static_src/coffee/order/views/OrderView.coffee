@@ -1,18 +1,18 @@
 define [
   'BaseView'
-  'text!../templates/order.html'
+  'hbs!../templates/order'
 ],
-(BaseView, tmpl_order) ->
+(BaseView, hbs_order) ->
 
 
   class OrderView extends BaseView
 
     initialize: (settings={}) ->
-      #
+      # initially render and inject the template
+      @$el.html hbs_order( @serialize() )
 
 
     render: ->
-      @$el.html tmpl_order
       @
 
 

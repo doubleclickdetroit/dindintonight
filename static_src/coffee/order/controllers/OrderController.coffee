@@ -1,8 +1,8 @@
 define [
   'BaseController'
-  'UserService'
+  'ResourceService'
 ],
-(BaseController, UserService) ->
+(BaseController, ResourceService) ->
 
 
   class OrderController extends BaseController
@@ -10,7 +10,7 @@ define [
 
     initialize: (settings) ->
       @order_model = new @models.order()
-      UserService.registerOrderResource @order_model
+      ResourceService.registerOrderResource @order_model
 
       # require sub-modules
       @loadSubModules()
@@ -24,7 +24,6 @@ define [
 
         paymentModule.start()
 
-
     ###*
      * Event Handlers
     ###
@@ -35,7 +34,7 @@ define [
     ###
     onCreate: ->
       @order_view = new @views.order()
-      @order_view.render().$el
+      @order_view.$el
 
     onDestroy: ->
       @order_view.$el.remove()
