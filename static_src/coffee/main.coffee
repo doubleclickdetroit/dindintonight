@@ -52,8 +52,9 @@ requirejs.config
     BaseService     : 'core/services/BaseService'
     BaseController  : 'core/controllers/BaseController'
     # Services
-    StripeService : 'stripe/main'
-    UserService   : 'user/main'
+    ResourceService : 'resource/main'
+    StripeService   : 'stripe/main'
+    UserService     : 'user/main'
     # Aliases
     helpers : 'core/helpers/'
 

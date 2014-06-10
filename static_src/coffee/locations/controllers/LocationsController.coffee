@@ -1,8 +1,8 @@
 define [
   'BaseController'
-  'UserService'
+  'ResourceService'
 ],
-(BaseController, UserService) ->
+(BaseController, ResourceService) ->
 
 
   class LocationsController extends BaseController
@@ -10,7 +10,7 @@ define [
 
     initialize: (settings) ->
       @locations_collection = new @collections.locations()
-      UserService.registerLocationsResource @locations_collection
+      ResourceService.registerLocationsResource @locations_collection
 
       # fetch the collection
       @sandbox.on 'create', @handleAssigningCollectionUri, @
@@ -20,11 +20,11 @@ define [
      * Event Handlers
     ###
     handleAssigningCollectionUri: ->
-      # handle assigning resource_uri to UserService
+      # handle assigning resource_uri to ResourceService
       # this is a bit unconventional as all other resources
-      # are handled internally by UserService
+      # are handled internally by ResourceService
       resource_uri = @bootstrap.resource_uri
-      UserService.assignLocationResourceUri resource_uri
+      ResourceService.assignLocationResourceUri resource_uri
 
 
     ###*

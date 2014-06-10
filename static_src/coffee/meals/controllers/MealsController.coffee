@@ -1,8 +1,8 @@
 define [
   'BaseController'
-  'UserService'
+  'ResourceService'
 ],
-(BaseController, UserService) ->
+(BaseController, ResourceService) ->
 
 
   class MealsController extends BaseController
@@ -10,7 +10,7 @@ define [
 
     initialize: (settings) ->
       @meals_collection = new @collections.meals()
-      UserService.registerMealsResource @meals_collection
+      ResourceService.registerMealsResource @meals_collection
 
 
     ###*
