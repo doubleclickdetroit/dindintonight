@@ -94,6 +94,7 @@ define [
     omit      : _.omit
     keys      : _.keys
     pick      : _.pick
+    reduce    : _.reduce
     throttle  : _.throttle
     debounce  : _.debounce
     isString  : _.isString
