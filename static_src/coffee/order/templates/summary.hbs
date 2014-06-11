@@ -1,0 +1,9 @@
+<h3>Summary</h3>
+
+<div id="price">{{formatCurrency total_price }}</div>
+
+<ul id="list">
+    {{#each meals}}
+        {{> './meal-item'}}
+    {{/each}}
+</ul>

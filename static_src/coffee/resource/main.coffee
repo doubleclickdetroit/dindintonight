@@ -68,7 +68,7 @@ define [
 
     delegateMealsEvents: (evt, context, value, options) ->
       switch evt
-        when 'change:qty' then @handleMealQuantity(context, value)
+        when 'sync', 'change:qty' then @handleMealQuantity(context, value)
         else console.log 'delegateMealsEvents', arguments
 
     delegateOrderEvents: (evt, context, value, options) ->
@@ -86,7 +86,8 @@ define [
       @assignMealsResourceUri meals_uri
 
     handleMealQuantity: (meal_model, qty) ->
-      console.log 'handleMealQuantity', meal_model.attributes, qty
+      meals_collection = @meals_resource.toJSON()
+      @order_resource.updateMeals meals_collection
 
 
     ###
