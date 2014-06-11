@@ -19,7 +19,7 @@ define [
 
 
     toJSON: ->
-      attrs  = @pick 'description', 'price', 'qty'
+      attrs  = @pick 'id', 'description', 'price', 'qty'
       images = @attributes.images
 
       @sandbox.util.extend attrs, {
