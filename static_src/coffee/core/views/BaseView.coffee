@@ -17,15 +17,17 @@ define [
       # Otherwise, here's nothing
       {}
 
+
     show : ->
       @$el.show()
+
 
     hide : ->
       @$el.hide()
 
+
     render : ->
       serialized_json = @serialize()
-
       @
 
 

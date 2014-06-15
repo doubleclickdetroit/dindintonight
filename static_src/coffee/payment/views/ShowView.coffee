@@ -1,22 +1,34 @@
 define [
   'BaseView'
+  'hbs!../templates/show'
 ],
-(BaseView) ->
+(BaseView, hbs_show) ->
 
 
   class ShowView extends BaseView
 
-    initialize: (settings={}) ->
-      #
+    events:
+      'click .btn-add'  : 'handleAddButton'
+      'click .btn-edit' : 'handleEditButton'
+
 
     render: ->
-      @$el.html '<h1>ShowView</h1>'
+      cards_serialized = cards: @serialize()
+      @$el.html hbs_show( cards_serialized )
       @
 
 
     ###*
      * Event Handlers
     ###
+    handleAddButton: (evt) ->
+      evt.preventDefault()
+      @sandbox.trigger 'payment:add'
+
+    handleEditButton: (evt) ->
+      evt.preventDefault()
+      card_id = @sandbox.dom.find( evt.target ).data 'card-id'
+      @sandbox.trigger 'payment:edit', card_id
 
 
 

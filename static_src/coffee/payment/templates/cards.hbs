@@ -1,0 +1,11 @@
+{{#if cards.length}}
+    <ul class="cards">
+    {{#each cards}}
+        {{> './card'}}
+    {{/each}}
+    </ul>
+{{ else }}
+    <p>Looks like there isn't a form of payment. Why don't you <a href="#" class="btn-add">add one</a> now?</p>
+{{/if}}
+
+<button class="btn-add">New Card</button>

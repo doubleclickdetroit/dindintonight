@@ -24,5 +24,6 @@
     <input type="text" size="4" data-stripe="exp-year"/>
   </div>
 
-  <button type="submit">Submit Payment</button>
+  <button class="btn-cancel" type="button">Cancel</button>
+  <button class="btn-submit" type="submit">{{#if id}}Update{{else}}Add{{/if}} Card</button>
 </form>
