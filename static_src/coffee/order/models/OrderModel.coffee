@@ -19,22 +19,33 @@ define [
     toJSON: ->
       attrs = @attributes
 
-      # create total_price attr
-      attrs.total_price = getTotalPrice.call @, attrs.meals
+      # tack on additional attrs
+      attrs.total_price = @getTotalPrice()
+      attrs.has_orders  = @hasOrders()
 
       # return attrs as JSON
       attrs
 
 
     ###
-      # Private Methods
+      # Public Methods
     ###
-    getTotalPrice = (collection) ->
+    getTotalPrice: ->
       reduce = (memo, attrs) ->
         memo + ( parseFloat(attrs.price) * attrs.qty )
 
       # derrive from collection models qty attr
-      @sandbox.util.reduce collection, reduce, 0
+      @sandbox.util.reduce @get('meals'), reduce, 0
+
+    getTotalOrders: ->
+      reduce = (memo, attrs) ->
+        memo += attrs.qty
+
+      # derrive from collection models qty attr
+      @sandbox.util.reduce @get('meals'), reduce, 0
+
+    hasOrders: ->
+      @getTotalOrders() > 0
 
 
 
