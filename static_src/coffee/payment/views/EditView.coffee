@@ -1,6 +1,6 @@
 define [
   'BaseView'
-  'text!../templates/form.html'
+  'hbs!../templates/form'
 ],
 (BaseView, tmpl_form) ->
 

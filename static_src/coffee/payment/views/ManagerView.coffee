@@ -9,10 +9,6 @@ define [
     events: {}
 
 
-    initialize: (settings={}) ->
-      #
-
-
     render: ->
       @$el.html '<h1>PaymentView</h1>'
       @

@@ -1,15 +1,21 @@
 define [
   'BaseController'
+  'UserService'
+  'ResourceService'
 ],
-(BaseController) ->
+(BaseController, UserService, ResourceService) ->
 
 
   class PaymentController extends BaseController
 
 
     initialize: (settings) ->
+      @cards_collection = new @collections.cards()
+      ResourceService.registerPaymentResource @cards_collection
+
       # sandbox event listeners
       @sandbox.on 'payment:submit', @handleManageSubmit, @
+
 
 
     ###*

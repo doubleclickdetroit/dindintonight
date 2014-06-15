@@ -3,11 +3,12 @@ define [
   'facade'
   'BaseModule'
   './controllers/PaymentController'
+  './collections/CardsCollection'
   './views/ManagerView'
   './views/EditView'
   './views/ShowView'
 ],
-(module, facade, BaseModule, PaymentController, ManagerView, EditView, ShowView) ->
+(module, facade, BaseModule, PaymentController, CardsCollection, ManagerView, EditView, ShowView) ->
 
   class PaymentModule extends BaseModule
 
@@ -22,6 +23,9 @@ define [
         # bootstrap with module data
         bootstrap: module.config()
         # references
+        collections:
+          cards: CardsCollection
+
         views:
           manager: ManagerView
           edit   : EditView
