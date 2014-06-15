@@ -6,11 +6,21 @@ define [
 
   class UserModel extends BaseModel
 
-    urlRoot: '/api/v1/users'
+    urlRoot: ->
+      @get 'resource_uri'
 
     defaults:
+      email          : ''
+      username       : ''
+      first_name     : ''
+      last_name      : ''
+      cards          : []
       locations      : []
       social_accounts: []
+
+
+    is_loggedin: ->
+      @get( 'id' )?
 
 
 

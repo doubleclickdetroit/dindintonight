@@ -62,10 +62,8 @@ requirejs.config
 
 # System module
 define [
-  'module'
   'app/main'
 ],
-(module, App) ->
+(App) ->
 
-  console.log 'bootstrap', module.config()
   new App().start()

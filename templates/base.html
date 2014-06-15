@@ -83,11 +83,9 @@
     <script>
         var require = {
             config: {
-                'main': {
-                    {% if request.user.is_authenticated %}
-                    user: {{ request.user.json|safe }}
-                    {% endif %}
-                },
+                {% if request.user.is_authenticated %}
+                'UserService': {{ request.user.json|safe }},
+                {% endif %}
                 'locations/main': {
                     resource_uri: '/api/v1/search/clients/locations/?franchise=1'
                 }

@@ -1,8 +1,10 @@
 define [
+  'module'
   'facade'
   'BaseService'
+  'user/models/UserModel'
 ],
-(facade, BaseService) ->
+(module, facade, BaseService, UserModel) ->
 
 
   class UserService extends BaseService
@@ -10,7 +12,11 @@ define [
     constants: {}
 
     initialize: ->
-      #
+      @user_model = new UserModel module.config()
+
+
+    is_loggedin: ->
+      @user_model.is_loggedin()
 
 
 
