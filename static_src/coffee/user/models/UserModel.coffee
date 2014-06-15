@@ -19,7 +19,7 @@ define [
       social_accounts: []
 
 
-    is_loggedin: ->
+    isLoggedIn: ->
       @get( 'id' )?
 
 

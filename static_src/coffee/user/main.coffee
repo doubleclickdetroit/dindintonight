@@ -12,11 +12,30 @@ define [
     constants: {}
 
     initialize: ->
-      @user_model = new UserModel module.config()
+      bootstrap_data = getBootstrapData()
+      @user_model = new UserModel bootstrap_data
 
 
-    is_loggedin: ->
-      @user_model.is_loggedin()
+    ###
+      # Public Methods
+    ###
+    isLoggedIn: ->
+      @user_model.isLoggedIn()
+
+    getCards: ->
+      @user_model.get 'cards'
+
+
+    ###
+      # Private Methods
+    ###
+    getBootstrapData = ->
+      facade.util.extend module.config(), {
+        # mock data
+        cards: [
+          { id: 3, name: 'Discover Card' }
+        ]
+      }
 
 
 
