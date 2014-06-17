@@ -6,7 +6,7 @@ class UserMealPurchaseHistory(BaseModel):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey('users.User', related_name='user_meal_purchase_history')
     meal = models.ForeignKey('meals.Meal', related_name='user_meal_purchase_history')
-    purchased_on = models.DateTimeField()
+    purchased_on = models.DateTimeField(auto_now_add=True)
     deliver_on = models.DateTimeField()
     delivered_on = models.DateTimeField(blank=True, null=True)
     cancelled_on = models.DateTimeField(blank=True, null=True)

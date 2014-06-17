@@ -51,8 +51,6 @@ def user_post_save_handler(sender, instance, **kwargs):
 
         # Clean up any leads that we had due to them now being a user of the site
         Lead.objects.filter(email=instance.email).delete()
-
-
     else:
         stripe_customer = stripe.Customer.retrieve(instance.customer.customer_id)
         stripe_customer.email = instance.email
