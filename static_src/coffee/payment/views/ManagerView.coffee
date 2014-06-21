@@ -13,8 +13,8 @@ define [
       super
 
       # create subviews
-      @edit_view = new @subviews.edit collection: @collection
-      @show_view = new @subviews.show collection: @collection
+      @edit_view = new @subviews.edit model: @model, collection: @collection
+      @show_view = new @subviews.show model: @model, collection: @collection
 
       # inject subviews
       @$el.append @edit_view.$el
@@ -34,8 +34,9 @@ define [
 
 
     displayEditView: (card_model) ->
+      @model.reset card_model?.toJSON()
       @show_view.hide()
-      @edit_view.render(card_model).show()
+      @edit_view.render().show()
 
 
     ###

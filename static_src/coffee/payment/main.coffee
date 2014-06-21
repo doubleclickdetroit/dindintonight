@@ -4,11 +4,13 @@ define [
   'BaseModule'
   './controllers/PaymentController'
   './collections/CardsCollection'
+  './models/CardModel'
   './views/ManagerView'
   './views/EditView'
   './views/ShowView'
 ],
-(module, facade, BaseModule, PaymentController, CardsCollection, ManagerView, EditView, ShowView) ->
+(module, facade, BaseModule, PaymentController, CardsCollection, CardModel, ManagerView, EditView, ShowView) ->
+
 
   class PaymentModule extends BaseModule
 
@@ -24,7 +26,10 @@ define [
         bootstrap: module.config()
         # references
         collections:
-          cards: CardsCollection
+          cards: CardsCollection.extend { model: CardModel }
+
+        models:
+          card: CardModel
 
         views:
           manager: ManagerView

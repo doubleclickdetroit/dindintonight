@@ -3,6 +3,38 @@
 
   <div class="form-row">
     <label>
+      <span>First Name</span>
+      <input type="text" size="20" data-stripe="name_first" value="{{ name_first }}" />
+    </label>
+    <label>
+      <span>Last Name</span>
+      <input type="text" size="35" data-stripe="name_last" value="{{ name_last }}" />
+    </label>
+  </div>
+  <div class="form-row">
+    <label>
+      <span>Address</span>
+      <input type="text" size="20" data-stripe="address_line1" value="{{ address_line1 }}" />
+    </label>
+  </div>
+  <div class="form-row">
+    <label>
+      <span>City</span>
+      <input type="text" size="20" data-stripe="address_city" value="{{ address_city }}" />
+    </label>
+    <label>
+      <span>State</span>
+      <select data-stripe="address_state" size="1">
+          {{> './states_options'}}
+      </select>
+    </label>
+    <label>
+      <span>Zip</span>
+      <input type="text" size="20" data-stripe="address_zip" value="{{ address_zip }}" />
+    </label>
+  </div>
+  <div class="form-row">
+    <label>
       <span>Card Number</span>
       <input type="text" size="20" data-stripe="number"/>
     </label>

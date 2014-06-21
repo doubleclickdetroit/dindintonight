@@ -10,15 +10,24 @@ define [
     events:
       'submit'            : 'handleFormSubmission'
       'click .btn-cancel' : 'handleCancelSubmission'
+      'change [data-stripe^="name"]'   : 'updateAttribute'
+      'change [data-stripe^="address"]': 'updateAttribute'
 
 
     initialize: (settings={}) ->
       super
 
-
-    render: (card_model={}) ->
-      @$el.html tmpl_edit( card_model )
+    render: ->
+      @$el.html tmpl_edit( @serialize() )
       @
+
+    updateAttribute: (evt) ->
+      $field = @sandbox.dom.find evt.target
+      name   = $field.attr 'data-stripe'
+      val    = $field.val() || null
+
+      # update the model
+      @model.set name, val
 
 
     ###*
@@ -26,8 +35,8 @@ define [
     ###
     handleFormSubmission: (evt) ->
       evt.preventDefault()
-      $form = @$ '#payment-form'
-      @sandbox.trigger 'payment:submit', $form
+      return unless @model.isValid()
+      @sandbox.trigger 'payment:submit', @$( '#payment-form' )
 
     handleCancelSubmission: (evt) ->
       evt.preventDefault()

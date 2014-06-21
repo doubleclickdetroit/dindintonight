@@ -12,6 +12,12 @@ define [
       'click .btn-edit' : 'handleEditButton'
 
 
+    initialize: (settings={}) ->
+      super
+
+    serialize: ->
+      @collection.toJSON()
+
     render: ->
       cards_serialized = cards: @serialize()
       @$el.html hbs_show( cards_serialized )
