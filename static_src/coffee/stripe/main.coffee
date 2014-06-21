@@ -31,7 +31,7 @@ define [
 
       else
         # token contains id, last4, and card type
-        @trigger 'token:success', response.id
+        @trigger 'token:success', response
 
 
 

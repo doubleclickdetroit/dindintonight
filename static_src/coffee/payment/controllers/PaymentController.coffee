@@ -2,8 +2,9 @@ define [
   'BaseController'
   'UserService'
   'ResourceService'
+  'StripeService'
 ],
-(BaseController, UserService, ResourceService) ->
+(BaseController, UserService, ResourceService, StripeService) ->
 
 
   class PaymentController extends BaseController
@@ -19,6 +20,8 @@ define [
       @sandbox.on 'payment:cancel', @handleCancelPayment, @
       @sandbox.on 'payment:submit', @handleSubmitPayment, @
 
+      @sandbox.subscribe 'stripe:all', -> console.log 'token', arguments
+
 
     ###*
      * Event Handlers
@@ -32,7 +35,7 @@ define [
       @manager_view.displayShowView()
 
     handleSubmitPayment: ($form) ->
-      console.log 'handleSubmitPayment', $form
+      StripeService.createToken $form
 
 
     ###*
