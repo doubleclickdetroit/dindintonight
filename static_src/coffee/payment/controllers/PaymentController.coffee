@@ -1,10 +1,9 @@
 define [
   'BaseController'
-  'UserService'
   'ResourceService'
   'StripeService'
 ],
-(BaseController, UserService, ResourceService, StripeService) ->
+(BaseController, ResourceService, StripeService) ->
 
 
   class PaymentController extends BaseController
@@ -12,7 +11,7 @@ define [
 
     initialize: (settings) ->
       @card_model       = new @models.card()
-      @cards_collection = new @collections.cards UserService.getCards(), { parse: true }
+      @cards_collection = new @collections.cards()
       ResourceService.registerPaymentResource @cards_collection
 
       # sandbox listeners
@@ -50,7 +49,8 @@ define [
       StripeService.createToken $form
 
     handleStripeAuthorization: (response) ->
-      console.log 'handleStripeAuthorization', response
+      card_model = @sandbox.util.extend response.card, @card_model.toJSON()
+      @cards_collection.add response, { parse: true, merge: true }
 
 
     ###*

@@ -16,15 +16,17 @@ define [
       @edit_view = new @subviews.edit model: @model, collection: @collection
       @show_view = new @subviews.show model: @model, collection: @collection
 
-      # inject subviews
+      # initially inject subviews
       @$el.append @edit_view.$el
       @$el.append @show_view.$el
+
+      # collection listeners
+      @collection.on 'reset add remove', @displayShowView, @
 
 
     render: ->
       # default display show view
       @displayShowView()
-
       @
 
 

@@ -1,8 +1,9 @@
 define [
   'facade'
   'BaseService'
+  'UserService'
 ],
-(facade, BaseService) ->
+(facade, BaseService, UserService) ->
 
 
   class ResourceService extends BaseService
@@ -35,6 +36,9 @@ define [
       unregisterResource @payment_resource
       @payment_resource = payment_resource
       registerResource @payment_resource, @delegatePaymentEvents, @
+
+      # initially bootstrap data
+      @payment_resource.reset UserService.getCards(), { parse: true }
 
 
 
