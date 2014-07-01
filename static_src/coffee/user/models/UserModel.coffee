@@ -22,6 +22,9 @@ define [
     isLoggedIn: ->
       @get( 'id' )?
 
+    toJSON: ->
+      @omit 'cards', 'locations'
+
 
 
   # exports

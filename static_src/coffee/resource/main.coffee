@@ -32,6 +32,9 @@ define [
       @order_resource = order_resource
       registerResource @order_resource, @delegateOrderEvents, @
 
+      # initially bootstrap user data
+      @order_resource.updateUser UserService.getUser()
+
     registerPaymentResource: (payment_resource) ->
       unregisterResource @payment_resource
       @payment_resource = payment_resource
@@ -68,18 +71,20 @@ define [
     delegateLocationsEvents: (evt, context, value, options) ->
       switch evt
         when 'change:selected' then @handleLocationSelected(context)
-        else console.log 'delegateLocationsEvents', arguments
+        # else console.log 'delegateLocationsEvents', arguments
 
     delegateMealsEvents: (evt, context, value, options) ->
       switch evt
         when 'sync', 'change:qty' then @handleMealQuantity(context, value)
-        else console.log 'delegateMealsEvents', arguments
+        # else console.log 'delegateMealsEvents', arguments
 
     delegateOrderEvents: (evt, context, value, options) ->
       console.log 'delegateOrderEvents', arguments
 
     delegatePaymentEvents: (evt, context, value, options) ->
-      console.log 'delegatePaymentEvents', arguments
+      switch evt
+        when 'change:selected' then @handlePaymentSelected(context)
+        # else console.log 'delegatePaymentEvents', arguments
 
 
     ###
@@ -88,10 +93,14 @@ define [
     handleLocationSelected: (location_model) ->
       meals_uri = location_model.get 'meals_uri'
       @assignMealsResourceUri meals_uri
+      @order_resource.updateLocation location_model
 
     handleMealQuantity: (meal_model, qty) ->
       meals_collection = @meals_resource.toJSON()
       @order_resource.updateMeals meals_collection
+
+    handlePaymentSelected: (card_model) ->
+      @order_resource.updateCard card_model
 
 
     ###

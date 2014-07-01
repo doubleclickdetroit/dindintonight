@@ -15,11 +15,6 @@ define [
       address_zip   : null
 
 
-    parse: (attrs) ->
-      return attrs unless attrs.card?
-      @sandbox.util.extend attrs.card, { token: attrs.id }
-
-
     reset: (attrs={}) ->
       attrs = @sandbox.util.extend {}, @defaults, attrs
       @clear { silent: true }

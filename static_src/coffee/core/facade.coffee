@@ -94,6 +94,7 @@ define [
     omit      : _.omit
     keys      : _.keys
     pick      : _.pick
+    omit      : _.omit
     reduce    : _.reduce
     throttle  : _.throttle
     debounce  : _.debounce

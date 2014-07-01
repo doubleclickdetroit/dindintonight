@@ -1,3 +1,9 @@
 <h1>AddView</h1>
 
+{{#if error}}
+    <div class="alert alert-danger" role="alert">
+        <strong>Uh oh...</strong> {{ error }}
+    </div>
+{{/if}}
+
 {{> './form' }}

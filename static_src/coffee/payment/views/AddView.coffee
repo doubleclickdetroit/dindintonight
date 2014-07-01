@@ -17,8 +17,17 @@ define [
     initialize: (settings={}) ->
       super
 
-    render: ->
-      @$el.html tmpl_edit( @serialize() )
+      # sandbox listener
+      @sandbox.on 'validation:error', @render, @
+
+    render: (validation_error) ->
+      serialized_json = @serialize()
+
+      # add validation errors
+      if validation_error?
+        @sandbox.util.extend serialized_json, error: validation_error
+
+      @$el.html tmpl_edit( serialized_json )
       @
 
     updateAttribute: (evt) ->

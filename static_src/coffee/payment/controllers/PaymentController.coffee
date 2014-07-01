@@ -17,6 +17,7 @@ define [
       # sandbox listeners
       @sandbox.on 'payment:add',    @handleAddPayment,    @
       @sandbox.on 'payment:remove', @handleRemovePayment, @
+      @sandbox.on 'payment:select', @handleSelectPayment, @
       @sandbox.on 'payment:cancel', @handleCancelPayment, @
       @sandbox.on 'payment:submit', @handleSubmitPayment, @
 
@@ -26,6 +27,20 @@ define [
 
       # model listeners
       @card_model.on 'invalid', @handleModelValidationError, @
+
+
+    addPayment: (card_model) ->
+      @cards_collection.add card_model, { parse: true, merge: true }
+
+      if @cards_collection.length is 1
+        @selectPayment @cards_collection.first()
+
+    removePayment: (card_model) ->
+      console.log 'removePayment', card_model
+      card_model?.destroy()
+
+    selectPayment: (card_model) ->
+      card_model.set 'selected', true
 
 
     ###*
@@ -42,7 +57,11 @@ define [
 
     handleRemovePayment: (id) ->
       card_model = @cards_collection.get id
-      @card_model?.remove()
+      @removePayment card_model
+
+    handleSelectPayment: (id) ->
+      card_model = @cards_collection.get id
+      @selectPayment card_model
 
     handleCancelPayment: ->
       @manager_view.displayShowView()
@@ -51,8 +70,9 @@ define [
       StripeService.createToken $form
 
     handleStripeAuthorization: (response) ->
-      card_model = @sandbox.util.extend response.card, @card_model.toJSON()
-      @cards_collection.add response, { parse: true, merge: true }
+      card_json  = @card_model.toJSON()
+      card_model = @sandbox.util.extend card_json, response.card, token: response.id
+      @addPayment card_model
 
 
     ###*
