@@ -6,10 +6,10 @@ define [
   './collections/CardsCollection'
   './models/CardModel'
   './views/ManagerView'
-  './views/EditView'
+  './views/AddView'
   './views/ShowView'
 ],
-(module, facade, BaseModule, PaymentController, CardsCollection, CardModel, ManagerView, EditView, ShowView) ->
+(module, facade, BaseModule, PaymentController, CardsCollection, CardModel, ManagerView, AddView, ShowView) ->
 
 
   class PaymentModule extends BaseModule
@@ -33,7 +33,7 @@ define [
 
         views:
           manager: ManagerView
-          edit   : EditView
+          add    : AddView
           show   : ShowView
 
 

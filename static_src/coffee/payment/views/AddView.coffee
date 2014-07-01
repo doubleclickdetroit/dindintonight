@@ -1,11 +1,11 @@
 define [
   'BaseView'
-  'hbs!../templates/edit'
+  'hbs!../templates/add'
 ],
 (BaseView, tmpl_edit) ->
 
 
-  class EditView extends BaseView
+  class AddView extends BaseView
 
     events:
       'submit'            : 'handleFormSubmission'
@@ -45,4 +45,4 @@ define [
 
 
   # exports
-  EditView
+  AddView

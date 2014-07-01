@@ -8,8 +8,9 @@ define [
   class ShowView extends BaseView
 
     events:
-      'click .btn-add'  : 'handleAddButton'
-      'click .btn-edit' : 'handleEditButton'
+      'click .btn-add'    : 'handleAddButton'
+      'click .btn-remove' : 'handleRemoveButton'
+      'click .btn-select' : 'handleSelectButton'
 
 
     initialize: (settings={}) ->
@@ -31,10 +32,15 @@ define [
       evt.preventDefault()
       @sandbox.trigger 'payment:add'
 
-    handleEditButton: (evt) ->
+    handleRemoveButton: (evt) ->
       evt.preventDefault()
       card_id = @sandbox.dom.find( evt.target ).data 'card-id'
-      @sandbox.trigger 'payment:edit', card_id
+      @sandbox.trigger 'payment:remove', card_id
+
+    handleSelectButton: (evt) ->
+      evt.preventDefault()
+      card_id = @sandbox.dom.find( evt.target ).data 'card-id'
+      @sandbox.trigger 'payment:select', card_id
 
 
 

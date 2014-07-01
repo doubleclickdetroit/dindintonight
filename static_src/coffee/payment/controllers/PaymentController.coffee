@@ -15,8 +15,8 @@ define [
       ResourceService.registerPaymentResource @cards_collection
 
       # sandbox listeners
-      @sandbox.on 'payment:add',    @handleManagePayment, @
-      @sandbox.on 'payment:edit',   @handleManagePayment, @
+      @sandbox.on 'payment:add',    @handleAddPayment,    @
+      @sandbox.on 'payment:remove', @handleRemovePayment, @
       @sandbox.on 'payment:cancel', @handleCancelPayment, @
       @sandbox.on 'payment:submit', @handleSubmitPayment, @
 
@@ -37,10 +37,12 @@ define [
     handleStripeValidationError: (error) ->
       @sandbox.trigger 'validation:error', error
 
-    handleManagePayment: (id) ->
+    handleAddPayment: ->
+      @manager_view.displayAddView()
+
+    handleRemovePayment: (id) ->
       card_model = @cards_collection.get id
-      # card_model will be undefined if `add`
-      @manager_view.displayEditView card_model
+      @card_model?.remove()
 
     handleCancelPayment: ->
       @manager_view.displayShowView()
@@ -62,7 +64,7 @@ define [
         collection: @cards_collection
 
         subviews:
-          edit: @views.edit
+          add : @views.add
           show: @views.show
 
       @manager_view.render().$el
