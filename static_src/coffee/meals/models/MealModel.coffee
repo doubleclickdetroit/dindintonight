@@ -13,24 +13,15 @@ define [
     url: ->
       attrs = @attributes.resource_uri
 
-
     parse: (attrs) ->
       attrs.meal
 
-
     toJSON: ->
-      attrs  = @pick 'id', 'description', 'price', 'qty'
-      images = @attributes.images
-
-      @sandbox.util.extend attrs, {
-        image_url: images[0].location
-      }
-
+      @pick 'id', 'price', 'description', 'qty'
 
     addQty: ->
       qty = @get 'qty'
       @set 'qty', ++qty
-
 
     removeQty: ->
       qty = @get 'qty'

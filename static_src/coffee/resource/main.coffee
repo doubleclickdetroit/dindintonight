@@ -93,14 +93,19 @@ define [
     handleLocationSelected: (location_model) ->
       meals_uri = location_model.get 'meals_uri'
       @assignMealsResourceUri meals_uri
-      @order_resource.updateLocation location_model
+
+      # update order_resource with location_model JSON
+      @order_resource.updateLocation location_model.toJSON()
 
     handleMealQuantity: (meal_model, qty) ->
       meals_collection = @meals_resource.toJSON()
+
+      # update order_resource with meals_collection JSON
       @order_resource.updateMeals meals_collection
 
     handlePaymentSelected: (card_model) ->
-      @order_resource.updateCard card_model
+      # update order_resource with card_model JSON
+      @order_resource.updateCard card_model.toJSON()
 
 
     ###

@@ -13,13 +13,8 @@ define [
     url: ->
       attrs = @attributes.resource_uri
 
-
     toJSON: ->
-      data = @attributes
-
-      title    : data.client.name
-      image_url: data.images[0].location
-
+      @pick 'client', 'client_url', 'details', 'id', 'location', 'resource_uri'
 
     isSelected: ->
       @set 'selected', true

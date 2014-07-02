@@ -24,6 +24,13 @@ define [
       # model listeners
       @model.on 'change', @render, @
 
+    serialize: ->
+      attrs  = @model.pick 'id', 'description', 'price', 'qty'
+      images = @model.get 'images'
+
+      @sandbox.util.extend attrs, {
+        image_url: images[0].location
+      }
 
     render: ->
       @$output.text @model.get('qty')
@@ -35,7 +42,6 @@ define [
     ###
     handleAddQty: (evt) ->
       @model.addQty()
-
 
     handleRemoveQty: (evt) ->
       @model.removeQty()
