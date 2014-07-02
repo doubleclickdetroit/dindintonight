@@ -26,6 +26,9 @@ module.exports =
     BaseModule     : 'core/modules/BaseModule'
     BaseService    : 'core/services/BaseService'
     BaseController : 'core/controllers/BaseController'
+    # Services
+    ResourceService : 'resource/main'
+    UserService     : 'user/main'
     # Aliases
     helpers : 'core/helpers/'
     django  : '../../../'
@@ -41,6 +44,8 @@ module.exports =
         'BaseService'
         'BaseController'
         'BaseView'
+        'ResourceService'
+        'UserService'
       ]
     }
     {
