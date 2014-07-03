@@ -95,6 +95,7 @@ define [
     keys      : _.keys
     pick      : _.pick
     omit      : _.omit
+    filter    : _.filter
     reduce    : _.reduce
     throttle  : _.throttle
     debounce  : _.debounce
