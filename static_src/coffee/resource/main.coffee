@@ -71,20 +71,17 @@ define [
     delegateLocationsEvents: (evt, context, value, options) ->
       switch evt
         when 'change:selected' then @handleLocationSelected(context)
-        # else console.log 'delegateLocationsEvents', arguments
 
     delegateMealsEvents: (evt, context, value, options) ->
       switch evt
         when 'sync', 'change:qty' then @handleMealQuantity(context, value)
-        # else console.log 'delegateMealsEvents', arguments
 
     delegateOrderEvents: (evt, context, value, options) ->
-      console.log 'delegateOrderEvents', arguments
+      # console.log 'delegateOrderEvents', JSON.stringify(context)
 
     delegatePaymentEvents: (evt, context, value, options) ->
       switch evt
         when 'change:selected' then @handlePaymentSelected(context)
-        # else console.log 'delegatePaymentEvents', arguments
 
 
     ###

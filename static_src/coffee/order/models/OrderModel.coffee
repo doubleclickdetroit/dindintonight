@@ -16,6 +16,17 @@ define [
       location: null
 
 
+    initialize: ->
+      console.log 'OrderModel initialize', @attributes
+
+    validate: (attrs) ->
+      is_valid = @isLocationValid() and @isMealsValid() and @isCardValid()
+      'Please correct errors.' unless is_valid
+
+
+    ###
+      # Internal Methods
+    ###
     updateUser: (user_model) ->
       @set 'user', user_model
 
@@ -28,20 +39,19 @@ define [
     updateLocation: (location_model=null) ->
       @set 'location', location_model
 
-    toJSON: ->
-      attrs = @attributes
-
-      # tack on additional attrs
-      attrs.total_price = @getTotalPrice()
-      attrs.has_orders  = @hasOrders()
-
-      # return attrs as JSON
-      attrs
-
 
     ###
       # Public Methods
     ###
+    isLocationValid: ->
+      @get( 'location' )?
+
+    isMealsValid: ->
+      @get( 'meals' ).length > 0
+
+    isCardValid: ->
+      @get( 'card' )?
+
     getTotalPrice: ->
       reduce = (memo, attrs) ->
         memo + ( parseFloat(attrs.price) * attrs.qty )

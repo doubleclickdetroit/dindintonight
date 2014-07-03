@@ -53,6 +53,7 @@ define [
       @sandbox.trigger 'validation:error', error
 
     handleAddPayment: ->
+      @card_model.reset()
       @manager_view.displayAddView()
 
     handleRemovePayment: (id) ->
