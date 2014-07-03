@@ -1,8 +1,7 @@
 define [
   'BaseModel'
-  'backbone'
 ],
-(BaseModel, Backbone) ->
+(BaseModel) ->
 
 
   class OrderModel extends BaseModel
@@ -15,9 +14,6 @@ define [
       card    : null
       location: null
 
-
-    initialize: ->
-      console.log 'OrderModel initialize', @attributes
 
     validate: (attrs) ->
       is_valid = @isLocationValid() and @isMealsValid() and @isCardValid()

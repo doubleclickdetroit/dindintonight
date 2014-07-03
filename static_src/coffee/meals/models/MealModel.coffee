@@ -19,6 +19,10 @@ define [
     toJSON: ->
       @pick 'id', 'price', 'description', 'qty'
 
+
+    ###
+      # Public Methods
+    ###
     addQty: ->
       qty = @get 'qty'
       @set 'qty', ++qty

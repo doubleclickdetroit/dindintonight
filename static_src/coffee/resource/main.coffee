@@ -95,9 +95,9 @@ define [
       @order_resource.updateLocation location_model.toJSON()
 
     handleMealQuantity: (meal_model, qty) ->
-      meals_collection = @meals_resource.toJSON()
+      meals_collection = @meals_resource.getOrderedMeals()
 
-      # update order_resource with meals_collection JSON
+      # update order_resource with meals_collection (is JSON)
       @order_resource.updateMeals meals_collection
 
     handlePaymentSelected: (card_model) ->
