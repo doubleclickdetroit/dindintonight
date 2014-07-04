@@ -12,6 +12,8 @@ define [
       @order_model = new @models.order()
       ResourceService.registerOrderResource @order_model
 
+      # ResourceService listeners
+      ResourceService.view_manager.on 'change:order', @handleVisibilityToggle, @
 
     loadSubModules: ->
       @sandbox.require 'payment', (PaymentModule) ->
@@ -21,6 +23,8 @@ define [
     ###*
      * Event Handlers
     ###
+    handleVisibilityToggle: (attrs, is_visible) ->
+      @order_view.toggle is_visible
 
 
     ###*
@@ -32,8 +36,7 @@ define [
       # require sub-modules
       @loadSubModules()
 
-      @order_view.$el
-
+      @order_view.hide()
 
     onDestroy: ->
       @order_view.$el.remove()

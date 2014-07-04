@@ -28,7 +28,6 @@ define [
       # model listeners
       @card_model.on 'invalid', @handleModelValidationError, @
 
-
     addPayment: (card_model) ->
       @cards_collection.add card_model, { parse: true, merge: true }
 

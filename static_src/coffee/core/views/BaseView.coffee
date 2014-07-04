@@ -8,8 +8,7 @@ define [
     initialize: (settings={}) ->
       @subviews = settings.subviews if settings.subviews?
 
-
-    serialize : ->
+    serialize: ->
       # If a model exists
       return @model.toJSON() if @model?
       # If a collection exists
@@ -17,17 +16,17 @@ define [
       # Otherwise, here's nothing
       {}
 
-
-    show : ->
+    show: ->
       @$el.show()
 
-
-    hide : ->
+    hide: ->
       @$el.hide()
 
+    toggle: (is_visible) ->
+      if is_visible then @show() else @hide()
 
-    render : ->
-      serialized_json = @serialize()
+    render: ->
+      @serialize()
       @
 
 

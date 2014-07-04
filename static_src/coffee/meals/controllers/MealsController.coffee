@@ -12,10 +12,15 @@ define [
       @meals_collection = new @collections.meals()
       ResourceService.registerMealsResource @meals_collection
 
+      # ResourceService listeners
+      ResourceService.view_manager.on 'change:meals', @handleVisibilityToggle, @
+
 
     ###*
      * Event Handlers
     ###
+    handleVisibilityToggle: (attrs, is_visible) ->
+      @meals_view.toggle is_visible
 
 
     ###*
@@ -27,7 +32,7 @@ define [
           meal: @views.meal
         collection: @meals_collection
 
-      @meals_view.$el
+      @meals_view.hide()
 
     onDestroy: ->
       @meals_view.$el.remove()

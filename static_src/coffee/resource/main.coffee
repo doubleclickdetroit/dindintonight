@@ -2,13 +2,22 @@ define [
   'facade'
   'BaseService'
   'UserService'
+  'BaseModel'
 ],
-(facade, BaseService, UserService) ->
+(facade, BaseService, UserService, BaseModel) ->
 
 
   class ResourceService extends BaseService
 
     constants: {}
+
+    initialize: ->
+      @view_manager = new BaseModel
+        location: true
+        meals   : false
+        payment : true
+        order   : false
+
 
     ###
       # Resource Methods
@@ -71,11 +80,17 @@ define [
       # update order_resource with location_model JSON
       @order_resource.updateLocation location_model.toJSON()
 
+      # set view_manager if resources are valid
+      @view_manager.set 'meals', @order_resource.isLocationValid()
+
     handleMealQuantity: (meal_model, qty) ->
       meals_collection = @meals_resource.getOrderedMeals()
 
       # update order_resource with meals_collection (is JSON)
       @order_resource.updateMeals meals_collection
+
+      # set view_manager if resources are valid
+      @view_manager.set 'order', @order_resource.isMealsValid()
 
     handlePaymentSelected: (card_model) ->
       # update order_resource with card_model JSON
