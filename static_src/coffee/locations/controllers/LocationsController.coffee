@@ -20,11 +20,10 @@ define [
      * Event Handlers
     ###
     handleAssigningCollectionUri: ->
-      # handle assigning resource_uri to ResourceService
-      # this is a bit unconventional as all other resources
-      # are handled internally by ResourceService
+      # handle assigning resource_uri to the locations_collection
       resource_uri = @bootstrap.resource_uri
-      ResourceService.assignLocationResourceUri resource_uri
+      @locations_collection.url = resource_uri
+      @locations_collection.fetch() if resource_uri?
 
 
     ###*

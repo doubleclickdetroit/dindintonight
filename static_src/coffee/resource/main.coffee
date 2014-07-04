@@ -10,10 +10,6 @@ define [
 
     constants: {}
 
-    initialize: ->
-      #
-
-
     ###
       # Resource Methods
     ###
@@ -44,27 +40,6 @@ define [
       @payment_resource.reset UserService.getCards(), { parse: true }
 
 
-
-    ###
-      # Resource URI Assignment
-    ###
-    assignLocationResourceUri: (resource_uri) ->
-      @locations_resource.url = resource_uri
-      @locations_resource.fetch() if resource_uri?
-
-    assignMealsResourceUri: (resource_uri) ->
-      @meals_resource.url = resource_uri
-      @meals_resource.fetch() if resource_uri?
-
-    assignOrderResourceUri: (resource_uri) ->
-      @orer_resource.url = resource_uri
-      @orer_resource.fetch() if resource_uri?
-
-    assignPaymentResourceUri: (resource_uri) ->
-      @payment_resource.url = resource_uri
-      @payment_resource.fetch() if resource_uri?
-
-
     ###
       # Event Delegates
     ###
@@ -88,8 +63,10 @@ define [
       # Event Handlers
     ###
     handleLocationSelected: (location_model) ->
+      # set meals_uri and fetch meals
       meals_uri = location_model.get 'meals_uri'
-      @assignMealsResourceUri meals_uri
+      @meals_resource.url = meals_uri
+      @meals_resource.fetch() if meals_uri?
 
       # update order_resource with location_model JSON
       @order_resource.updateLocation location_model.toJSON()
