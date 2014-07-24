@@ -27,6 +27,7 @@ define [
         is_visible = !@$el.is ':visible'
 
       if is_visible then @show() else @hide()
+
     render: ->
       @serialize()
       @
