@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
+
 from leads.api import LeadList
+
 
 urlpatterns = patterns('',
     # Leads

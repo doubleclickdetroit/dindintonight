@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
+
 from locations.api import LocationList, LocationDetail
+
 
 urlpatterns = patterns('',
     # Locations

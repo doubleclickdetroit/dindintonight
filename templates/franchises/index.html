@@ -2,9 +2,7 @@
 
 {% block page_config %}
 {
-    'locations/main': {
-        resource_uri: '/api/v1/search/clients/locations/?franchise=1'
-    }
+    'locations/main': '{{ request.locations.json }}'
 }
 {% endblock page_config %}
 

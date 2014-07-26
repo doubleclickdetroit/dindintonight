@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
+
 from meals.api import MealList, MealDetail
+
 
 urlpatterns = patterns('',
     # Locations

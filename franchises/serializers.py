@@ -1,5 +1,5 @@
-from django.core.urlresolvers import reverse
 from rest_framework import serializers
+
 from franchises.models import Franchise
 from users.serializers import UserSerializer
 

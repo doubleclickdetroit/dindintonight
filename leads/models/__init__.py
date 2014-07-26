@@ -1,1 +1,1 @@
-from lead import Lead
+from .lead import Lead

@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from core.admin import BaseModelAdmin
 from meals.models import MealImage
 

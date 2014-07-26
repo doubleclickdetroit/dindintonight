@@ -1,7 +1,8 @@
 import os
-from django.core.management.base import NoArgsCommand
 from optparse import make_option
 import time
+
+from django.core.management.base import NoArgsCommand
 
 
 class Command(NoArgsCommand):

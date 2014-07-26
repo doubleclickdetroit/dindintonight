@@ -1,6 +1,7 @@
-from core.api import RESTView
 from django.conf import settings
 import stripe
+
+from core.api import RESTView
 from meals.models import Meal
 from users.models import User, UserMealPurchaseHistory
 
@@ -44,7 +45,7 @@ class ChargeProcess(RESTView):
 
         if user is not None:
             try:
-                user = User.objects.get(pk=user)
+                user = User.objects.get(pk=user.get('id'))
             except User.DoesNotExist:
                 response['user'] = [
                     'Invalid user requested'

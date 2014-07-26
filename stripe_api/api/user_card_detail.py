@@ -1,8 +1,9 @@
 from django.conf import settings
+import stripe
+
 from core.api import RESTView
 from users.models import UserStripeCard
 from users.serializers import UserStripeCardSerializer
-import stripe
 
 
 class UserCardDetail(RESTView):

@@ -1,7 +1,8 @@
 import os
-import requests
 import time
 import urllib
+
+import requests
 from django.conf import settings
 
 

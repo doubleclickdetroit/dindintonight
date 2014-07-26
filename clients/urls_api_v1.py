@@ -1,7 +1,9 @@
 from django.conf.urls import patterns, url
+
 from clients.api import ClientList, ClientDetail, ClientLocationList, ClientLocationDetail, \
     ClientLocationDetailDetail, ClientLocationMealDetail, ClientLocationSearchList
 from clients.api.client_location_meal_list import ClientLocationMealList
+
 
 urlpatterns = patterns('',
     # Clients

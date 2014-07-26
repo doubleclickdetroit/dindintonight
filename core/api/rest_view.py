@@ -1,5 +1,6 @@
 import hashlib
 from urlparse import urlparse
+
 from django.core.cache import cache
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.urlresolvers import reverse
@@ -8,6 +9,7 @@ from rest_framework import status
 from rest_framework.exceptions import PermissionDenied, NotAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
+
 from core.api import BadRequest, InternalRequest, MethodNotImplemented, NotAuthorized, NotFound
 from core.utils import debug_print
 
@@ -65,13 +67,15 @@ class RESTView(APIView):
     # along with any to build the reverse of a url
     URL_VARIABLES = None
 
-    def internal_request(self, request):
+    def internal_request(self, request, **kwargs):
         if request.method == 'GET':
             # convert the get params into a dict
             # if isinstance(request.GET, dict):
             #     query = request.GET
             # else:
             query = request.GET.dict()
+
+            query = dict(query.items() + kwargs.items())
 
             try:
                 user = request.user
@@ -82,7 +86,6 @@ class RESTView(APIView):
             return self.internal_get(user=user, override_pagination_url=request.path,
                                      override_pagination_query_params=request.GET, **query)
         else:
-            debug_print('For internal request at this time we only support using GET!', color='red')
             self.raise_not_implemented()
 
     def get(self, request, format=None, *args, **kwargs):

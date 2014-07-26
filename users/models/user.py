@@ -3,8 +3,9 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from rest_framework.renderers import JSONRenderer
-from core.models import BaseModel
 import stripe
+
+from core.models import BaseModel
 from leads.models import Lead
 
 

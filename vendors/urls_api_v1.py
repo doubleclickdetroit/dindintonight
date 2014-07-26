@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url
+
 from vendors.api import VendorDetail, VendorList, VendorLocationList, VendorLocationDetail, VendorUserDetail, \
     VendorUserList
+
 
 urlpatterns = patterns('',
     # Vendors

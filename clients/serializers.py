@@ -1,8 +1,10 @@
 import re
+
 from django.core import validators
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from rest_framework import serializers
+
 from clients.models import Client, ClientLocationDetail, ClientLocation, ClientUser, ClientLocationMeal, \
     ClientLocationImage
 from locations.serializers import LocationSerializer

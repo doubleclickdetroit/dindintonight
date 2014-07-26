@@ -1,6 +1,7 @@
-from core.api import RESTView
 from django.conf import settings
 import stripe
+
+from core.api import RESTView
 
 
 class ChargeRetrieve(RESTView):

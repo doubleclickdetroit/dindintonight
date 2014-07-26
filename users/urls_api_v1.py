@@ -1,5 +1,7 @@
 from django.conf.urls import patterns, url
+
 from users.api import UserDetail, UserList, UserLocationList #, UserLocationDetail
+
 
 urlpatterns = patterns('',
     # Users

@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from rest_framework import serializers
+
 from locations.models import Location
 
 

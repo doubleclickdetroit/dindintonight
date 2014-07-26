@@ -1,5 +1,5 @@
 # System
-import hashlib, datetime
+import datetime
 
 # Django
 from django.conf import settings

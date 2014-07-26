@@ -1,2 +1,2 @@
-from franchise import Franchise
-from franchise_config import FranchiseConfig
+from .franchise import Franchise
+from .franchise_config import FranchiseConfig

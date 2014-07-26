@@ -1,6 +1,7 @@
 from allauth.socialaccount.models import SocialAccount, SocialToken, SocialApp
 from django.core.urlresolvers import reverse
 from rest_framework import serializers
+
 from locations.serializers import LocationSerializer
 from users.models import User, UserLocation, UserStripeCard
 
@@ -35,7 +36,6 @@ class UserStripeCardSerializerNoUserFK(serializers.ModelSerializer):
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.Field()
-    locations = UserLocationSerializerNoUserFK(source='locations', many=True)
     cards = UserStripeCardSerializerNoUserFK(source='cards', many=True)
     social_accounts = serializers.SerializerMethodField('get_social_accounts')
     resource_uri = serializers.SerializerMethodField('get_resource_uri')
@@ -43,7 +43,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'first_name', 'last_name', 'email', 'date_joined', 'created', 'modified',
-                  'social_accounts', 'locations', 'cards', 'resource_uri',)
+                  'social_accounts', 'cards', 'resource_uri',)
         read_only_fields = ('date_joined', 'created', 'modified',)
 
     def get_resource_uri(self, obj):

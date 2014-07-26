@@ -1,8 +1,9 @@
+import datetime
+
 from core.api import RESTView
 from meals.models import Meal
 from meals.serializers import MealSerializer
 from vendors.models import VendorLocation
-import datetime
 
 
 class MealList(RESTView):

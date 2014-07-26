@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from rest_framework import serializers
+
 from locations.serializers import LocationSerializer
 from users.serializers import UserSerializer
 from vendors.models import VendorLocation, Vendor, VendorUser

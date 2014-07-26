@@ -1,7 +1,9 @@
 from __future__ import absolute_import
+
 from django.conf import settings
-from core.celery import app
 import sendgrid
+
+from core.celery import app
 
 
 @app.task
