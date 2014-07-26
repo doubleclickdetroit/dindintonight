@@ -61,7 +61,7 @@ define [
         when 'sync', 'change:qty' then @handleMealQuantity(context, value)
 
     delegateOrderEvents: (evt, context, value, options) ->
-      # console.log 'delegateOrderEvents', JSON.stringify(context)
+      console.log 'delegateOrderEvents', JSON.stringify(context)
 
     delegatePaymentEvents: (evt, context, value, options) ->
       switch evt

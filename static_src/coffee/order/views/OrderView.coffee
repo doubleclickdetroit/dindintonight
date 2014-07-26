@@ -45,7 +45,7 @@ define [
     ###
     handleSubmitOrder: (evt) ->
       json_string = JSON.stringify @model.attributes
-      console.log 'handleSubmitOrder', evt, json_string
+      @sandbox.trigger 'submit'
 
 
 

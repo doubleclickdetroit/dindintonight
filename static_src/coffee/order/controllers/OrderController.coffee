@@ -12,6 +12,9 @@ define [
       @order_model = new @models.order()
       ResourceService.registerOrderResource @order_model
 
+      # listeners
+      @sandbox.on 'submit', @handleOrderSubmit, @
+
       # ResourceService listeners
       ResourceService.view_manager.on 'change:order', @handleVisibilityToggle, @
 
@@ -25,6 +28,9 @@ define [
     ###
     handleVisibilityToggle: (attrs, is_visible) ->
       @order_view.toggle is_visible
+
+    handleOrderSubmit: (evt) ->
+      @order_model.save()
 
 
     ###*
