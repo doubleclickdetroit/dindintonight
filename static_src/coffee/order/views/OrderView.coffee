@@ -8,6 +8,9 @@ define [
 
   class OrderView extends BaseView
 
+    events:
+      'click #btn-order' : 'handleSubmitOrder'
+
     initialize: (settings={}) ->
       # initially render and inject the template
       @$el.html hbs_order( @serialize() )
@@ -40,6 +43,9 @@ define [
     ###*
      * Event Handlers
     ###
+    handleSubmitOrder: (evt) ->
+      json_string = JSON.stringify @model.attributes
+      console.log 'handleSubmitOrder', evt, json_string
 
 
 
